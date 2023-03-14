@@ -3,7 +3,7 @@ package oscP5;
 
 public class Version {
   public static String version = "2.01";
-  public static String buildDate = "2023-03-14 10:22:25";
+  public static String buildDate = "2023-03-14 10:25:17";
 
   /**
    * バージョン情報を返す
