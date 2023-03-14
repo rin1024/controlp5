@@ -786,7 +786,6 @@ public final class ControlWindow {
       _myApplet.frame.removeNotify();
       _myApplet.frame.setUndecorated(isUndecorated);
       _myApplet.setSize(_myApplet.width, _myApplet.height);
-      _myApplet.setBounds(0, 0, _myApplet.width, _myApplet.height);
       _myApplet.frame.setSize(_myApplet.width, _myApplet.height);
       _myApplet.frame.addNotify();
     }
