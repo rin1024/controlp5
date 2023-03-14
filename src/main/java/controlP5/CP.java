@@ -179,9 +179,8 @@ public class CP {
   /** @deprecated */
   @Deprecated
   protected boolean save(ControlP5 theControlP5, String theFilePath) {
-    ControlP5.logger()
-        .info(
-            "Saving ControlP5 settings in XML format has been removed, have a look at controlP5's properties instead.");
+    ControlP5.L.info(
+        "Saving ControlP5 settings in XML format has been removed, have a look at controlP5's properties instead.");
     return false;
   }
 

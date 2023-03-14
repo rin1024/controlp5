@@ -187,7 +187,7 @@ class ControllerAutomator {
                   method.invoke(cntr, os);
                 } catch (Exception e) {
                   /* TODO is thrown when running ControlP5annotation example */
-                  // ControlP5.logger.severe( e.toString( ) );
+                  // ControlP5.L.error( e.toString( ) );
                 }
               }
             }
@@ -243,7 +243,7 @@ class ControllerAutomator {
               cntr.setValue(f.getInt(t));
             }
           } catch (Exception e) {
-            ControlP5.logger.severe(e.toString());
+            ControlP5.L.error(e.toString());
           }
         } else if (f.getType() == String.class) {
           if (type == Textlabel.class) {
@@ -264,7 +264,7 @@ class ControllerAutomator {
           try {
             cntr.setValue(f.getBoolean(t) ? 1 : 0);
           } catch (Exception e) {
-            ControlP5.logger.severe(e.toString());
+            ControlP5.L.error(e.toString());
           }
         }
 
@@ -287,7 +287,7 @@ class ControllerAutomator {
                   method.setAccessible(true);
                   method.invoke(cntr, os);
                 } catch (Exception e) {
-                  ControlP5.logger.severe(e.toString());
+                  ControlP5.L.error(e.toString());
                 }
               }
             }

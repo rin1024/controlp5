@@ -767,7 +767,7 @@ public abstract class Controller<T>
    */
   @ControlP5.Invisible
   public T add(final ControllerInterface<?> theElement) {
-    ControlP5.logger().warning(" add() not supported.");
+    ControlP5.L.warn(" add() not supported.");
     return me;
   }
 
@@ -777,7 +777,7 @@ public abstract class Controller<T>
    */
   @ControlP5.Invisible
   public T remove(final ControllerInterface<?> theElement) {
-    ControlP5.logger().warning("remove() not supported.");
+    ControlP5.L.warn("remove() not supported.");
     return me;
   }
 
@@ -1814,11 +1814,10 @@ public abstract class Controller<T>
 
   protected T updateDisplayMode(int theMode) {
     if (theMode != DEFAULT) {
-      ControlP5.logger()
-          .warning(
-              "Image-based or custom displays are not yet implemented for this type of controller. ("
-                  + this.getClass().getName()
-                  + ")");
+      ControlP5.L.warn(
+          "Image-based or custom displays are not yet implemented for this type of controller. ("
+              + this.getClass().getName()
+              + ")");
     }
     return me;
   }

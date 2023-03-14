@@ -1076,9 +1076,8 @@ public class ControlP5Legacy {
   }
 
   public ControlWindow addControlWindow(String theName) {
-    ControlP5.logger()
-        .warning(
-            "ControlWindow has been disabled currently, please have a look at the changlog.txt file inside the src folder.");
+    ControlP5.L.warn(
+        "ControlWindow has been disabled currently, please have a look at the changlog.txt file inside the src folder.");
     return null;
   }
 

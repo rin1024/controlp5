@@ -111,9 +111,8 @@ public class ControllerPlug {
         printSecurityWarning(e);
       } catch (NoSuchMethodException e) {
         if (_myParameterClass != CallbackEvent.class) {
-          ControlP5.logger()
-              .warning(
-                  " plug() failed. If function " + theName + " does exist, make it public. " + e);
+          ControlP5.L.warn(
+              " plug() failed. If function " + theName + " does exist, make it public. " + e);
         }
       }
 
@@ -128,14 +127,13 @@ public class ControllerPlug {
         printSecurityWarning(e);
       } catch (NoSuchMethodException e) {
         if (_myEventMethodParameter != CallbackEvent.class) {
-          ControlP5.logger()
-              .warning(
-                  " plug() failed "
-                      + _myParameterClass
-                      + ". If function "
-                      + theName
-                      + " does exist, make it public. "
-                      + e);
+          ControlP5.L.warn(
+              " plug() failed "
+                  + _myParameterClass
+                  + ". If function "
+                  + theName
+                  + " does exist, make it public. "
+                  + e);
         }
       }
       /* check for fields */
@@ -167,7 +165,7 @@ public class ControllerPlug {
             printSecurityWarning(ex);
           }
         } catch (NoSuchFieldException e) {
-          ControlP5.logger().warning(e.toString());
+          ControlP5.L.warn(e.toString());
         }
       }
     }
@@ -177,11 +175,10 @@ public class ControllerPlug {
     // AccessControlException required for applets.
     if (e.getClass().equals(AccessControlException.class)) {
       ControlP5.isApplet = true;
-      ControlP5.logger()
-          .warning(
-              "You are probably running in applet mode.\n"
-                  + "make sure fields and methods in your code are public.\n"
-                  + e);
+      ControlP5.L.warn(
+          "You are probably running in applet mode.\n"
+              + "make sure fields and methods in your code are public.\n"
+              + e);
     }
   }
 

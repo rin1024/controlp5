@@ -349,7 +349,7 @@ public class ControlP5Base extends ControlP5Legacy implements ControlP5Constants
       currentGroupPointer = theGroup;
       isCurrentGroupPointerClosed = true;
     } else {
-      ControlP5.logger().warning("use .end() first before using .begin() again.");
+      ControlP5.L.warn("use .end() first before using .begin() again.");
     }
   }
 

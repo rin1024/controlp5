@@ -280,7 +280,7 @@ public class Label implements CDrawable {
   }
 
   public Label setFont(int theBitFontIndex) {
-    ControlP5.logger.warning("BitFont is now of type PFont, use setFont(PFont) instead.");
+    ControlP5.L.warn("BitFont is now of type PFont, use setFont(PFont) instead.");
     return this;
   }
 

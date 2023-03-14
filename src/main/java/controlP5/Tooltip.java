@@ -253,7 +253,7 @@ public class Tooltip {
    * @return Tooltip
    */
   public Tooltip setHeight(int theHeight) {
-    ControlP5.logger().warning("Tooltip.setHeight is disabled with this version");
+    ControlP5.L.warn("Tooltip.setHeight is disabled with this version");
     _myHeight = theHeight;
     return this;
   }

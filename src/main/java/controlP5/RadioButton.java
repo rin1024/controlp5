@@ -472,7 +472,7 @@ public class RadioButton extends ControlGroup<RadioButton> {
     // updateValues(true);
     // }
     // }
-    ControlP5.logger().info("toggle() not yet implemented, working on it.");
+    ControlP5.L.info("toggle() not yet implemented, working on it.");
     return this;
   }
 

@@ -647,7 +647,7 @@ public class ControlP5 extends ControlP5Base {
 
   private boolean checkName(String theName) {
     if (_myControllerMap.containsKey(checkAddress(theName))) {
-      L.warning(
+      L.warn(
           "Controller with name \""
               + theName
               + "\" already exists. overwriting reference of existing controller.");

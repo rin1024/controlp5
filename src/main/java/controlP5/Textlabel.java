@@ -254,10 +254,9 @@ public class Textlabel extends Controller<Textlabel> {
   }
 
   private void printConstructorError(String theValue) {
-    ControlP5.logger()
-        .severe(
-            "The Textlabel constructor you are using has been deprecated, please use constructor\nnew Textlabel(ControlP5,String,int,int) or\nnew Textlabel(ControlP5,String,int,int,int,int) or\nnew Textlabel(ControlP5,String,int,int,int,int,int,int)\ninstead. The Textlabel with value '"
-                + theValue
-                + "' is disabled and will not be rendered.");
+    ControlP5.L.error(
+        "The Textlabel constructor you are using has been deprecated, please use constructor\nnew Textlabel(ControlP5,String,int,int) or\nnew Textlabel(ControlP5,String,int,int,int,int) or\nnew Textlabel(ControlP5,String,int,int,int,int,int,int)\ninstead. The Textlabel with value '"
+            + theValue
+            + "' is disabled and will not be rendered.");
   }
 }

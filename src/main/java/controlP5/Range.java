@@ -22,7 +22,6 @@ package controlP5;
  */
 import controlP5.ControlP5.Invisible;
 import java.util.ArrayList;
-import java.util.logging.Level;
 import processing.core.PApplet;
 import processing.core.PFont;
 import processing.core.PGraphics;
@@ -454,7 +453,7 @@ public class Range extends Controller<Range> {
 
     public void display(PGraphics theGraphics, Range theController) {
 
-      ControlP5.logger().log(Level.INFO, "RangeSpriteDisplay not available.");
+      ControlP5.L.info("RangeSpriteDisplay not available.");
     }
   }
 
@@ -531,7 +530,7 @@ public class Range extends Controller<Range> {
 
     public void display(PGraphics theGraphics, Range theController) {
 
-      ControlP5.logger().log(Level.INFO, "RangeImageDisplay not implemented.");
+      ControlP5.L.info("RangeImageDisplay not implemented.");
     }
   }
 

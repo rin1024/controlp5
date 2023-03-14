@@ -333,7 +333,7 @@ public class ControlBroadcaster {
     try {
       theField.set(theObject, theParam);
     } catch (IllegalAccessException e) {
-      ControlP5.logger().warning(e.toString());
+      ControlP5.L.warn(e.toString());
     }
   }
 
@@ -346,7 +346,7 @@ public class ControlBroadcaster {
         theMethod.invoke(theObject, theParam);
       }
     } catch (IllegalArgumentException e) {
-      ControlP5.logger().warning(e.toString());
+      ControlP5.L.warn(e.toString());
       /** TODO thrown when plugging a String method/field. */
     } catch (IllegalAccessException e) {
       printMethodError(theMethod, e);
@@ -381,11 +381,10 @@ public class ControlBroadcaster {
 
   private void printMethodError(Method theMethod, Exception theException) {
     if (!ignoreErrorMessage) {
-      ControlP5.logger()
-          .severe(
-              "An error occured while forwarding a Controller event, please check your code at "
-                  + theMethod.getName()
-                  + (!setPrintStackTrace ? " " + "exception:  " + theException : ""));
+      ControlP5.L.error(
+          "An error occured while forwarding a Controller event, please check your code at "
+              + theMethod.getName()
+              + (!setPrintStackTrace ? " " + "exception:  " + theException : ""));
       if (setPrintStackTrace) {
         theException.printStackTrace();
       }
