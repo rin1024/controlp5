@@ -4,7 +4,7 @@ plugins {
 }
 
 // このライブラリのバージョン
-version '2.01'
+version '2.3.0-SNAPSHOT' // 2.2.6
 
 // Javaプラグインを使ってこのプロジェクトをビルドする
 apply plugin: 'java'
@@ -78,7 +78,7 @@ gradle.projectsEvaluated {
 
 // ------------------------------------------------------------
 // Version.javaを入れるディレクトリ
-def VERSION_JAVA_FOLDER = 'src/controlP5'
+def VERSION_JAVA_FOLDER = 'src/main/java/controlP5'
 
 // gradleでjar生成するバージョンと、javaのクラスファイルに定義するバージョンを一律にするtask
 // https://www.gwtcenter.com/handling-version-number-uniformly-by-gradle

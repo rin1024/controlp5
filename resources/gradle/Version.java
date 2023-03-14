@@ -1,5 +1,5 @@
 // via: https://www.gwtcenter.com/handling-version-number-uniformly-by-gradle
-package oscP5;
+package controlP5;
 
 public class Version {
   public static String version = "$version";

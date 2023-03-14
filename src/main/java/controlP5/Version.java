@@ -1,9 +1,9 @@
 // via: https://www.gwtcenter.com/handling-version-number-uniformly-by-gradle
-package oscP5;
+package controlP5;
 
 public class Version {
-  public static String version = "2.01";
-  public static String buildDate = "2023-03-14 10:25:17";
+  public static String version = "2.3.0-SNAPSHOT";
+  public static String buildDate = "2023-03-14 12:10:43";
 
   /**
    * バージョン情報を返す
