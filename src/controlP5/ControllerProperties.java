@@ -38,10 +38,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import java.util.logging.Logger;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import org.apache.log4j.Logger;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -79,7 +79,7 @@ public class ControllerProperties {
 
   final ControlP5 controlP5;
   private String _myDefaultSetName = "default";
-  public static final Logger logger = Logger.getLogger(ControllerProperties.class.getName());
+  protected static final Logger L = Logger.getLogger(ControllerProperties.class.getName());
   private Map<String, Set<ControllerProperty>> _mySnapshots;
 
   public ControllerProperties(ControlP5 theControlP5) {
@@ -310,7 +310,7 @@ public class ControllerProperties {
         return true;
       }
     } catch (Exception e) {
-      logger.severe("" + e);
+      L.error("" + e);
     }
     return false;
   }
@@ -546,7 +546,7 @@ public class ControllerProperties {
       try {
         s = PApplet.join(controlP5.papplet.loadStrings(thePropertiesPath), "\n");
       } catch (Exception e) {
-        logger.warning(thePropertiesPath + ", file not found.");
+        L.warn(thePropertiesPath + ", file not found.");
         return false;
       }
       System.out.println("loading xml \n" + s);
@@ -581,21 +581,21 @@ public class ControllerProperties {
                 method.setAccessible(true);
                 method.invoke(ci, new Object[] {getValue(myValue, myType, c)});
               } catch (Exception e) {
-                logger.severe(e.toString());
+                L.error(e.toString());
               }
             } catch (Exception e) {
-              logger.warning("skipping a property, " + e);
+              L.warn("skipping a property, " + e);
             }
           }
         }
       } catch (SAXException e) {
-        logger.warning("SAXException, " + e);
+        L.warn("SAXException, " + e);
         return false;
       } catch (IOException e) {
-        logger.warning("IOException, " + e);
+        L.warn("IOException, " + e);
         return false;
       } catch (ParserConfigurationException e) {
-        logger.warning("ParserConfigurationException, " + e);
+        L.warn("ParserConfigurationException, " + e);
         return false;
       }
       return true;
@@ -634,7 +634,7 @@ public class ControllerProperties {
       try {
         return Class.forName(theType);
       } catch (ClassNotFoundException e) {
-        logger.warning("ClassNotFoundException, " + e);
+        L.warn("ClassNotFoundException, " + e);
       }
       return null;
     }
@@ -839,7 +839,7 @@ public class ControllerProperties {
         FileInputStream fis = new FileInputStream(thePropertiesPath);
         ObjectInputStream ois = new ObjectInputStream(fis);
         int size = ois.readInt();
-        logger.info("loading " + size + " property-items. ");
+        L.info("loading " + size + " property-items. ");
 
         for (int i = 0; i < size; i++) {
           try {
@@ -853,16 +853,16 @@ public class ControllerProperties {
               method.setAccessible(true);
               method.invoke(ci, new Object[] {cp.getValue()});
             } catch (Exception e) {
-              logger.severe(e.toString());
+              L.error(e.toString());
             }
 
           } catch (Exception e) {
-            logger.warning("skipping a property, " + e);
+            L.warn("skipping a property, " + e);
           }
         }
         ois.close();
       } catch (Exception e) {
-        logger.warning("Exception during deserialization: " + e);
+        L.warn("Exception during deserialization: " + e);
         return false;
       }
       return true;
@@ -893,7 +893,7 @@ public class ControllerProperties {
         FileOutputStream fos = new FileOutputStream(thePropertiesPath);
         ObjectOutputStream oos = new ObjectOutputStream(fos);
 
-        logger.info("Saving property-items to " + thePropertiesPath);
+        L.info("Saving property-items to " + thePropertiesPath);
         oos.writeInt(active);
 
         for (ControllerProperty cp : propertiesToBeSaved) {
@@ -901,13 +901,12 @@ public class ControllerProperties {
             oos.writeObject(cp);
           }
         }
-        logger.info(
-            active + " items saved, " + (ignored) + " items ignored. Done saving properties.");
+        L.info(active + " items saved, " + (ignored) + " items ignored. Done saving properties.");
         oos.flush();
         oos.close();
         fos.close();
       } catch (Exception e) {
-        logger.warning("Exception during serialization: " + e);
+        L.warn("Exception during serialization: " + e);
       }
     }
   }

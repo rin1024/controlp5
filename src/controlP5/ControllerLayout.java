@@ -29,13 +29,13 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
-import java.util.logging.Logger;
+import org.apache.log4j.Logger;
 
 class ControllerLayout {
 
   private ControlP5 cp5;
 
-  public static final Logger logger = Logger.getLogger(ControllerLayout.class.getName());
+  protected static final Logger L = Logger.getLogger(ControllerLayout.class.getName());
 
   static {
     Map<Class<?>, Class<?>> datatypes = new HashMap<Class<?>, Class<?>>();
@@ -74,7 +74,7 @@ class ControllerLayout {
       FileOutputStream fos = new FileOutputStream(theLayoutPath);
       ObjectOutputStream oos = new ObjectOutputStream(fos);
 
-      logger.info("Saving layout-items to " + theLayoutPath);
+      L.info("Saving layout-items to " + theLayoutPath);
       oos.writeInt(layoutelements.size());
 
       for (ControllerLayoutElement ce : layoutelements) {
@@ -84,7 +84,7 @@ class ControllerLayout {
       oos.close();
       fos.close();
     } catch (Exception e) {
-      logger.warning("Exception during serialization: " + e);
+      L.warn("Exception during serialization: " + e);
     }
   }
 
@@ -106,19 +106,19 @@ class ControllerLayout {
       FileInputStream fis = new FileInputStream(theLayoutPath);
       ObjectInputStream ois = new ObjectInputStream(fis);
       int size = ois.readInt();
-      logger.info("loading " + size + " layout-items." + fis.getFD());
+      L.info("loading " + size + " layout-items." + fis.getFD());
 
       for (int i = 0; i < size; i++) {
         try {
           ControllerLayoutElement ce = (ControllerLayoutElement) ois.readObject();
           list.add(ce);
         } catch (Exception e) {
-          logger.warning("skipping a property, " + e);
+          L.warn("skipping a property, " + e);
         }
       }
       ois.close();
     } catch (Exception e) {
-      logger.warning("Exception during deserialization: " + e);
+      L.warn("Exception during deserialization: " + e);
     }
 
     for (ControllerLayoutElement ce : list) {

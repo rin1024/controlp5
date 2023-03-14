@@ -39,7 +39,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
-import java.util.logging.Logger;
+import org.apache.log4j.Logger;
 import processing.core.PApplet;
 import processing.core.PFont;
 import processing.core.PGraphics;
@@ -56,7 +56,6 @@ import processing.event.MouseEvent;
  * @example use/ControlP5basics
  */
 public class ControlP5 extends ControlP5Base {
-
   /** @exclude */
   @ControlP5.Invisible public ControlWindow controlWindow;
 
@@ -76,7 +75,9 @@ public class ControlP5 extends ControlP5Base {
   boolean isGraphics = false;
 
   /** @exclude */
-  @ControlP5.Invisible public static final String VERSION = "2.2.6"; // "##version##";
+  @ControlP5.Invisible public static final String VERSION = Version.version;
+
+  @ControlP5.Invisible public static final String BUILD_DATE = Version.buildDate;
 
   /** @exclude */
   @ControlP5.Invisible public static boolean isApplet = false;
@@ -87,8 +88,7 @@ public class ControlP5 extends ControlP5Base {
   public static boolean DEBUG;
 
   /** @exclude */
-  @ControlP5.Invisible
-  public static final Logger logger = Logger.getLogger(ControlP5.class.getName());
+  @ControlP5.Invisible public static final Logger L = Logger.getLogger(ControlP5.class.getName());
 
   private Map<String, ControllerInterface<?>> _myControllerMap;
   protected ControlBroadcaster _myControlBroadcaster;
@@ -228,11 +228,7 @@ public class ControlP5 extends ControlP5Base {
   static int welcome = 0;
 
   private void welcome() {
-    System.out.println(
-        "ControlP5 "
-            + VERSION
-            + " "
-            + "infos, comments, questions at http://www.sojamo.de/libraries/controlP5");
+    L.info("ControlP5 " + VERSION + " " + BUILD_DATE);
   }
 
   public ControlP5 setGraphics(PApplet theApplet, int theX, int theY) {
@@ -537,7 +533,7 @@ public class ControlP5 extends ControlP5Base {
   /** @excude */
   public void printControllerMap() {
     List<String> strs = new ArrayList<String>();
-    System.out.println("============================================");
+    L.info("============================================");
     for (Iterator it = _myControllerMap.entrySet().iterator(); it.hasNext(); ) {
       Map.Entry entry = (Map.Entry) it.next();
       Object key = entry.getKey();
@@ -546,9 +542,9 @@ public class ControlP5 extends ControlP5Base {
     }
     Collections.sort(strs);
     for (String s : strs) {
-      System.out.println(s);
+      L.info(s);
     }
-    System.out.println("============================================");
+    L.info("============================================");
   }
 
   /**
@@ -651,11 +647,10 @@ public class ControlP5 extends ControlP5Base {
 
   private boolean checkName(String theName) {
     if (_myControllerMap.containsKey(checkAddress(theName))) {
-      ControlP5.logger()
-          .warning(
-              "Controller with name \""
-                  + theName
-                  + "\" already exists. overwriting reference of existing controller.");
+      L.warning(
+          "Controller with name \""
+              + theName
+              + "\" already exists. overwriting reference of existing controller.");
       return true;
     }
     return false;
@@ -896,7 +891,7 @@ public class ControlP5 extends ControlP5Base {
     if (f.exists()) {
       return _myProperties.load(path);
     }
-    logger.info("Properties File " + path + " does not exist.");
+    L.info("Properties File " + path + " does not exist.");
     return false;
   }
 
@@ -921,7 +916,7 @@ public class ControlP5 extends ControlP5Base {
       getLayout().load(theFilePath);
       return true;
     }
-    logger.info("Layout File " + theFilePath + " does not exist.");
+    L.info("Layout File " + theFilePath + " does not exist.");
     return false;
   }
 
@@ -1199,22 +1194,22 @@ public class ControlP5 extends ControlP5Base {
         try {
           return m.invoke(theObject, theParams);
         } catch (IllegalArgumentException e) {
-          System.err.println(e);
+          L.error(e);
         } catch (IllegalAccessException e) {
-          System.err.println(e);
+          L.error(e);
         } catch (InvocationTargetException e) {
-          System.err.println(e);
+          L.error(e);
         }
 
       } catch (SecurityException e) {
-        System.err.println(e);
+        L.error(e);
       } catch (NoSuchMethodException e) {
         invoke(theObject, theClass.getSuperclass(), theMember, theParams);
       }
     } catch (IllegalArgumentException e) {
-      System.err.println(e);
+      L.error(e);
     } catch (IllegalAccessException e) {
-      System.err.println(e);
+      L.error(e);
     }
     return null;
   }
@@ -1388,10 +1383,6 @@ public class ControlP5 extends ControlP5Base {
   }
 
   /* add Objects with Annotation */
-
-  public static Logger logger() {
-    return logger;
-  }
 
   @Retention(RetentionPolicy.RUNTIME)
   @interface Invisible {}
