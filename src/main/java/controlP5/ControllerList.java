@@ -42,17 +42,17 @@ public class ControllerList {
     }
   }
 
-  protected void remove(ControllerInterface<?> theController) {
+  public void remove(ControllerInterface<?> theController) {
     controllers.remove(theController);
   }
 
-  protected void addDrawable(CDrawable theController) {
+  public void addDrawable(CDrawable theController) {
     if (drawables.indexOf(theController) < 0) {
       drawables.add(theController);
     }
   }
 
-  protected void removeDrawable(CDrawable theController) {
+  public void removeDrawable(CDrawable theController) {
     drawables.remove(theController);
   }
 
@@ -80,11 +80,11 @@ public class ControllerList {
     return controllers.size();
   }
 
-  protected void clear() {
+  public void clear() {
     controllers.clear();
   }
 
-  protected void clearDrawable() {
+  public void clearDrawable() {
     drawables.clear();
   }
 }

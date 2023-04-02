@@ -115,7 +115,7 @@ public final class ControlWindow {
     if (isInit == false) {
       _myApplet.registerMethod("pre", this);
       _myApplet.registerMethod("draw", this);
-      if (!cp5.isAndroid) {
+      if (!cp5.isAndroid()) {
         _myApplet.registerMethod("keyEvent", this);
         _myApplet.registerMethod("mouseEvent", this);
       }
@@ -225,7 +225,7 @@ public final class ControlWindow {
     return this;
   }
 
-  protected void updateFont(ControlFont theControlFont) {
+  public void updateFont(ControlFont theControlFont) {
     for (int i = 0; i < _myTabs.size(); i++) {
       ((Tab) _myTabs.get(i)).updateFont(theControlFont);
     }
@@ -371,8 +371,8 @@ public final class ControlWindow {
   /** when in Android mode, call mouseEvent(int, int, boolean). */
   public void mouseEvent(int theX, int theY, boolean pressed) {
 
-    mouseX = theX - cp5.pgx - cp5.ox;
-    mouseY = theY - cp5.pgy - cp5.oy;
+    mouseX = theX - cp5.getGraphicsX() - cp5.getPositionX();
+    mouseY = theY - cp5.getGraphicsY() - cp5.getPositionY();
 
     if (pressed && !pmousePressed) {
       updateEvents();
@@ -406,8 +406,8 @@ public final class ControlWindow {
   /** @exclude */
   public void mouseEvent(MouseEvent theMouseEvent) {
     if (isMouse) {
-      mouseX = theMouseEvent.getX() - cp5.pgx - cp5.ox;
-      mouseY = theMouseEvent.getY() - cp5.pgy - cp5.oy;
+      mouseX = theMouseEvent.getX() - cp5.getGraphicsX() - cp5.getPositionX();
+      mouseY = theMouseEvent.getY() - cp5.getGraphicsY() - cp5.getPositionY();
       if (theMouseEvent.getAction() == MouseEvent.PRESS) {
         mousePressedEvent();
       }
@@ -421,12 +421,20 @@ public final class ControlWindow {
     }
   }
 
+  public char getKey() {
+    return key;
+  }
+
+  public int getKeyCode() {
+    return keyCode;
+  }
+
   public void keyEvent(KeyEvent theKeyEvent) {
 
     if (theKeyEvent.getAction() == KeyEvent.PRESS) {
       keys[theKeyEvent.getKeyCode()] = true;
       numOfActiveKeys++;
-      cp5.modifiers = theKeyEvent.getModifiers();
+      cp5.setModifiers(theKeyEvent.getModifiers());
       key = theKeyEvent.getKey();
       keyCode = theKeyEvent.getKeyCode();
     }
@@ -434,7 +442,7 @@ public final class ControlWindow {
     if (theKeyEvent.getAction() == KeyEvent.RELEASE) {
       keys[theKeyEvent.getKeyCode()] = false;
       numOfActiveKeys--;
-      cp5.modifiers = theKeyEvent.getModifiers();
+      cp5.setModifiers(theKeyEvent.getModifiers());
     }
 
     if (theKeyEvent.getAction() == KeyEvent.PRESS && cp5.isShortcuts()) {
@@ -451,8 +459,8 @@ public final class ControlWindow {
       }
       KeyCode code = new KeyCode(c);
 
-      if (cp5.keymap.containsKey(code)) {
-        for (ControlKey ck : cp5.keymap.get(code)) {
+      if (cp5.containsKeymap(code)) {
+        for (ControlKey ck : cp5.getKeymap(code)) {
           ck.keyEvent();
         }
       }
@@ -472,20 +480,20 @@ public final class ControlWindow {
   /** @exclude draw content. */
   public void draw() {
     _myFrameCount = _myApplet.frameCount;
-    draw(cp5.pg);
+    draw(cp5.getGraphics());
   }
 
   public void draw(PGraphics pg) {
     pg.pushMatrix();
-    pg.translate(cp5.ox, cp5.oy);
+    pg.translate(cp5.getPositionX(), cp5.getPositionY());
     if (cp5.blockDraw == false) {
-      if (cp5.isAndroid) {
+      if (cp5.isAndroid()) {
         mouseEvent(cp5.papplet.mouseX, cp5.papplet.mouseY, cp5.papplet.mousePressed);
       } else {
         updateEvents();
       }
       if (isVisible) {
-        if (cp5.isGraphics) {
+        if (cp5.isGraphics()) {
           pg.beginDraw();
           if (((background >> 24) & 0xff) != 0) {
             pg.background(background);
@@ -571,9 +579,9 @@ public final class ControlWindow {
         pg.imageMode(myImageMode);
         pg.popStyle();
 
-        if (cp5.isGraphics) {
+        if (cp5.isGraphics()) {
           pg.endDraw();
-          cp5.papplet.image(pg, cp5.pgx, cp5.pgy);
+          cp5.papplet.image(pg, cp5.getGraphicsX(), cp5.getGraphicsY());
         }
       }
     }
@@ -595,6 +603,10 @@ public final class ControlWindow {
   /** returns the name of the control window. */
   public String name() {
     return _myName;
+  }
+
+  public boolean getMouselock() {
+    return mouselock;
   }
 
   private void mousePressedEvent() {
@@ -912,5 +924,21 @@ public final class ControlWindow {
     isVisible = false;
     isMouseOver = false;
     return this;
+  }
+
+  public void setAutoDraw(boolean _isAutoDraw) {
+    isAutoDraw = _isAutoDraw;
+  }
+
+  public boolean isAutoDraw() {
+    return isAutoDraw;
+  }
+
+  public long getMousePressedTime() {
+    return mousePressedTime;
+  }
+
+  public long getPmousePressedTime() {
+    return pmousePressedTime;
   }
 }

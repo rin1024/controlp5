@@ -3,6 +3,7 @@
  * by andreas schlegel, 2012
  */
 
+import org.apache.log4j.Logger;
 import controlP5.*;
 
 ControlP5 cp5;
@@ -79,4 +80,3 @@ void keyPressed() {
   //   controlWindow.toggleUndecorated();
   // }
 }
-

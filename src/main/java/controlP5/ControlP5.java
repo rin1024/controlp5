@@ -21,7 +21,6 @@ package controlP5;
  * @version ##version##
  */
 import controlP5.ControlWindow.Pointer;
-import controlP5.controller.*;
 import controlP5.controller.button.*;
 import controlP5.controller.checkbox.*;
 import controlP5.controller.tab.*;
@@ -215,7 +214,7 @@ public class ControlP5 extends ControlP5Base {
         new ControlKey() {
 
           public void keyEvent() {
-            if (controlWindow.isVisible) {
+            if (controlWindow.isVisible()) {
               hide();
             } else {
               show();
@@ -247,6 +246,14 @@ public class ControlP5 extends ControlP5Base {
     return pg;
   }
 
+  public int getGraphicsX() {
+    return pgx;
+  }
+
+  public int getGraphicsY() {
+    return pgy;
+  }
+
   public ControlP5 setGraphics(PGraphics theGraphics, int theX, int theY) {
     pg = theGraphics;
     pgx = theX;
@@ -255,6 +262,14 @@ public class ControlP5 extends ControlP5Base {
     pgh = pg.height;
     isGraphics = true;
     return this;
+  }
+
+  public int getPositionX() {
+    return ox;
+  }
+
+  public int getPositionY() {
+    return oy;
   }
 
   public ControlP5 setPosition(int theX, int theY) {
@@ -309,7 +324,7 @@ public class ControlP5 extends ControlP5Base {
     if (isAutoDraw() == false && theFlag == true) {
       controlWindow.papplet().registerMethod("draw", controlWindow);
     }
-    controlWindow.isAutoDraw = theFlag;
+    controlWindow.setAutoDraw(theFlag);
   }
 
   /**
@@ -318,7 +333,7 @@ public class ControlP5 extends ControlP5Base {
    * @return boolean
    */
   public boolean isAutoDraw() {
-    return controlWindow.isAutoDraw;
+    return controlWindow.isAutoDraw();
   }
 
   /** @see controlP5.ControlBroadcaster */
@@ -1411,4 +1426,12 @@ public class ControlP5 extends ControlP5Base {
 
   @Retention(RetentionPolicy.RUNTIME)
   @interface Layout {}
+
+  public boolean isGraphics() {
+    return isGraphics;
+  }
+
+  public boolean isAndroid() {
+    return isAndroid;
+  }
 }

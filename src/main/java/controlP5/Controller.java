@@ -487,7 +487,7 @@ public abstract class Controller<T>
       }
     }
 
-    if (isVisible && (isMousePressed == _myControlWindow.mouselock)) {
+    if (isVisible && (isMousePressed == _myControlWindow.getMouselock())) {
       if (isMousePressed && cp5.isAltDown() && isMoveable) {
         if (!cp5.isMoveable) {
           set(
@@ -590,15 +590,15 @@ public abstract class Controller<T>
       }
 
       public long pt() {
-        return _myControlWindow.pmousePressedTime;
+        return _myControlWindow.getPmousePressedTime();
       }
 
       public long dt() {
-        return _myControlWindow.mousePressedTime - _myControlWindow.pmousePressedTime;
+        return _myControlWindow.getMousePressedTime() - _myControlWindow.getPmousePressedTime();
       }
 
       public long t() {
-        return _myControlWindow.mousePressedTime;
+        return _myControlWindow.getMousePressedTime();
       }
 
       public String toString() {

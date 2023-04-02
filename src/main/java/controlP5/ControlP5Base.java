@@ -661,11 +661,11 @@ public class ControlP5Base extends ControlP5Legacy implements ControlP5Constants
   }
 
   public int getKeyCode() {
-    return cp5.getWindow().keyCode;
+    return cp5.getWindow().getKeyCode();
   }
 
   public char getKey() {
-    return cp5.getWindow().key;
+    return cp5.getWindow().getKey();
   }
 
   private char[] fromIntToChar(int... theChar) {
@@ -720,6 +720,14 @@ public class ControlP5Base extends ControlP5Legacy implements ControlP5Constants
     return cp5;
   }
 
+  public boolean containsKeymap(KeyCode _code) {
+    return keymap.containsKey(_code);
+  }
+
+  public List<ControlKey> getKeymap(KeyCode _code) {
+    return keymap.get(_code);
+  }
+
   public ControlP5 removeKeysFor(char... theChar) {
     keymap.remove(new KeyCode(theChar));
     return cp5;
@@ -734,6 +742,10 @@ public class ControlP5Base extends ControlP5Legacy implements ControlP5Constants
 
   public int getModifiers() {
     return modifiers;
+  }
+
+  public void setModifiers(int _modifiers) {
+    modifiers = _modifiers;
   }
 
   public boolean isShiftDown() {
@@ -752,11 +764,11 @@ public class ControlP5Base extends ControlP5Legacy implements ControlP5Constants
     return (modifiers & Event.ALT & (cp5.isShortcuts() ? -1 : 1)) != 0;
   }
 
-  static class KeyCode {
+  public static class KeyCode {
 
     final char[] chars;
 
-    KeyCode(char... theChars) {
+    public KeyCode(char... theChars) {
       chars = theChars;
       Arrays.sort(chars);
     }

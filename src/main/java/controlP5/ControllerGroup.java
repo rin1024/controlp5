@@ -230,7 +230,7 @@ public abstract class ControllerGroup<T>
     return _myParent.getTab();
   }
 
-  protected void updateFont(ControlFont theControlFont) {
+  public void updateFont(ControlFont theControlFont) {
     _myLabel.updateFont(theControlFont);
     if (_myValueLabel != null) {
       _myValueLabel.updateFont(theControlFont);
@@ -324,13 +324,17 @@ public abstract class ControllerGroup<T>
       }
     }
     if (isVisible) {
-      if ((isMousePressed == cp5.getWindow().mouselock)) {
+      if ((isMousePressed == cp5.getWindow().getMouselock())) {
         if (isMousePressed && cp5.isAltDown() && isMoveable) {
           if (!cp5.isMoveable) {
             set(
                 positionBuffer,
-                x(positionBuffer) + cp5.getWindow().mouseX - cp5.getWindow().pmouseX,
-                y(positionBuffer) + cp5.getWindow().mouseY - cp5.getWindow().pmouseY);
+                x(positionBuffer)
+                    + cp5.getWindow().getPointer().getX()
+                    - cp5.getWindow().getPointer().getPreviousX(),
+                y(positionBuffer)
+                    + cp5.getWindow().getPointer().getY()
+                    - cp5.getWindow().getPointer().getPreviousY());
             if (cp5.isShiftDown()) {
               set(
                   position,
@@ -854,10 +858,12 @@ public abstract class ControllerGroup<T>
   }
 
   protected boolean inside() {
-    return (cp5.getWindow().mouseX > x(position) + x(_myParent.absolutePosition)
-        && cp5.getWindow().mouseX < x(position) + x(_myParent.absolutePosition) + _myWidth
-        && cp5.getWindow().mouseY > y(position) + y(_myParent.absolutePosition) - _myHeight
-        && cp5.getWindow().mouseY < y(position) + y(_myParent.absolutePosition));
+    return (cp5.getWindow().getPointer().getX() > x(position) + x(_myParent.absolutePosition)
+        && cp5.getWindow().getPointer().getX()
+            < x(position) + x(_myParent.absolutePosition) + _myWidth
+        && cp5.getWindow().getPointer().getY()
+            > y(position) + y(_myParent.absolutePosition) - _myHeight
+        && cp5.getWindow().getPointer().getY() < y(position) + y(_myParent.absolutePosition));
   }
 
   public ControllerProperty getProperty(String thePropertyName) {

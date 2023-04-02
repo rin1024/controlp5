@@ -20,7 +20,6 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
-import controlP5.controller.*;
 import processing.core.PApplet;
 import processing.core.PGraphics;
 
@@ -94,7 +93,7 @@ public abstract class Canvas {
     }
   }
 
-  protected final void setControlWindow(ControlWindow theControlWindow) {
+  public final void setControlWindow(ControlWindow theControlWindow) {
     _myControlWindow = theControlWindow;
   }
 
