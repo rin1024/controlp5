@@ -185,7 +185,8 @@ public abstract class Controller<T>
     setView(_myDebugView);
   }
 
-  List<Controller<?>> getSubelements() {
+  /** TODO: should to be change to protected */
+  public List<Controller<?>> getSubelements() {
     return subelements;
   }
 

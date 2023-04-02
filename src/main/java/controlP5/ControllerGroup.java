@@ -21,6 +21,7 @@ package controlP5;
  * @version ##version##
  */
 import controlP5.controller.*;
+import controlP5.controller.button.*;
 import java.util.ArrayList;
 import java.util.List;
 import processing.core.PApplet;

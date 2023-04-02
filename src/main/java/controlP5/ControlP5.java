@@ -22,6 +22,7 @@ package controlP5;
  */
 import controlP5.ControlWindow.Pointer;
 import controlP5.controller.*;
+import controlP5.controller.button.*;
 import java.io.File;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

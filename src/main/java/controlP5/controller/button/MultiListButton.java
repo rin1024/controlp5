@@ -1,4 +1,4 @@
-package controlP5.controller;
+package controlP5.controller.button;
 
 /**
  * controlP5 is a processing gui library.
@@ -39,11 +39,13 @@ public class MultiListButton extends Button implements MultiListInterface {
   private boolean isUpperCase = true;
 
   /**
+   * TODO: should to be change to protected
+   *
    * @param theProperties ControllerProperties
    * @param theParent MultiListInterface
    * @param theRoot MultiList
    */
-  protected MultiListButton(
+  public MultiListButton(
       ControlP5 theControlP5,
       String theName,
       float theValue,
@@ -103,7 +105,8 @@ public class MultiListButton extends Button implements MultiListInterface {
     return _myDirection;
   }
 
-  protected void setDirection(int theDirection) {
+  /** TODO: should to be change to protected */
+  public void setDirection(int theDirection) {
     _myDirection = theDirection;
   }
 
@@ -192,10 +195,10 @@ public class MultiListButton extends Button implements MultiListInterface {
   }
 
   protected void onEnter() {
-    if (!root.isUpdateLocation) {
+    if (!root.isUpdateLocation()) {
       isActive = true;
       root.occupied(true);
-      root.mostRecent = this;
+      root.setMostRecent(this);
       if (parent instanceof MultiListInterface) {
         ((MultiListInterface) parent).close(this);
       }
@@ -206,8 +209,8 @@ public class MultiListButton extends Button implements MultiListInterface {
   protected void onLeave() {
     if (parent instanceof MultiListInterface) {
       if (!((MultiListInterface) parent).observe()
-          && !root.isUpdateLocation
-          && root.mostRecent == this) {
+          && !root.isUpdateLocation()
+          && root.getMostRecent() == this) {
         isActive = false;
         root.occupied(false);
       }

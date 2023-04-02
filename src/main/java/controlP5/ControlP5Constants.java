@@ -21,6 +21,7 @@ package controlP5;
  * @version ##version##
  */
 import controlP5.controller.*;
+import controlP5.controller.button.*;
 import processing.core.PApplet;
 
 /** Constant variables used with ControlP5 are stored here. */

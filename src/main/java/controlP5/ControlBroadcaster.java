@@ -21,6 +21,7 @@ package controlP5;
  * @version ##version##
  */
 import controlP5.controller.*;
+import controlP5.controller.button.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

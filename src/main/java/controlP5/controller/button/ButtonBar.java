@@ -1,4 +1,4 @@
-package controlP5.controller;
+package controlP5.controller.button;
 
 /**
  * controlP5 is a processing gui library.
@@ -131,7 +131,7 @@ public class ButtonBar extends Controller<ButtonBar> {
       int index = hover();
       int w = theController.getWidth() / (items.isEmpty() ? 1 : items.size());
       int h = theController.getHeight();
-      theGraphics.textFont(theController.getValueLabel().getFont().pfont);
+      theGraphics.textFont(theController.getValueLabel().getFont().getFont());
       theGraphics.pushMatrix();
       for (int i = 0; i < items.size(); i++) {
         int c =

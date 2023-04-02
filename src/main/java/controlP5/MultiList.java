@@ -21,6 +21,7 @@ package controlP5;
  * @version ##version##
  */
 import controlP5.controller.*;
+import controlP5.controller.button.*;
 import processing.core.PApplet;
 import processing.core.PGraphics;
 
@@ -252,5 +253,18 @@ public class MultiList extends Controller<MultiList>
   @Override
   public MultiList update() {
     return setValue(_myValue);
+  }
+
+  /** */
+  public boolean isUpdateLocation() {
+    return isUpdateLocation;
+  }
+
+  public MultiListInterface getMostRecent() {
+    return mostRecent;
+  }
+
+  public void setMostRecent(MultiListInterface _mostRecent) {
+    mostRecent = _mostRecent;
   }
 }

@@ -23,6 +23,7 @@ package controlP5;
 import static controlP5.Controller.*;
 
 import controlP5.controller.*;
+import controlP5.controller.button.*;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
