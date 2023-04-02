@@ -21,6 +21,7 @@ package controlP5;
  * @version ##version##
  */
 import controlP5.controller.*;
+import controlP5.controller.color.*;
 import controlP5.controller.dropdownList.*;
 import controlP5.controller.listbox.*;
 import controlP5.controller.radiobutton.*;

@@ -21,6 +21,7 @@ package controlP5;
  * @version ##version##
  */
 import controlP5.ControlP5Base.KeyCode;
+import controlP5.controller.color.*;
 import controlP5.controller.knob.*;
 import controlP5.controller.numberbox.*;
 import controlP5.controller.slider.*;

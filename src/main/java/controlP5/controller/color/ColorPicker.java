@@ -1,4 +1,4 @@
-package controlP5;
+package controlP5.controller.color;
 
 /**
  * controlP5 is a processing gui library.
@@ -20,6 +20,7 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
+import controlP5.*;
 import controlP5.controller.slider.*;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -60,7 +61,7 @@ public class ColorPicker extends ControlGroup<ColorPicker> {
     theControlP5.register(theControlP5.papplet, theName, this);
   }
 
-  protected ColorPicker(
+  public ColorPicker(
       ControlP5 theControlP5,
       ControllerGroup<?> theParent,
       String theName,
