@@ -31,6 +31,7 @@ import controlP5.controller.knob.*;
 import controlP5.controller.listbox.*;
 import controlP5.controller.matrix.*;
 import controlP5.controller.multilist.*;
+import controlP5.controller.numberbox.*;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
@@ -382,8 +383,9 @@ public class ControlP5Base extends ControlP5Legacy implements ControlP5Constants
     setAutoSpacing(theX, theY);
   }
 
+  /** TODO: should to be change to protected */
   @SuppressWarnings("static-access")
-  protected void linebreak(
+  public void linebreak(
       Controller<?> theController, boolean theFlag, int theW, int theH, float[] theSpacing) {
     if (x(currentGroupPointer.autoPosition) + x(theController.autoSpacing) + theW
         > cp5.papplet.width) {

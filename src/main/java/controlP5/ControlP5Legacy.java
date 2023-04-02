@@ -31,6 +31,7 @@ import controlP5.controller.knob.*;
 import controlP5.controller.listbox.*;
 import controlP5.controller.matrix.*;
 import controlP5.controller.multilist.*;
+import controlP5.controller.numberbox.*;
 import java.util.ArrayList;
 import processing.core.PApplet;
 
@@ -1049,7 +1050,7 @@ public class ControlP5Legacy {
     int y = (int) y(base.currentGroupPointer.autoPosition);
     Numberbox n =
         addNumberbox(theObject, theIndex, theName, x, y, Numberbox.autoWidth, Numberbox.autoHeight);
-    base.linebreak(n, false, Numberbox.autoWidth, Numberbox.autoHeight, n.autoSpacing);
+    base.linebreak(n, false, Numberbox.autoWidth, Numberbox.autoHeight, n.getAutoSpacing());
     n.moveTo(base.currentGroupPointer);
     return n;
   }

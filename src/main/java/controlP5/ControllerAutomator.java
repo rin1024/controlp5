@@ -24,6 +24,7 @@ import controlP5.controller.*;
 import controlP5.controller.bang.*;
 import controlP5.controller.knob.*;
 import controlP5.controller.listbox.*;
+import controlP5.controller.numberbox.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;

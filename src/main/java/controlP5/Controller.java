@@ -20,6 +20,7 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
+import controlP5.controller.numberbox.Numberbox;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;

@@ -1,4 +1,4 @@
-package controlP5;
+package controlP5.controller.numberbox;
 
 /**
  * controlP5 is a processing gui library.
@@ -20,7 +20,7 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
-import controlP5.controller.*;
+import controlP5.*;
 import processing.core.PApplet;
 import processing.core.PGraphics;
 
@@ -296,5 +296,9 @@ public class Numberbox extends Controller<Numberbox> {
   @Deprecated
   public Numberbox setSensitivity(float theValue) {
     return setScrollSensitivity(theValue);
+  }
+
+  public float[] getAutoSpacing() {
+    return autoSpacing;
   }
 }

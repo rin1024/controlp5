@@ -23,6 +23,7 @@ package controlP5;
 import controlP5.ControlP5Base.KeyCode;
 import controlP5.controller.*;
 import controlP5.controller.knob.*;
+import controlP5.controller.numberbox.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
