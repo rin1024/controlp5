@@ -1,4 +1,4 @@
-package controlP5;
+package controlP5.controller.slider;
 
 /**
  * controlP5 is a processing gui library.
@@ -20,7 +20,7 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
-import controlP5.controller.*;
+import controlP5.*;
 import processing.core.PApplet;
 import processing.core.PGraphics;
 
@@ -53,7 +53,8 @@ public class Slider2D extends Controller<Slider2D> {
     theControlP5.register(theControlP5.papplet, theName, this);
   }
 
-  protected Slider2D(
+  /** TODO: should to be change to protected */
+  public Slider2D(
       ControlP5 theControlP5,
       ControllerGroup<?> theParent,
       String theName,
@@ -100,7 +101,8 @@ public class Slider2D extends Controller<Slider2D> {
     return this;
   }
 
-  Slider2D updateValue() {
+  /** TODO: should to be change to protected */
+  public Slider2D updateValue() {
     return setValue(0);
   }
 

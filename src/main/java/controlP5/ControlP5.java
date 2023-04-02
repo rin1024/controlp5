@@ -270,6 +270,10 @@ public class ControlP5 extends ControlP5Base {
     isTabEventsActive = theFlag;
   }
 
+  public boolean getAutoInitialization() {
+    return isAutoInitialization;
+  }
+
   /**
    * autoInitialization can be very handy when it comes to initializing values, e.g. you load a set
    * of controllers, then the values that are attached to the controllers will be reset to its saved

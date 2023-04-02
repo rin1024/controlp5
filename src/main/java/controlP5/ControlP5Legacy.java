@@ -34,6 +34,7 @@ import controlP5.controller.numberbox.*;
 import controlP5.controller.radiobutton.*;
 import controlP5.controller.range.*;
 import controlP5.controller.scrollablelist.*;
+import controlP5.controller.slider.*;
 import java.util.ArrayList;
 import processing.core.PApplet;
 
@@ -958,9 +959,9 @@ public class ControlP5Legacy {
             theMin,
             x,
             y,
-            Slider.autoWidth,
-            Slider.autoHeight);
-    base.linebreak(s, false, Slider.autoWidth, Slider.autoHeight, Slider.autoSpacing);
+            Slider.getAutoWidth(),
+            Slider.getAutoHeight());
+    base.linebreak(s, false, s.getAutoWidth(), s.getAutoHeight(), s.getAutoSpacing());
     s.moveTo(base.currentGroupPointer);
     if (base.autoDirection == ControlP5Constants.VERTICAL) {
       s.linebreak();

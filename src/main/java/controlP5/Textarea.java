@@ -20,7 +20,7 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
-import controlP5.controller.*;
+import controlP5.controller.slider.*;
 import java.util.Arrays;
 import java.util.List;
 import processing.core.PApplet;

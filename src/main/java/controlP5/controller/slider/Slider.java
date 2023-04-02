@@ -1,4 +1,4 @@
-package controlP5;
+package controlP5.controller.slider;
 
 /**
  * controlP5 is a processing gui library.
@@ -20,7 +20,7 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
-import controlP5.controller.*;
+import controlP5.*;
 import java.util.ArrayList;
 import processing.core.PApplet;
 import processing.core.PGraphics;
@@ -116,7 +116,7 @@ public class Slider extends Controller<Slider> {
     _myDefaultValue = getValue();
     cp5.getControlBroadcaster().plug(cp5.papplet, this, _myName);
     initControllerValue();
-    isInit = cp5.isAutoInitialization;
+    isInit = cp5.getAutoInitialization();
     setValue(_myDefaultValue);
     isInit = true;
     updateDisplayMode(DEFAULT);
@@ -697,5 +697,17 @@ public class Slider extends Controller<Slider> {
   @Deprecated
   public Slider setSensitivity(float theValue) {
     return setScrollSensitivity(theValue);
+  }
+
+  public static int getAutoWidth() {
+    return autoWidth;
+  }
+
+  public static int getAutoHeight() {
+    return autoHeight;
+  }
+
+  public float[] getAutoSpacing() {
+    return autoSpacing;
   }
 }
