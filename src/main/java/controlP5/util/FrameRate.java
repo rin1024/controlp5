@@ -1,4 +1,4 @@
-package controlP5;
+package controlP5.util;
 
 /**
  * controlP5 is a processing gui library.
@@ -20,7 +20,7 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
-import controlP5.controller.*;
+import controlP5.*;
 import controlP5.controller.tab.*;
 import controlP5.controller.textlabel.*;
 import processing.core.PApplet;
@@ -34,7 +34,7 @@ public class FrameRate extends Textlabel {
 
   private int cnt = 0;
 
-  protected FrameRate(
+  public FrameRate(
       final ControlP5 theControlP5,
       final Tab theParent,
       final String theValue,

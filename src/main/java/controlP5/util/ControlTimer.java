@@ -1,4 +1,4 @@
-package controlP5;
+package controlP5.util;
 
 /**
  * controlP5 is a processing gui library.
@@ -20,7 +20,7 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
-import controlP5.controller.*;
+import controlP5.*;
 
 /**
  * control timer is a timer that can be used for example as a stop watch or a duration timer.
