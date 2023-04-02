@@ -1,4 +1,4 @@
-package controlP5;
+package controlP5.controller.chart;
 
 /**
  * controlP5 is a processing gui library.
@@ -20,7 +20,7 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
-import controlP5.controller.*;
+import controlP5.*;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import processing.core.PApplet;
@@ -59,7 +59,7 @@ public class Chart extends Controller<Chart> {
     theControlP5.register(theControlP5.papplet, theName, this);
   }
 
-  protected Chart(
+  public Chart(
       ControlP5 theControlP5,
       ControllerGroup<?> theParent,
       String theName,

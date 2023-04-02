@@ -25,6 +25,7 @@ import static controlP5.Controller.*;
 import controlP5.controller.accordion.*;
 import controlP5.controller.bang.*;
 import controlP5.controller.button.*;
+import controlP5.controller.chart.*;
 import controlP5.controller.checkbox.*;
 import controlP5.controller.color.*;
 import controlP5.controller.dropdownList.*;

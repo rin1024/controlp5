@@ -1,4 +1,4 @@
-package controlP5;
+package controlP5.controller.chart;
 
 /**
  * controlP5 is a processing gui library.
@@ -20,7 +20,7 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
-import controlP5.controller.*;
+import controlP5.*;
 
 /** Used by Chart, single chart data is stored here including value, (label) text, and color. */
 public class ChartData {
