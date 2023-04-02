@@ -40,6 +40,7 @@ import controlP5.controller.textarea.*;
 import controlP5.controller.textfield.*;
 import controlP5.controller.textlabel.*;
 import controlP5.controller.toggle.*;
+import controlP5.controller.tooltip.*;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;

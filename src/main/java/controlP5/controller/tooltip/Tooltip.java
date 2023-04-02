@@ -1,4 +1,4 @@
-package controlP5;
+package controlP5.controller.tooltip;
 
 /**
  * controlP5 is a processing gui library.
@@ -20,7 +20,7 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
-import controlP5.controller.*;
+import controlP5.*;
 import java.util.HashMap;
 import java.util.Map;
 import processing.core.PApplet;
@@ -54,7 +54,7 @@ public class Tooltip {
   private int _myAlignH = ControlP5.RIGHT;
   private int _myColor = 0x00000000;
 
-  Tooltip(ControlP5 theControlP5) {
+  public Tooltip(ControlP5 theControlP5) {
     cp5 = theControlP5;
     position[0] = -1000;
     position[1] = -1000;
@@ -119,7 +119,7 @@ public class Tooltip {
    *
    * @param theWindow
    */
-  void draw(ControlWindow theWindow) {
+  public void draw(ControlWindow theWindow) {
     // TODO re-implement Tooltip
   }
 
@@ -147,22 +147,22 @@ public class Tooltip {
    *
    * @param theController
    */
-  protected void activate(Controller<?> theController) {
+  public void activate(Controller<?> theController) {
     if (map.containsKey(theController)) {
       startTime = System.nanoTime();
       _myController = theController;
-      currentPosition[0] = theController.getControlWindow().mouseX;
-      currentPosition[1] = theController.getControlWindow().mouseY;
+      currentPosition[0] = theController.getControlWindow().getPointer().getX();
+      currentPosition[1] = theController.getControlWindow().getPointer().getY();
       updateText(map.get(_myController));
       _myMode = ControlP5.WAIT;
     }
   }
 
-  protected void deactivate() {
+  public void deactivate() {
     deactivate(1);
   }
 
-  protected void deactivate(int theNum) {
+  public void deactivate(int theNum) {
     if (theNum == 0) {
       if (_myMode >= ControlP5.IDLE) {
         if (_myMode < ControlP5.FADEOUT) startTime = System.nanoTime();
