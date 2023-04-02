@@ -49,7 +49,8 @@ public class Button extends Controller<Button> {
     theControlP5.register(theControlP5.papplet, theName, this);
   }
 
-  protected Button(
+  /** TODO: should to be change to protected */
+  public Button(
       ControlP5 theControlP5,
       ControllerGroup<?> theParent,
       String theName,

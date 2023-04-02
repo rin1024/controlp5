@@ -23,7 +23,7 @@ package controlP5;
 import controlP5.controller.*;
 import processing.core.PGraphics;
 
-interface MultiListInterface {
+public interface MultiListInterface {
 
   void close();
 

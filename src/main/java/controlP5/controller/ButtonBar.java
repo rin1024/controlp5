@@ -45,7 +45,8 @@ public class ButtonBar extends Controller<ButtonBar> {
     theControlP5.register(theControlP5.papplet, theName, this);
   }
 
-  protected ButtonBar(
+  /** TODO: should to be change to protected */
+  public ButtonBar(
       ControlP5 theControlP5,
       ControllerGroup<?> theParent,
       String theName,
