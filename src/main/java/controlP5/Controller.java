@@ -1,4 +1,4 @@
-package controlP5.controller;
+package controlP5;
 
 /**
  * controlP5 is a processing gui library.
@@ -20,7 +20,6 @@ package controlP5.controller;
  * @modified ##date##
  * @version ##version##
  */
-import controlP5.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
