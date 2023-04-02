@@ -32,6 +32,7 @@ import controlP5.controller.listbox.*;
 import controlP5.controller.matrix.*;
 import controlP5.controller.multilist.*;
 import controlP5.controller.numberbox.*;
+import controlP5.controller.radiobutton.*;
 import java.util.ArrayList;
 import processing.core.PApplet;
 

@@ -1,4 +1,4 @@
-package controlP5;
+package controlP5.controller.radiobutton;
 
 /**
  * controlP5 is a processing gui library.
@@ -20,7 +20,7 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
-import controlP5.controller.*;
+import controlP5.*;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -120,9 +120,9 @@ public class RadioButton extends ControlGroup<RadioButton> {
    */
   public RadioButton addItem(final Toggle theToggle, final float theValue) {
     theToggle.setGroup(this);
-    theToggle.isMoveable = false;
+    theToggle.setMoveable(false);
     theToggle.setInternalValue(theValue);
-    theToggle.isBroadcast = false;
+    theToggle.setBroadcast(false);
     _myRadioToggles.add(theToggle);
     updateLayout();
     getColor().copyTo(theToggle);
@@ -323,7 +323,7 @@ public class RadioButton extends ControlGroup<RadioButton> {
     int n = _myRadioToggles.size();
     for (int i = 0; i < n; i++) {
       Toggle t = _myRadioToggles.get(i);
-      set(t.position, xx, yy);
+      set(t.getPosition(), xx, yy);
 
       xx += t.getWidth() + spacingColumn;
       nn++;
@@ -378,7 +378,7 @@ public class RadioButton extends ControlGroup<RadioButton> {
     }
     int n = _myRadioToggles.size();
     for (int i = 0; i < n; i++) {
-      ((Toggle) _myRadioToggles.get(i)).deactivate();
+      ((Toggle) _myRadioToggles.get(i)).setState(false);
     }
     _myValue = -1;
     updateValues(true);
@@ -395,9 +395,9 @@ public class RadioButton extends ControlGroup<RadioButton> {
     int n = _myRadioToggles.size();
     if (theIndex < n) {
       for (int i = 0; i < n; i++) {
-        _myRadioToggles.get(i).deactivate();
+        _myRadioToggles.get(i).setState(false);
       }
-      ((Toggle) _myRadioToggles.get(theIndex)).activate();
+      ((Toggle) _myRadioToggles.get(theIndex)).setState(true);
       _myValue = _myRadioToggles.get(theIndex).internalValue();
       updateValues(true);
     }
@@ -411,8 +411,8 @@ public class RadioButton extends ControlGroup<RadioButton> {
     }
     if (theIndex < _myRadioToggles.size()) {
       Toggle t = _myRadioToggles.get(theIndex);
-      if (t.isActive) {
-        t.deactivate();
+      if (t.isActive()) {
+        t.setState(false);
         _myValue = -1;
         updateValues(true);
       }
@@ -448,7 +448,7 @@ public class RadioButton extends ControlGroup<RadioButton> {
     for (int i = 0; i < n; i++) {
       Toggle t = _myRadioToggles.get(i);
       if (theName.equals(t.getName())) {
-        t.deactivate();
+        t.setState(false);
         _myValue = -1;
         updateValues(true);
         return this;
@@ -468,7 +468,7 @@ public class RadioButton extends ControlGroup<RadioButton> {
     // if (theIndex < _myRadioToggles.size()) {
     // Toggle t = ((Toggle) _myRadioToggles.get(theIndex));
     // if (t.isActive) {
-    // t.deactivate();
+    // t.setState(false);
     // _myValue = -1;
     // updateValues(true);
     // }
@@ -500,9 +500,9 @@ public class RadioButton extends ControlGroup<RadioButton> {
       for (int i = 0; i < n; i++) {
         Toggle t = _myRadioToggles.get(i);
         if (!t.equals(theEvent.getController())) {
-          t.deactivate();
+          t.setState(false);
         } else {
-          if (t.isOn) {
+          if (t.getState()) {
             _myValue = t.internalValue();
           }
         }
