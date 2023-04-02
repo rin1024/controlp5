@@ -108,10 +108,8 @@ public interface ControlP5Constants {
   public static final int CHECKBOX = 2; /* TODO */
   public static final int TREE = 3; /* TODO */
 
-  @Deprecated public static final int ACTION_PRESSED = 1; // MouseEvent.PRESS
   public static final int ACTION_PRESS = 1; // MouseEvent.PRESS
 
-  @Deprecated public static final int ACTION_RELEASED = 2; // MouseEvent.RELEASE
   public static final int ACTION_RELEASE = 2; // MouseEvent.RELEASE
 
   public static final int ACTION_CLICK = 3; // MouseEvent.CLICK
@@ -121,7 +119,6 @@ public interface ControlP5Constants {
   public static final int ACTION_LEAVE = 7; // MouseEvent.EXIT
   public static final int ACTION_EXIT = 7; // MouseEvent.EXIT
   public static final int ACTION_WHEEL = 8; // MouseEvent.WHEEL
-  @Deprecated public static final int ACTION_RELEASEDOUTSIDE = 9;
   public static final int ACTION_RELEASE_OUTSIDE = 9;
   public static final int ACTION_START_DRAG = 10;
   public static final int ACTION_END_DRAG = 11;
@@ -135,7 +132,6 @@ public interface ControlP5Constants {
   public static final int VALUELABEL = 1;
   public static final int SINGLE = 0;
 
-  @Deprecated public static final int ALL = 1;
   public static final int MULTI = 1;
 
   /* http://clrs.cc/ */

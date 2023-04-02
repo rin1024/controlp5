@@ -177,14 +177,6 @@ public class CP {
     return sa + sr + sg + sb;
   }
 
-  /** @deprecated */
-  @Deprecated
-  protected boolean save(ControlP5 theControlP5, String theFilePath) {
-    ControlP5.L.info(
-        "Saving ControlP5 settings in XML format has been removed, have a look at controlP5's properties instead.");
-    return false;
-  }
-
   /**
    * * Convenience method for producing a simple textual representation of an array.
    *

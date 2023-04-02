@@ -123,7 +123,6 @@ public class ControlP5 extends ControlP5Base {
    */
   protected boolean isShortcuts = false;
 
-  @Deprecated public boolean blockDraw;
   protected Tooltip _myTooltip;
   protected boolean isAnnotation;
   boolean isAndroid = false;

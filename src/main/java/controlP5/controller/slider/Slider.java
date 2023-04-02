@@ -684,22 +684,6 @@ public class Slider extends Controller<Slider> {
     }
   }
 
-  @Deprecated
-  public void setSliderBarSize(int theSize) {
-    _myDefaultHandleSize = theSize;
-    setSliderMode(_mySliderMode);
-  }
-
-  /**
-   * @see controlP5.Slider#setScrollSensitivity(float)
-   * @param theValue
-   * @return Slider
-   */
-  @Deprecated
-  public Slider setSensitivity(float theValue) {
-    return setScrollSensitivity(theValue);
-  }
-
   public static int getAutoWidth() {
     return autoWidth;
   }

@@ -212,14 +212,4 @@ public class Tab extends ControllerGroup<Tab> {
     _myValue = theValue;
     return this;
   }
-
-  @Deprecated
-  public float value() {
-    return _myValue;
-  }
-
-  @Deprecated
-  public String stringValue() {
-    return _myStringValue;
-  }
 }

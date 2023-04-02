@@ -582,13 +582,4 @@ public class CheckBox extends ControlGroup<CheckBox> {
     }
     return this;
   }
-
-  /**
-   * @deprecated
-   * @exclude
-   */
-  @Deprecated
-  public CheckBox add(final String theName, final float theValue) {
-    return addItem(theName, theValue);
-  }
 }

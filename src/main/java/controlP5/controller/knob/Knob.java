@@ -528,63 +528,6 @@ public class Knob extends Controller<Knob> {
     }
   }
 
-  /**
-   * @exclude
-   * @deprecated
-   */
-  @Deprecated
-  public Knob setOffsetAngle(float theValue) {
-    return setStartAngle(theValue);
-  }
-
-  /**
-   * @exclude
-   * @deprecated
-   */
-  @Deprecated
-  public float value() {
-    return getValue();
-  }
-
-  /**
-   * @exclude
-   * @deprecated
-   */
-  @Deprecated
-  public Knob setDisplayStyle(int theStyle) {
-    viewStyle = theStyle;
-    return this;
-  }
-
-  /**
-   * @exclude
-   * @deprecated
-   */
-  @Deprecated
-  public int getDisplayStyle() {
-    return viewStyle;
-  }
-
-  /**
-   * @exclude
-   * @deprecated
-   */
-  @Deprecated
-  public Knob setSensitivity(float theValue) {
-    scrollSensitivity = theValue;
-    return this;
-  }
-
-  /**
-   * @exclude
-   * @deprecated
-   */
-  @Deprecated
-  public Knob showTickMarks(boolean theFlag) {
-    isShowTickMarks = theFlag;
-    return this;
-  }
-
   /** get autoSpacing */
   public float[] getAutoSpacing() {
     return autoSpacing;

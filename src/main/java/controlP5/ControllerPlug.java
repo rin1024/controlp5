@@ -255,39 +255,4 @@ public class ControllerPlug {
       return false;
     }
   }
-
-  @Deprecated
-  protected Class<?> classType() {
-    return _myParameterClass;
-  }
-
-  @Deprecated
-  protected Object value() {
-    return _myValue;
-  }
-
-  @Deprecated
-  protected Object object() {
-    return _myObject;
-  }
-
-  @Deprecated
-  protected String name() {
-    return _myName;
-  }
-
-  @Deprecated
-  protected int type() {
-    return _myType;
-  }
-
-  @Deprecated
-  protected int parameterType() {
-    return _myParameterType;
-  }
-
-  @Deprecated
-  protected Class<?>[] acceptClassList() {
-    return _myAcceptClassList;
-  }
 }

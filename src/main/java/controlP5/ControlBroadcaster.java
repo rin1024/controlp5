@@ -420,10 +420,4 @@ public class ControlBroadcaster {
       return this;
     }
   }
-
-  /** @exclude */
-  @Deprecated
-  public void plug(final String theControllerName, final String theTargetMethod) {
-    plug(cp5.papplet, theControllerName, theTargetMethod);
-  }
 }

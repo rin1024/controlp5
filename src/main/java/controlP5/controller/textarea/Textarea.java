@@ -411,41 +411,6 @@ public class Textarea extends ControllerGroup<Textarea> implements ControlListen
     return 0;
   }
 
-  @Deprecated
-  public float value() {
-    return 0;
-  }
-
-  @Deprecated
-  public String stringValue() {
-    return getStringValue();
-  }
-
-  @Deprecated
-  public Label valueLabel() {
-    return getValueLabel();
-  }
-
-  /**
-   * @exclude
-   * @deprecated
-   * @return
-   */
-  @Deprecated
-  public boolean isScrollbarVisible() {
-    return isScrollbarVisible;
-  }
-
-  /**
-   * @deprecated
-   * @exclude
-   * @return
-   */
-  @Deprecated
-  public String text() {
-    return getText();
-  }
-
   public boolean isScrollbarMousePressed() {
     return _myScrollbar.isMousePressed();
   }

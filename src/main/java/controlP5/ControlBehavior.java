@@ -80,19 +80,4 @@ public abstract class ControlBehavior {
   public boolean isActive() {
     return isActive;
   }
-
-  /**
-   * @exclude
-   * @return
-   */
-  @Deprecated
-  public float value() {
-    return value;
-  }
-
-  /** @exclude */
-  @Deprecated
-  public Controller<?> controller() {
-    return _myController;
-  }
 }

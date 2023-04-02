@@ -290,16 +290,6 @@ public class Numberbox extends Controller<Numberbox> {
     }
   }
 
-  /**
-   * @see controlP5.Numberbox#setScrollSensitivity(float)
-   * @param theValue
-   * @return
-   */
-  @Deprecated
-  public Numberbox setSensitivity(float theValue) {
-    return setScrollSensitivity(theValue);
-  }
-
   public float[] getAutoSpacing() {
     return autoSpacing;
   }

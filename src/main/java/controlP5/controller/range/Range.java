@@ -549,19 +549,4 @@ public class Range extends Controller<Range> {
   public String toString() {
     return "type:\tRange\n" + super.toString();
   }
-
-  @Deprecated
-  public float lowValue() {
-    return getLowValue();
-  }
-
-  @Deprecated
-  public float highValue() {
-    return getHighValue();
-  }
-
-  @Deprecated
-  public float[] arrayValue() {
-    return _myArrayValue;
-  }
 }

@@ -622,13 +622,4 @@ public class RadioButton extends ControlGroup<RadioButton> {
   public String getInfo() {
     return "type:\tRadioButton\n" + super.getInfo();
   }
-
-  /**
-   * @deprecated
-   * @exclude
-   */
-  @Deprecated
-  public RadioButton add(final String theName, final float theValue) {
-    return addItem(theName, theValue);
-  }
 }

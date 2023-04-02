@@ -488,103 +488,101 @@ public final class ControlWindow {
   public void draw(PGraphics pg) {
     pg.pushMatrix();
     pg.translate(cp5.getPositionX(), cp5.getPositionY());
-    if (cp5.blockDraw == false) {
-      if (cp5.isAndroid()) {
-        mouseEvent(cp5.papplet.mouseX, cp5.papplet.mouseY, cp5.papplet.mousePressed);
-      } else {
-        updateEvents();
+    if (cp5.isAndroid()) {
+      mouseEvent(cp5.papplet.mouseX, cp5.papplet.mouseY, cp5.papplet.mousePressed);
+    } else {
+      updateEvents();
+    }
+    if (isVisible) {
+      if (cp5.isGraphics()) {
+        pg.beginDraw();
+        if (((background >> 24) & 0xff) != 0) {
+          pg.background(background);
+        }
       }
-      if (isVisible) {
-        if (cp5.isGraphics()) {
-          pg.beginDraw();
-          if (((background >> 24) & 0xff) != 0) {
-            pg.background(background);
-          }
+
+      // TODO save stroke, noStroke, fill, noFill, strokeWeight parameters and restore after
+      // drawing controlP5 elements.
+
+      int myRectMode = pg.rectMode;
+      int myEllipseMode = pg.ellipseMode;
+      int myImageMode = pg.imageMode;
+      pg.pushStyle();
+      pg.rectMode(PConstants.CORNER);
+      pg.ellipseMode(PConstants.CORNER);
+      pg.imageMode(PConstants.CORNER);
+      pg.noStroke();
+
+      if (_myDrawable != null) {
+        _myDrawable.draw(pg);
+      }
+
+      for (int i = 0; i < _myCanvas.size(); i++) {
+        if ((_myCanvas.get(i)).mode() == Canvas.PRE) {
+          (_myCanvas.get(i)).update(_myApplet);
+          (_myCanvas.get(i)).draw(pg);
         }
+      }
 
-        // TODO save stroke, noStroke, fill, noFill, strokeWeight parameters and restore after
-        // drawing controlP5 elements.
+      pg.noStroke();
+      pg.noFill();
+      int myOffsetX = (int) getPositionOfTabs()[0];
+      int myOffsetY = (int) getPositionOfTabs()[1];
+      int myHeight = 0;
 
-        int myRectMode = pg.rectMode;
-        int myEllipseMode = pg.ellipseMode;
-        int myImageMode = pg.imageMode;
-        pg.pushStyle();
-        pg.rectMode(PConstants.CORNER);
-        pg.ellipseMode(PConstants.CORNER);
-        pg.imageMode(PConstants.CORNER);
-        pg.noStroke();
-
-        if (_myDrawable != null) {
-          _myDrawable.draw(pg);
-        }
-
-        for (int i = 0; i < _myCanvas.size(); i++) {
-          if ((_myCanvas.get(i)).mode() == Canvas.PRE) {
-            (_myCanvas.get(i)).update(_myApplet);
-            (_myCanvas.get(i)).draw(pg);
-          }
-        }
-
-        pg.noStroke();
-        pg.noFill();
-        int myOffsetX = (int) getPositionOfTabs()[0];
-        int myOffsetY = (int) getPositionOfTabs()[1];
-        int myHeight = 0;
-
-        if (_myTabs.size() > 0) {
-          for (int i = 1; i < _myTabs.size(); i++) {
-            if (((Tab) _myTabs.get(i)).isVisible()) {
-              if (myHeight < ((Tab) _myTabs.get(i)).getHeight()) {
-                myHeight = ((Tab) _myTabs.get(i)).getHeight();
-              }
-
-              // conflicts with Android, getWidth not found TODO
-
-              // if (myOffsetX >
-              // (papplet().getWidth()) -
-              // ((Tab)
-              // _myTabs.get(i)).width()) {
-              // myOffsetY += myHeight + 1;
-              // myOffsetX = (int)
-              // getPositionOfTabs().x;
-              // myHeight = 0;
-              // }
-
-              ((Tab) _myTabs.get(i)).setOffset(myOffsetX, myOffsetY);
-
-              if (((Tab) _myTabs.get(i)).isActive()) {
-                ((Tab) _myTabs.get(i)).draw(pg);
-              }
-
-              if (((Tab) _myTabs.get(i)).updateLabel()) {
-                ((Tab) _myTabs.get(i)).drawLabel(pg);
-              }
-              myOffsetX += ((Tab) _myTabs.get(i)).getWidth();
+      if (_myTabs.size() > 0) {
+        for (int i = 1; i < _myTabs.size(); i++) {
+          if (((Tab) _myTabs.get(i)).isVisible()) {
+            if (myHeight < ((Tab) _myTabs.get(i)).getHeight()) {
+              myHeight = ((Tab) _myTabs.get(i)).getHeight();
             }
+
+            // conflicts with Android, getWidth not found TODO
+
+            // if (myOffsetX >
+            // (papplet().getWidth()) -
+            // ((Tab)
+            // _myTabs.get(i)).width()) {
+            // myOffsetY += myHeight + 1;
+            // myOffsetX = (int)
+            // getPositionOfTabs().x;
+            // myHeight = 0;
+            // }
+
+            ((Tab) _myTabs.get(i)).setOffset(myOffsetX, myOffsetY);
+
+            if (((Tab) _myTabs.get(i)).isActive()) {
+              ((Tab) _myTabs.get(i)).draw(pg);
+            }
+
+            if (((Tab) _myTabs.get(i)).updateLabel()) {
+              ((Tab) _myTabs.get(i)).drawLabel(pg);
+            }
+            myOffsetX += ((Tab) _myTabs.get(i)).getWidth();
           }
-          ((ControllerInterface<?>) _myTabs.get(0)).draw(pg);
         }
-        for (int i = 0; i < _myCanvas.size(); i++) {
-          if ((_myCanvas.get(i)).mode() == Canvas.POST) {
-            (_myCanvas.get(i)).draw(pg);
-          }
+        ((ControllerInterface<?>) _myTabs.get(0)).draw(pg);
+      }
+      for (int i = 0; i < _myCanvas.size(); i++) {
+        if ((_myCanvas.get(i)).mode() == Canvas.POST) {
+          (_myCanvas.get(i)).draw(pg);
         }
+      }
 
-        pmouseX = mouseX;
-        pmouseY = mouseY;
+      pmouseX = mouseX;
+      pmouseY = mouseY;
 
-        /* draw Tooltip here. */
+      /* draw Tooltip here. */
 
-        cp5.getTooltip().draw(this);
-        pg.rectMode(myRectMode);
-        pg.ellipseMode(myEllipseMode);
-        pg.imageMode(myImageMode);
-        pg.popStyle();
+      cp5.getTooltip().draw(this);
+      pg.rectMode(myRectMode);
+      pg.ellipseMode(myEllipseMode);
+      pg.imageMode(myImageMode);
+      pg.popStyle();
 
-        if (cp5.isGraphics()) {
-          pg.endDraw();
-          cp5.papplet.image(pg, cp5.getGraphicsX(), cp5.getGraphicsY());
-        }
+      if (cp5.isGraphics()) {
+        pg.endDraw();
+        cp5.papplet.image(pg, cp5.getGraphicsX(), cp5.getGraphicsY());
       }
     }
     pg.popMatrix();
