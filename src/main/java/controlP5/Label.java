@@ -21,6 +21,7 @@ package controlP5;
  * @version ##version##
  */
 import controlP5.controller.*;
+import controlP5.font.*;
 import processing.core.PFont;
 import processing.core.PGraphics;
 
@@ -75,6 +76,10 @@ public class Label implements CDrawable {
 
   public Label(ControlP5 theControlP5, String theValue, int theWidth, int theHeight, int theColor) {
     init(theControlP5, theValue, theWidth, theHeight, theColor);
+  }
+
+  public int getTextAlign() {
+    return textAlign;
   }
 
   private void init(
@@ -302,11 +307,11 @@ public class Label implements CDrawable {
     return this;
   }
 
-  protected boolean isChanged() {
+  public boolean isChanged() {
     return changed;
   }
 
-  protected Label setChanged(boolean theValue) {
+  public Label setChanged(boolean theValue) {
     changed = theValue;
     return this;
   }

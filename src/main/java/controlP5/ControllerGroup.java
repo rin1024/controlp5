@@ -23,6 +23,7 @@ package controlP5;
 import controlP5.controller.*;
 import controlP5.controller.button.*;
 import controlP5.controller.tab.*;
+import controlP5.font.*;
 import java.util.ArrayList;
 import java.util.List;
 import processing.core.PApplet;

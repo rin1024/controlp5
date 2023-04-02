@@ -22,6 +22,7 @@ package controlP5.controller.textlabel;
  */
 import controlP5.*;
 import controlP5.controller.tab.*;
+import controlP5.font.*;
 import java.util.Arrays;
 import java.util.List;
 import processing.core.PApplet;

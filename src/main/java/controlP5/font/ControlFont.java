@@ -1,4 +1,4 @@
-package controlP5;
+package controlP5.font;
 
 /**
  * controlP5 is a processing gui library.
@@ -20,7 +20,7 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
-import controlP5.controller.*;
+import controlP5.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -220,7 +220,7 @@ public class ControlFont {
   }
 
   public void draw(ControlP5 c, Label theLabel) {
-    draw(c.pg, theLabel);
+    draw(c.getGraphics(), theLabel);
   }
 
   public void draw(PGraphics theGraphics, Label theLabel) {
@@ -234,7 +234,7 @@ public class ControlFont {
     int loadedAlign = theGraphics.textAlign;
 
     theGraphics.textFont(pfont, size);
-    theGraphics.textAlign(theLabel.textAlign);
+    theGraphics.textAlign(theLabel.getTextAlign());
     theGraphics.fill(theLabel.getColor());
 
     if (theLabel.isMultiline()) {

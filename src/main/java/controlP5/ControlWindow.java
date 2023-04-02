@@ -27,6 +27,7 @@ import controlP5.controller.numberbox.*;
 import controlP5.controller.slider.*;
 import controlP5.controller.tab.*;
 import controlP5.controller.textarea.*;
+import controlP5.font.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;

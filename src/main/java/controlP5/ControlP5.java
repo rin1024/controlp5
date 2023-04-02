@@ -26,6 +26,7 @@ import controlP5.controller.checkbox.*;
 import controlP5.controller.tab.*;
 import controlP5.controller.textfield.*;
 import controlP5.controller.tooltip.*;
+import controlP5.font.*;
 import java.io.File;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
