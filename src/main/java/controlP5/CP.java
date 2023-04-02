@@ -371,7 +371,8 @@ public class CP {
     return value;
   }
 
-  static String join(List<String> list, String delimiter) {
+  /** TODO: should to be change to protected */
+  public static String join(List<String> list, String delimiter) {
     StringBuilder b = new StringBuilder();
     for (String item : list) {
       b.append(item).append(delimiter);

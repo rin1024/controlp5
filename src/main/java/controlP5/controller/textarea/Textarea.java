@@ -1,4 +1,4 @@
-package controlP5;
+package controlP5.controller.textarea;
 
 /**
  * controlP5 is a processing gui library.
@@ -20,6 +20,7 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
+import controlP5.*;
 import controlP5.controller.slider.*;
 import java.util.Arrays;
 import java.util.List;
@@ -58,6 +59,8 @@ public class Textarea extends ControllerGroup<Textarea> implements ControlListen
   }
 
   /**
+   * TODO: should to be change to protected
+   *
    * @param theControlP5 ControlP5
    * @param theGroup ControllerGroup
    * @param theName String
@@ -67,7 +70,7 @@ public class Textarea extends ControllerGroup<Textarea> implements ControlListen
    * @param theW int
    * @param theH int
    */
-  protected Textarea(
+  public Textarea(
       ControlP5 theControlP5,
       ControllerGroup<?> theGroup,
       String theName,
@@ -98,7 +101,7 @@ public class Textarea extends ControllerGroup<Textarea> implements ControlListen
     _myValueLabel = new Label(cp5, _myText);
 
     _myValueLabel.setFont(
-        cp5.controlFont == cp5.defaultFont ? cp5.defaultFontForText : cp5.controlFont);
+        cp5.getFont() == cp5.getDefaultFont() ? cp5.getDefaultFontForText() : cp5.getFont());
 
     _myValueLabel.setWidth((int) _myWidth);
     _myValueLabel.setHeight((int) _myHeight);
@@ -111,14 +114,14 @@ public class Textarea extends ControllerGroup<Textarea> implements ControlListen
     _myScrollbar.init();
     _myScrollbar.setBroadcast(false);
     _myScrollbar.setSliderMode(Slider.FLEXIBLE);
-    _myScrollbar.isMoveable = false;
-    _myScrollbar.isLabelVisible = false;
+    _myScrollbar.setMoveable(false);
+    _myScrollbar.setLabelVisible(false);
     _myScrollbar.setParent(this);
     _myScrollbar.addListener(this);
     add(_myScrollbar);
     setWidth(_myWidth);
     setHeight(_myHeight);
-    _myScrollbar.color.set(color);
+    _myScrollbar.setColor(color);
     _myScrollbar.setColorBackground(0x00000000);
     _myScrollbar.setHandleSize(40);
   }
@@ -337,10 +340,12 @@ public class Textarea extends ControllerGroup<Textarea> implements ControlListen
   // !!! add padding to the box.
   // padding and margin doesnt work nicely with textarea yet!
   protected boolean inside() {
-    return (cp5.getWindow().mouseX > x(position) + x(_myParent.absolutePosition)
-        && cp5.getWindow().mouseX < x(position) + x(_myParent.absolutePosition) + _myWidth
-        && cp5.getWindow().mouseY > y(position) + y(_myParent.absolutePosition)
-        && cp5.getWindow().mouseY < y(position) + y(_myParent.absolutePosition) + _myHeight);
+    return (cp5.getWindow().getPointer().getX() > x(position) + x(_myParent.getAbsolutePosition())
+        && cp5.getWindow().getPointer().getX()
+            < x(position) + x(_myParent.getAbsolutePosition()) + _myWidth
+        && cp5.getWindow().getPointer().getY() > y(position) + y(_myParent.getAbsolutePosition())
+        && cp5.getWindow().getPointer().getY()
+            < y(position) + y(_myParent.getAbsolutePosition()) + _myHeight);
   }
 
   public String getStringValue() {
@@ -437,6 +442,10 @@ public class Textarea extends ControllerGroup<Textarea> implements ControlListen
   @Deprecated
   public String text() {
     return getText();
+  }
+
+  public boolean isScrollbarMousePressed() {
+    return _myScrollbar.isMousePressed();
   }
 }
 

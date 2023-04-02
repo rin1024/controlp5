@@ -20,7 +20,7 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
-import controlP5.controller.*;
+import controlP5.controller.textarea.*;
 import java.io.IOException;
 import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
@@ -63,7 +63,7 @@ public class Println {
                     break;
                   }
                   if (!paused) {
-                    if (!c._myScrollbar.isMousePressed) {
+                    if (!c.isScrollbarMousePressed()) {
                       c.append(buffer + new String(buf, 0, len), max);
                       buffer = "";
                       c.scroll(1);

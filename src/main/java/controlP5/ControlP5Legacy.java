@@ -36,6 +36,7 @@ import controlP5.controller.range.*;
 import controlP5.controller.scrollablelist.*;
 import controlP5.controller.slider.*;
 import controlP5.controller.tab.*;
+import controlP5.controller.textarea.*;
 import java.util.ArrayList;
 import processing.core.PApplet;
 

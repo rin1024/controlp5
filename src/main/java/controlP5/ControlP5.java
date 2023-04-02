@@ -1026,6 +1026,10 @@ public class ControlP5 extends ControlP5Base {
     controlWindow.setUpdate(theFlag);
   }
 
+  public ControlFont getFont() {
+    return controlFont;
+  }
+
   public boolean setFont(ControlFont theControlFont) {
     controlFont = theControlFont;
     isControlFont = true;
@@ -1051,8 +1055,12 @@ public class ControlP5 extends ControlP5Base {
     controlWindow.updateFont(theControlFont);
   }
 
-  public ControlFont getFont() {
-    return controlFont;
+  public ControlFont getDefaultFont() {
+    return defaultFont;
+  }
+
+  public ControlFont getDefaultFontForText() {
+    return defaultFontForText;
   }
 
   /** disables shortcuts such as alt-h for hiding/showing controllers */
