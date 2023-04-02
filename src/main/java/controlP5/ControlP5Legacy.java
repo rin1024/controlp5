@@ -33,6 +33,7 @@ import controlP5.controller.multilist.*;
 import controlP5.controller.numberbox.*;
 import controlP5.controller.radiobutton.*;
 import controlP5.controller.range.*;
+import controlP5.controller.scrollablelist.*;
 import java.util.ArrayList;
 import processing.core.PApplet;
 
