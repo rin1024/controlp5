@@ -1,4 +1,4 @@
-package controlP5;
+package controlP5.controller.tab;
 
 /**
  * controlP5 is a processing gui library.
@@ -20,7 +20,7 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
-import controlP5.controller.*;
+import controlP5.*;
 import processing.core.PGraphics;
 
 /**
@@ -53,13 +53,14 @@ public class Tab extends ControllerGroup<Tab> {
     position = new float[2];
     absolutePosition = new float[2];
     isMoveable = false;
-    isEventActive = theControlP5.isTabEventsActive;
+    isEventActive = theControlP5.isTabEventsActive();
     _myHeight = 16;
     _myWidth = _myLabel.getWidth() + padding * 2;
     _myLabel.align(LEFT, CENTER).setPadding(0, 0);
   }
 
-  protected void setOffset(int theValueX, int theValueY) {
+  /** TODO: should to be change to protected */
+  public void setOffset(int theValueX, int theValueY) {
     _myOffsetX = theValueX;
     _myOffsetY = theValueY;
   }
@@ -68,12 +69,14 @@ public class Tab extends ControllerGroup<Tab> {
     return _myHeight;
   }
 
-  protected boolean updateLabel() {
+  /** TODO: should to be change to protected */
+  public boolean updateLabel() {
     isInside = inside();
     return cp5.getWindow().getTabs().size() > 2;
   }
 
-  protected void drawLabel(PGraphics theGraphics) {
+  /** TODO: should to be change to protected */
+  public void drawLabel(PGraphics theGraphics) {
     if (autoWidth) {
       _myWidth = _myLabel.getWidth() + padding * 2;
     }
@@ -123,15 +126,15 @@ public class Tab extends ControllerGroup<Tab> {
   }
 
   protected boolean inside() {
-    return (cp5.getWindow().mouseX > _myOffsetX
-        && cp5.getWindow().mouseX < _myOffsetX + _myWidth
-        && cp5.getWindow().mouseY > _myOffsetY
-        && cp5.getWindow().mouseY < _myOffsetY + _myHeight);
+    return (cp5.getWindow().getPointer().getX() > _myOffsetX
+        && cp5.getWindow().getPointer().getX() < _myOffsetX + _myWidth
+        && cp5.getWindow().getPointer().getY() > _myOffsetY
+        && cp5.getWindow().getPointer().getY() < _myOffsetY + _myHeight);
   }
 
   /** {@inheritDoc} */
   public void mousePressed() {
-    cp5.getWindow().activateTab(this);
+    cp5.getWindow().activateTab(getName());
     if (isEventActive) {
       cp5.getControlBroadcaster().broadcast(new ControlEvent(this), ControlP5Constants.METHOD);
     }
@@ -167,7 +170,7 @@ public class Tab extends ControllerGroup<Tab> {
 
   @Override
   public Tab bringToFront() {
-    cp5.getWindow().activateTab(this);
+    cp5.getWindow().activateTab(getName());
     return this;
   }
 

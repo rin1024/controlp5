@@ -20,7 +20,7 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
-import controlP5.controller.*;
+import controlP5.controller.tab.*;
 
 /**
  * An Accordion here is a list of ControlGroups which can be expanded and collapsed.

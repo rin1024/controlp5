@@ -35,6 +35,7 @@ import controlP5.controller.radiobutton.*;
 import controlP5.controller.range.*;
 import controlP5.controller.scrollablelist.*;
 import controlP5.controller.slider.*;
+import controlP5.controller.tab.*;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;

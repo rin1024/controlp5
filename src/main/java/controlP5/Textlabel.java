@@ -21,6 +21,7 @@ package controlP5;
  * @version ##version##
  */
 import controlP5.controller.*;
+import controlP5.controller.tab.*;
 import java.util.Arrays;
 import java.util.List;
 import processing.core.PApplet;

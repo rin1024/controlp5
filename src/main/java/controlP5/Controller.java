@@ -21,6 +21,7 @@ package controlP5;
  * @version ##version##
  */
 import controlP5.controller.numberbox.Numberbox;
+import controlP5.controller.tab.Tab;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;

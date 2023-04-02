@@ -22,6 +22,7 @@ package controlP5.controller.multilist;
  */
 import controlP5.*;
 import controlP5.controller.button.*;
+import controlP5.controller.tab.*;
 import processing.core.PApplet;
 import processing.core.PGraphics;
 

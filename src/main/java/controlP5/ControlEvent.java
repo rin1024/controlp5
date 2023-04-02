@@ -22,6 +22,7 @@ package controlP5;
  */
 import controlP5.controller.*;
 import controlP5.controller.multilist.*;
+import controlP5.controller.tab.*;
 
 /**
  * A controlEvent is sent to a PApplet or a ControlListener whenever a controller value has changed.

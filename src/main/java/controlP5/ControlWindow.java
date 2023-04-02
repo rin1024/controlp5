@@ -24,6 +24,7 @@ import controlP5.ControlP5Base.KeyCode;
 import controlP5.controller.knob.*;
 import controlP5.controller.numberbox.*;
 import controlP5.controller.slider.*;
+import controlP5.controller.tab.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -138,7 +139,7 @@ public final class ControlWindow {
 
     for (int i = 1; i < _myTabs.size(); i++) {
       if (((Tab) _myTabs.get(i)).getName().equals(theTab)) {
-        if (!((Tab) _myTabs.get(i)).isActive) {
+        if (!((Tab) _myTabs.get(i)).isActive()) {
           resetMouseOver();
         }
         activateTab((Tab) _myTabs.get(i));
@@ -164,7 +165,7 @@ public final class ControlWindow {
   protected ControlWindow activateTab(Tab theTab) {
     for (int i = 1; i < _myTabs.size(); i++) {
       if (_myTabs.get(i) == theTab) {
-        if (!((Tab) _myTabs.get(i)).isActive) {
+        if (!((Tab) _myTabs.get(i)).isActive()) {
           resetMouseOver();
         }
         ((Tab) _myTabs.get(i)).setActive(true);
@@ -522,8 +523,8 @@ public final class ControlWindow {
         if (_myTabs.size() > 0) {
           for (int i = 1; i < _myTabs.size(); i++) {
             if (((Tab) _myTabs.get(i)).isVisible()) {
-              if (myHeight < ((Tab) _myTabs.get(i)).height()) {
-                myHeight = ((Tab) _myTabs.get(i)).height();
+              if (myHeight < ((Tab) _myTabs.get(i)).getHeight()) {
+                myHeight = ((Tab) _myTabs.get(i)).getHeight();
               }
 
               // conflicts with Android, getWidth not found TODO
@@ -547,7 +548,7 @@ public final class ControlWindow {
               if (((Tab) _myTabs.get(i)).updateLabel()) {
                 ((Tab) _myTabs.get(i)).drawLabel(pg);
               }
-              myOffsetX += ((Tab) _myTabs.get(i)).width();
+              myOffsetX += ((Tab) _myTabs.get(i)).getWidth();
             }
           }
           ((ControllerInterface<?>) _myTabs.get(0)).draw(pg);

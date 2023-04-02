@@ -24,6 +24,7 @@ import controlP5.ControlWindow.Pointer;
 import controlP5.controller.*;
 import controlP5.controller.button.*;
 import controlP5.controller.checkbox.*;
+import controlP5.controller.tab.*;
 import java.io.File;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -258,6 +259,10 @@ public class ControlP5 extends ControlP5Base {
     ox = theX;
     oy = theY;
     return this;
+  }
+
+  public boolean isTabEventsActive() {
+    return isTabEventsActive;
   }
 
   /**
