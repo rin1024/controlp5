@@ -11,6 +11,8 @@
 */
 import org.apache.log4j.Logger;
 import controlP5.*;
+import controlP5.controller.radiobutton.*;
+import controlP5.controller.toggle.*;
 
 ControlP5 cp5;
 

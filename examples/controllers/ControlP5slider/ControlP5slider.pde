@@ -19,6 +19,7 @@
 */
 import org.apache.log4j.Logger;
 import controlP5.*;
+import controlP5.controller.slider.*;
 
 ControlP5 cp5;
 int myColor = color(0,0,0);

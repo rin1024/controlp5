@@ -12,6 +12,7 @@
 
 import org.apache.log4j.Logger;
 import controlP5.*;
+import controlP5.controller.textlabel.*;
 
 ControlP5 cp5;
 

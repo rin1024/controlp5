@@ -12,6 +12,7 @@
 
 import org.apache.log4j.Logger;
 import controlP5.*;
+import controlP5.controller.textfield.*;
 
 ControlP5 cp5;
 

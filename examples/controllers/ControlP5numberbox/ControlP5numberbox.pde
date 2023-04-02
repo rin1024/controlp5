@@ -11,6 +11,7 @@
 */
 
 import org.apache.log4j.Logger;
+import controlP5.controller.numberbox.*;
 import controlP5.*;
 
 ControlP5 cp5;

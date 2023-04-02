@@ -11,6 +11,8 @@
 */
 
 import controlP5.*;
+import controlP5.controller.color.*;
+import org.apache.log4j.Logger;
 
 ControlP5 cp5;
 
@@ -199,5 +201,3 @@ java.lang.Object : boolean equals(Object)
 created: 2015/03/24 12:21:00
 
 */
-
-

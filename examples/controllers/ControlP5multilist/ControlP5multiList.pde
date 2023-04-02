@@ -7,6 +7,7 @@
 
 import org.apache.log4j.Logger;
 import controlP5.controller.button.*;
+import controlP5.controller.multilist.*;
 import controlP5.*;
 
 ControlP5 controlP5;
@@ -85,7 +86,7 @@ void setup() {
 
 
 void controlEvent(ControlEvent theEvent) {
-  println(theEvent.getController().getName()+" = "+theEvent.value());  
+  println(theEvent.getController().getName()+" = "+theEvent.getValue());  
   // uncomment the line below to remove a multilist item when clicked.
   // theEvent.controller().remove();
 }

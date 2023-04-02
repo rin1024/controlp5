@@ -11,6 +11,7 @@
 
 import org.apache.log4j.Logger;
 import controlP5.*;
+import controlP5.controller.range.*;
 
 ControlP5 cp5;
 

@@ -12,6 +12,8 @@
  *
  */
 import controlP5.*;
+import controlP5.controller.color.*;
+import org.apache.log4j.Logger;
 
 ControlP5 cp5;
 

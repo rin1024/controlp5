@@ -13,6 +13,7 @@
 
 import org.apache.log4j.Logger;
 import controlP5.*;
+import controlP5.controller.matrix.*;
 
 ControlP5 cp5;
 

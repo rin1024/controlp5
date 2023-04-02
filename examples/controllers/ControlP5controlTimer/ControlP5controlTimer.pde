@@ -4,6 +4,9 @@
  */
 
 import controlP5.*;
+import controlP5.util.*;
+import controlP5.controller.textlabel.*;
+import org.apache.log4j.Logger;
 
 ControlP5 cp5;
 ControlTimer c;
@@ -59,5 +62,3 @@ java.lang.Object : boolean equals(Object)
 created: 2015/03/24 12:21:02
 
 */
-
-

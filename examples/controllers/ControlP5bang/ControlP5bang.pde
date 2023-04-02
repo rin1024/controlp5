@@ -13,6 +13,7 @@
  */
 
 import controlP5.*;
+import controlP5.controller.bang.*;
 import org.apache.log4j.Logger;
 
 ControlP5 cp5;
@@ -69,9 +70,9 @@ public void controlEvent(ControlEvent theEvent) {
   }
   
   println(
-  "## controlEvent / id:"+theEvent.controller().getId()+
-    " / name:"+theEvent.controller().getName()+
-    " / value:"+theEvent.controller().getValue()
+  "## controlEvent / id:"+theEvent.getController().getId()+
+    " / name:"+theEvent.getController().getName()+
+    " / value:"+theEvent.getController().getValue()
     );
 }
 

@@ -35,6 +35,8 @@
  */
 
 import controlP5.*;
+import controlP5.controller.slider.*;
+import org.apache.log4j.Logger;
 
 ControlP5 cp5;
 public int myColor = color(0, 0, 0);
@@ -161,5 +163,3 @@ java.lang.Object : boolean equals(Object)
 created: 2015/03/24 12:21:03
 
 */
-
-
