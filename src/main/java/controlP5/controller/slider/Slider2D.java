@@ -21,6 +21,7 @@ package controlP5.controller.slider;
  * @version ##version##
  */
 import controlP5.*;
+import controlP5.label.Label;
 import processing.core.PApplet;
 import processing.core.PGraphics;
 

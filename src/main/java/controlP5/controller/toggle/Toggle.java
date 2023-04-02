@@ -22,6 +22,7 @@ package controlP5.controller.toggle;
  */
 import controlP5.*;
 import controlP5.controller.tab.*;
+import controlP5.label.Label;
 import processing.core.PGraphics;
 import processing.core.PImage;
 

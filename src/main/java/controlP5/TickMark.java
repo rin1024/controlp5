@@ -21,6 +21,7 @@ package controlP5;
  * @version ##version##
  */
 import controlP5.controller.*;
+import controlP5.label.Label;
 import processing.core.PGraphics;
 
 /** Tickmarks are used by the Slider and Knob controller. */

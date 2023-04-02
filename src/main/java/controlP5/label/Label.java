@@ -1,4 +1,4 @@
-package controlP5;
+package controlP5.label;
 
 /**
  * controlP5 is a processing gui library.
@@ -20,7 +20,7 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
-import controlP5.controller.*;
+import controlP5.*;
 import controlP5.font.*;
 import processing.core.PFont;
 import processing.core.PGraphics;
@@ -90,7 +90,7 @@ public class Label implements CDrawable {
     _myText = theValue;
     _myColor = theColor;
     setLabeltype(new SinglelineLabel());
-    setFont(cp5.controlFont);
+    setFont(cp5.getFont());
     setLabeltype(new SinglelineLabel());
     set(_myText);
     _myControllerStyle = new ControllerStyle();

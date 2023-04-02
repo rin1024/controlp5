@@ -24,6 +24,7 @@ import controlP5.controller.numberbox.Numberbox;
 import controlP5.controller.tab.Tab;
 import controlP5.controller.textfield.Textfield;
 import controlP5.font.*;
+import controlP5.label.Label;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;

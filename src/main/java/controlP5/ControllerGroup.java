@@ -24,6 +24,7 @@ import controlP5.controller.*;
 import controlP5.controller.button.*;
 import controlP5.controller.tab.*;
 import controlP5.font.*;
+import controlP5.label.Label;
 import java.util.ArrayList;
 import java.util.List;
 import processing.core.PApplet;

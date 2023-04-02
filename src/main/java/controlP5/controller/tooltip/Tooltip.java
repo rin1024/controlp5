@@ -21,6 +21,7 @@ package controlP5.controller.tooltip;
  * @version ##version##
  */
 import controlP5.*;
+import controlP5.label.Label;
 import java.util.HashMap;
 import java.util.Map;
 import processing.core.PApplet;

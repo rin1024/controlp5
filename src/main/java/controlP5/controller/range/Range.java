@@ -22,6 +22,7 @@ package controlP5.controller.range;
  */
 import controlP5.*;
 import controlP5.font.*;
+import controlP5.label.Label;
 import java.util.ArrayList;
 import processing.core.PApplet;
 import processing.core.PFont;

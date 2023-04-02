@@ -22,6 +22,7 @@ package controlP5.controller.checkbox;
  */
 import controlP5.*;
 import controlP5.controller.toggle.*;
+import controlP5.label.Label;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;

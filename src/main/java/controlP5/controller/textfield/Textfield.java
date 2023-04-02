@@ -22,6 +22,7 @@ package controlP5.controller.textfield;
  */
 import controlP5.*;
 import controlP5.font.*;
+import controlP5.label.Label;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;

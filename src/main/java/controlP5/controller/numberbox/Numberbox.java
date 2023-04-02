@@ -22,6 +22,7 @@ package controlP5.controller.numberbox;
  */
 import controlP5.*;
 import controlP5.controller.tab.*;
+import controlP5.label.Label;
 import processing.core.PApplet;
 import processing.core.PGraphics;
 
