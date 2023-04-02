@@ -1,4 +1,4 @@
-package controlP5;
+package controlP5.controller.spacer;
 
 /**
  * controlP5 is a processing gui library.
@@ -20,7 +20,7 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
-import controlP5.controller.*;
+import controlP5.*;
 import processing.core.PGraphics;
 
 public class Spacer extends Controller<Spacer> {
@@ -32,7 +32,7 @@ public class Spacer extends Controller<Spacer> {
     theControlP5.register(theControlP5.papplet, theName, this);
   }
 
-  protected Spacer(
+  public Spacer(
       ControlP5 theControlP5,
       ControllerGroup<?> theParent,
       String theName,
