@@ -160,7 +160,6 @@ public class ColorPicker extends ControlGroup<ColorPicker> {
   }
 
   @Override
-  @ControlP5.Invisible
   public void controlEvent(ControlEvent theEvent) {
     if (broadcast) {
       _myArrayValue[theEvent.getId()] = theEvent.getValue();

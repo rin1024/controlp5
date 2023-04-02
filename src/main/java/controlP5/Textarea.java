@@ -191,7 +191,6 @@ public class Textarea extends ControllerGroup<Textarea> implements ControlListen
     _myValueLabel.setOffsetYratio(_myScrollValue);
   }
 
-  @ControlP5.Invisible
   public void scrolled(int theStep) {
     if (_myScrollbar.isVisible()) {
       int lines = (_myValueLabel.getTextHeight() / _myValueLabel.getLineHeight());
@@ -200,7 +199,6 @@ public class Textarea extends ControllerGroup<Textarea> implements ControlListen
     }
   }
 
-  @ControlP5.Invisible
   public float getScrollPosition() {
     return _myScrollbar.getValue();
   }

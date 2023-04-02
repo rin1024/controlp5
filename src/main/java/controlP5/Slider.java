@@ -105,7 +105,6 @@ public class Slider extends Controller<Slider> {
     setSliderMode(FIX);
   }
 
-  @ControlP5.Invisible
   @Override
   public void init() {
     // need to override init here since _myValue will only be a
@@ -167,7 +166,6 @@ public class Slider extends Controller<Slider> {
   }
 
   /** @see ControllerInterface.updateInternalEvents */
-  @ControlP5.Invisible
   public Slider updateInternalEvents(PApplet theApplet) {
     if (isVisible) {
       if (isMousePressed && !cp5.isAltDown()) {
@@ -277,7 +275,6 @@ public class Slider extends Controller<Slider> {
    * @param theRotationValue
    * @return Slider
    */
-  @ControlP5.Invisible
   public Slider scrolled(int theRotationValue) {
     if (isVisible) {
       float f = _myValue;
@@ -461,7 +458,6 @@ public class Slider extends Controller<Slider> {
 
   /** {@inheritDoc} */
   @Override
-  @ControlP5.Invisible
   public Slider linebreak() {
     cp5.linebreak(this, true, autoWidth, autoHeight, autoSpacing);
     return this;
@@ -484,7 +480,6 @@ public class Slider extends Controller<Slider> {
 
   /** {@inheritDoc} */
   @Override
-  @ControlP5.Invisible
   public Slider updateDisplayMode(int theMode) {
     _myDisplayMode = theMode;
     switch (theMode) {

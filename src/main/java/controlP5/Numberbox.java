@@ -99,7 +99,7 @@ public class Numberbox extends Controller<Numberbox> {
   /* (non-Javadoc)
    *
    * @see ControllerInterfalce.updateInternalEvents */
-  @ControlP5.Invisible
+
   public Numberbox updateInternalEvents(PApplet theApplet) {
     if (isActive) {
       if (!cp5.isAltDown()) {
@@ -117,7 +117,6 @@ public class Numberbox extends Controller<Numberbox> {
    *
    * @see controlP5.Controller#mousePressed() */
   @Override
-  @ControlP5.Invisible
   public void mousePressed() {
     isActive = true;
   }
@@ -126,7 +125,6 @@ public class Numberbox extends Controller<Numberbox> {
    *
    * @see controlP5.Controller#mouseReleased() */
   @Override
-  @ControlP5.Invisible
   public void mouseReleased() {
     isActive = false;
   }
@@ -135,7 +133,6 @@ public class Numberbox extends Controller<Numberbox> {
    *
    * @see controlP5.Controller#mouseReleasedOutside() */
   @Override
-  @ControlP5.Invisible
   public void mouseReleasedOutside() {
     mouseReleased();
   }
@@ -208,7 +205,6 @@ public class Numberbox extends Controller<Numberbox> {
    * @param theRotationValue
    * @return Numberbox
    */
-  @ControlP5.Invisible
   public Numberbox scrolled(int theRotationValue) {
     float f = getValue();
     f +=
@@ -252,7 +248,6 @@ public class Numberbox extends Controller<Numberbox> {
 
   /** {@inheritDoc} */
   @Override
-  @ControlP5.Invisible
   public Numberbox updateDisplayMode(int theMode) {
     _myDisplayMode = theMode;
     switch (theMode) {

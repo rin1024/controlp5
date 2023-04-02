@@ -387,7 +387,6 @@ public class ScrollableList extends Controller<ScrollableList> implements Contro
   }
 
   @Override
-  @ControlP5.Invisible
   public ScrollableList updateDisplayMode(int theMode) {
     _myDisplayMode = theMode;
     switch (theMode) {

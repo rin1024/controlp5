@@ -1132,7 +1132,6 @@ public class ControlP5Legacy {
    *
    * @exclude
    */
-  @ControlP5.Invisible
   public <C> C addGroup(
       final Object theObject,
       final String theIndex,

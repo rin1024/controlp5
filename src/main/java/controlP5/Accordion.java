@@ -179,7 +179,6 @@ public class Accordion extends ControlGroup<Accordion> {
 
   /** @exclude {@inheritDoc} */
   @Override
-  @ControlP5.Invisible
   public void controlEvent(ControlEvent theEvent) {
     if (theEvent.isGroup()) {
       int n = 0;

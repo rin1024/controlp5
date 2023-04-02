@@ -120,7 +120,6 @@ public class Matrix extends Controller<Matrix> {
     return _myInterval;
   }
 
-  @ControlP5.Invisible
   public Matrix updateInternalEvents(PApplet theApplet) {
     setIsInside(inside());
 
@@ -167,7 +166,6 @@ public class Matrix extends Controller<Matrix> {
     isActive = false;
   }
 
-  @ControlP5.Invisible
   public void mousePressed() {
     isActive = getIsInside();
     if (getIsInside()) {
@@ -179,7 +177,6 @@ public class Matrix extends Controller<Matrix> {
     mouseReleased();
   }
 
-  @ControlP5.Invisible
   public void mouseReleased() {
     if (isActive) {
       isActive = false;
@@ -382,7 +379,6 @@ public class Matrix extends Controller<Matrix> {
   }
 
   @Override
-  @ControlP5.Invisible
   public Matrix updateDisplayMode(int theMode) {
     _myDisplayMode = theMode;
     switch (theMode) {

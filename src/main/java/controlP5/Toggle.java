@@ -66,7 +66,6 @@ public class Toggle extends Controller<Toggle> {
   }
 
   /** @param theApplet PApplet */
-  @ControlP5.Invisible
   public void draw(PGraphics theGraphics) {
     theGraphics.pushMatrix();
     theGraphics.translate(x(position), y(position));
@@ -83,7 +82,6 @@ public class Toggle extends Controller<Toggle> {
   }
 
   /** {@inheritDoc} */
-  @ControlP5.Invisible
   public void mousePressed() {
     setState(!isOn);
     isActive = false;
@@ -172,12 +170,10 @@ public class Toggle extends Controller<Toggle> {
    *
    * @param theInternalValue
    */
-  @ControlP5.Invisible
   public void setInternalValue(float theInternalValue) {
     internalValue = theInternalValue;
   }
 
-  @ControlP5.Invisible
   public float internalValue() {
     return internalValue;
   }
@@ -199,7 +195,6 @@ public class Toggle extends Controller<Toggle> {
 
   /** {@inheritDoc} */
   @Override
-  @ControlP5.Invisible
   public Toggle updateDisplayMode(int theState) {
     _myDisplayMode = theState;
     switch (theState) {

@@ -482,7 +482,6 @@ public class RadioButton extends ControlGroup<RadioButton> {
    *
    * @exclude
    */
-  @ControlP5.Invisible
   @Override
   public void controlEvent(ControlEvent theEvent) {
     if (!isMultipleChoice) {

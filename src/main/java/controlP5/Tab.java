@@ -130,7 +130,6 @@ public class Tab extends ControllerGroup<Tab> {
   }
 
   /** {@inheritDoc} */
-  @ControlP5.Invisible
   public void mousePressed() {
     cp5.getWindow().activateTab(this);
     if (isEventActive) {

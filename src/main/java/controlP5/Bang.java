@@ -30,7 +30,6 @@ import processing.core.PGraphics;
  *
  * @example controllers/ControlP5bang
  */
-@ControlP5.Layout
 public class Bang extends Controller<Bang> {
 
   protected int cnt;
@@ -104,13 +103,11 @@ public class Bang extends Controller<Bang> {
    * @param theEventID
    * @return Bang
    */
-  @ControlP5.Layout
   public Bang setTriggerEvent(int theEventID) {
     triggerId = theEventID;
     return this;
   }
 
-  @ControlP5.Layout
   public int getTriggerEvent() {
     return triggerId;
   }
@@ -136,14 +133,12 @@ public class Bang extends Controller<Bang> {
 
   /** @exclude */
   @Override
-  @ControlP5.Invisible
   public Bang updateDisplayMode(int theMode) {
     updateViewMode(theMode);
     return this;
   }
 
   /** @exclude */
-  @ControlP5.Invisible
   public Bang updateViewMode(int theMode) {
     _myDisplayMode = theMode;
     switch (theMode) {

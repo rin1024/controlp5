@@ -81,7 +81,6 @@ public class Button extends Controller<Button> {
 
   /** @exclude */
   @Override
-  @ControlP5.Invisible
   public void mousePressed() {
     isActive = getIsInside();
     isPressed = true;
@@ -92,7 +91,6 @@ public class Button extends Controller<Button> {
 
   /** @exclude */
   @Override
-  @ControlP5.Invisible
   public void mouseReleased() {
     isPressed = false;
     if (activateBy == RELEASE) {
@@ -126,7 +124,6 @@ public class Button extends Controller<Button> {
 
   /** @exclude */
   @Override
-  @ControlP5.Invisible
   public void mouseReleasedOutside() {
     mouseReleased();
   }
@@ -213,13 +210,11 @@ public class Button extends Controller<Button> {
 
   /** @exclude */
   @Override
-  @ControlP5.Invisible
   public Button updateDisplayMode(int theMode) {
     return updateViewMode(theMode);
   }
 
   /** @exclude */
-  @ControlP5.Invisible
   public Button updateViewMode(int theMode) {
     _myDisplayMode = theMode;
     switch (theMode) {

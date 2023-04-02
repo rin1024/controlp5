@@ -252,7 +252,6 @@ public class Knob extends Controller<Knob> {
 
   /** @exclude */
   @Override
-  @ControlP5.Invisible
   public Knob updateInternalEvents(PApplet theApplet) {
     if (isMousePressed && !cp5.isAltDown()) {
       if (isActive) {
@@ -280,7 +279,6 @@ public class Knob extends Controller<Knob> {
 
   /** @exclude {@inheritDoc} */
   @Override
-  @ControlP5.Invisible
   public void mousePressed() {
     float x = x(_myParent.getAbsolutePosition()) + x(position) + _myRadius;
     float y = y(_myParent.getAbsolutePosition()) + y(position) + _myRadius;
@@ -304,7 +302,6 @@ public class Knob extends Controller<Knob> {
 
   /** @exclude {@inheritDoc} */
   @Override
-  @ControlP5.Invisible
   public void mouseReleasedOutside() {
     isActive = false;
   }
@@ -398,7 +395,6 @@ public class Knob extends Controller<Knob> {
    * Changes the value of the knob when hovering and using the mouse wheel or the scroll function of
    * a multi-touch track pad.
    */
-  @ControlP5.Invisible
   public Knob scrolled(int theRotationValue) {
     float f = getValue();
     float steps = isSnapToTickMarks ? (1.0f / getNumberOfTickMarks()) : scrollSensitivity;
@@ -409,7 +405,6 @@ public class Knob extends Controller<Knob> {
 
   /** @exclude */
   @Override
-  @ControlP5.Invisible
   public Knob update() {
     setValue(_myValue);
     return this;
@@ -433,7 +428,6 @@ public class Knob extends Controller<Knob> {
 
   /** @exclude {@inheritDoc} */
   @Override
-  @ControlP5.Invisible
   public Knob updateDisplayMode(int theMode) {
     _myDisplayMode = theMode;
     switch (theMode) {
@@ -567,7 +561,6 @@ public class Knob extends Controller<Knob> {
    * @deprecated
    */
   @Deprecated
-  @ControlP5.Invisible
   public Knob setSensitivity(float theValue) {
     scrollSensitivity = theValue;
     return this;

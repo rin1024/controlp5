@@ -108,10 +108,8 @@ public abstract class ControllerGroup<T>
     _myCanvas = new ArrayList<Canvas>();
   }
 
-  @ControlP5.Invisible
   public void init() {}
 
-  @ControlP5.Invisible
   @Override
   public ControllerInterface<?> getParent() {
     return _myParent;
@@ -244,12 +242,10 @@ public abstract class ControllerGroup<T>
     }
   }
 
-  @ControlP5.Invisible
   public float[] getAbsolutePosition() {
     return new float[] {x(absolutePosition), y(absolutePosition)};
   }
 
-  @ControlP5.Invisible
   public T setAbsolutePosition(float[] thePos) {
     set(absolutePosition, x(thePos), y(thePos));
     return me;
@@ -283,7 +279,6 @@ public abstract class ControllerGroup<T>
     return me;
   }
 
-  @ControlP5.Invisible
   public void continuousUpdateEvents() {
     if (controllers.size() <= 0) {
       return;
@@ -320,7 +315,6 @@ public abstract class ControllerGroup<T>
     return isUpdate;
   }
 
-  @ControlP5.Invisible
   public T updateEvents() {
     if (isOpen) {
       for (int i = controllers.size() - 1; i >= 0; i--) {
@@ -368,7 +362,6 @@ public abstract class ControllerGroup<T>
     return me;
   }
 
-  @ControlP5.Invisible
   public T updateInternalEvents(PApplet theApplet) {
     return me;
   }
@@ -397,7 +390,6 @@ public abstract class ControllerGroup<T>
     return me;
   }
 
-  @ControlP5.Invisible
   public final void draw(PGraphics theGraphics) {
     if (isVisible) {
       theGraphics.pushMatrix();
@@ -495,7 +487,6 @@ public abstract class ControllerGroup<T>
     return me;
   }
 
-  @ControlP5.Invisible
   public T addDrawable(CDrawable theElement) {
     controllers.addDrawable(theElement);
     return me;
@@ -547,7 +538,6 @@ public abstract class ControllerGroup<T>
     return cp5.getWindow();
   }
 
-  @ControlP5.Invisible
   public void keyEvent(KeyEvent theEvent) {
     for (int i = 0; i < controllers.size(); i++) {
       ((ControllerInterface<?>) controllers.get(i)).keyEvent(theEvent);
@@ -709,7 +699,6 @@ public abstract class ControllerGroup<T>
   }
 
   /** TODO redesign or deprecate remove the close button. */
-  @ControlP5.Invisible
   public T removeCloseButton() {
     if (_myCloseButton == null) {
       _myCloseButton.remove();
@@ -748,7 +737,6 @@ public abstract class ControllerGroup<T>
   }
 
   /** TODO redesign or deprecate add a close button to the controlbar of this controlGroup. */
-  @ControlP5.Invisible
   public T addCloseButton() {
     if (_myCloseButton == null) {
       _myCloseButton = new Button(cp5, this, getName() + "close", 1, _myWidth + 1, -10, 12, 9);
@@ -758,7 +746,6 @@ public abstract class ControllerGroup<T>
     return me;
   }
 
-  @ControlP5.Invisible
   public int getPickingColor() {
     return _myPickingColor;
   }

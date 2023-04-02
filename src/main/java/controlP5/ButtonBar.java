@@ -57,7 +57,6 @@ public class ButtonBar extends Controller<ButtonBar> {
   }
 
   @Override
-  @ControlP5.Invisible
   public ButtonBar updateDisplayMode(int theMode) {
     return updateViewMode(theMode);
   }
@@ -84,7 +83,6 @@ public class ButtonBar extends Controller<ButtonBar> {
     return Collections.unmodifiableMap(modifiableItem(theItem));
   }
 
-  @ControlP5.Invisible
   public ButtonBar updateViewMode(int theMode) {
     _myDisplayMode = theMode;
     switch (theMode) {

@@ -281,13 +281,11 @@ public class ColorWheel extends Controller<ColorWheel> {
 
   /** @exclude */
   @Override
-  @ControlP5.Invisible
   public ColorWheel updateDisplayMode(int theMode) {
     return updateViewMode(theMode);
   }
 
   /** @exclude */
-  @ControlP5.Invisible
   public ColorWheel updateViewMode(int theMode) {
     _myDisplayMode = theMode;
     switch (theMode) {

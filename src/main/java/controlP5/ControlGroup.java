@@ -67,7 +67,6 @@ public class ControlGroup<T> extends ControllerGroup<T> implements ControlListen
     _myHeight = theH;
   }
 
-  @ControlP5.Invisible
   public void mousePressed() {
     if (isBarVisible && isCollapse) {
       if (!cp5.isAltDown()) {
@@ -164,14 +163,12 @@ public class ControlGroup<T> extends ControllerGroup<T> implements ControlListen
     }
   }
 
-  @ControlP5.Invisible
   public void controlEvent(ControlEvent theEvent) {
     if (theEvent.getController().getName().equals(getName() + "close")) {
       hide();
     }
   }
 
-  @ControlP5.Invisible
   public String stringValue() {
     return Float.toString(_myValue);
   }

@@ -372,7 +372,6 @@ public class DropdownList extends Controller<DropdownList> implements ControlLis
   }
 
   @Override
-  @ControlP5.Invisible
   public DropdownList updateDisplayMode(int theMode) {
     _myDisplayMode = theMode;
     switch (theMode) {

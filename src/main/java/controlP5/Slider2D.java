@@ -74,7 +74,7 @@ public class Slider2D extends Controller<Slider2D> {
   /* (non-Javadoc)
    *
    * @see controlP5.Controller#updateInternalEvents(processing.core.PApplet) */
-  @ControlP5.Invisible
+
   public Slider2D updateInternalEvents(PApplet theApplet) {
     if (isInside()) {
       if (!cp5.isAltDown()) {
@@ -258,7 +258,6 @@ public class Slider2D extends Controller<Slider2D> {
 
   /** {@inheritDoc} */
   @Override
-  @ControlP5.Invisible
   public Slider2D updateDisplayMode(int theMode) {
     _myDisplayMode = theMode;
     switch (theMode) {

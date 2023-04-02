@@ -89,7 +89,6 @@ public class Range extends Controller<Range> {
    * @param theWidth int
    * @param theHeight int
    */
-  @ControlP5.Invisible
   public Range(
       ControlP5 theControlP5,
       ControllerGroup<?> theParent,
@@ -159,7 +158,6 @@ public class Range extends Controller<Range> {
     return this;
   }
 
-  @ControlP5.Invisible
   public Range setSliderMode(int theMode) {
     return this;
   }
@@ -172,7 +170,6 @@ public class Range extends Controller<Range> {
     return this;
   }
 
-  @ControlP5.Invisible
   public Range updateInternalEvents(PApplet theApplet) {
     if (isVisible) {
       int c = _myControlWindow.mouseX - _myControlWindow.pmouseX;
@@ -238,7 +235,6 @@ public class Range extends Controller<Range> {
    * @return Range
    */
   @Override
-  @ControlP5.Invisible
   public Range setValue(float theValue) {
     _myValue = theValue;
     broadcast(ARRAY);
@@ -247,7 +243,6 @@ public class Range extends Controller<Range> {
 
   /** @exclude */
   @Override
-  @ControlP5.Invisible
   public Range update() {
     _myArrayValue[0] = PApplet.map(minHandle, handleSize, getWidth() - handleSize, _myMin, _myMax);
     _myArrayValue[1] = PApplet.map(maxHandle, handleSize, getWidth() - handleSize, _myMin, _myMax);
@@ -257,7 +252,6 @@ public class Range extends Controller<Range> {
     return setValue(_myValue);
   }
 
-  @ControlP5.Invisible
   public Range setDraggable(boolean theFlag) {
     isDraggable = theFlag;
     isDragging = (theFlag == false) ? false : isDragging;
@@ -310,20 +304,17 @@ public class Range extends Controller<Range> {
   }
 
   @Override
-  @ControlP5.Invisible
   public void mouseReleased() {
     isDragging = isMinHandle = isMaxHandle = isMoveHandle = false;
     mode = -1;
   }
 
   @Override
-  @ControlP5.Invisible
   public void mouseReleasedOutside() {
     mouseReleased();
   }
 
   @Override
-  @ControlP5.Invisible
   public void onLeave() {
     isMinHandle = false;
     isMaxHandle = false;
@@ -349,7 +340,6 @@ public class Range extends Controller<Range> {
     return this;
   }
 
-  @ControlP5.Invisible
   public TickMark getTickMark() {
     System.out.println("Range Tickmarks not yet supported");
     return null;
@@ -430,7 +420,6 @@ public class Range extends Controller<Range> {
   }
 
   @Override
-  @ControlP5.Invisible
   public Range updateDisplayMode(int theMode) {
     _myDisplayMode = theMode;
     switch (theMode) {
@@ -548,7 +537,6 @@ public class Range extends Controller<Range> {
   }
 
   @Override
-  @ControlP5.Invisible
   public String toString() {
     return "type:\tRange\n" + super.toString();
   }

@@ -3,7 +3,7 @@ package controlP5;
 
 public class Version {
   public static String version = "2.3.0-SNAPSHOT";
-  public static String buildDate = "2023-04-02 17:25:10";
+  public static String buildDate = "2023-04-02 18:25:54";
 
   /**
    * バージョン情報を返す

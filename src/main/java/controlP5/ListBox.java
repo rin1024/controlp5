@@ -375,7 +375,6 @@ public class ListBox extends Controller<ListBox> implements ControlListener {
   }
 
   @Override
-  @ControlP5.Invisible
   public ListBox updateDisplayMode(int theMode) {
     _myDisplayMode = theMode;
     switch (theMode) {

@@ -191,14 +191,11 @@ public abstract class Controller<T>
   }
 
   /** {@inheritDoc} */
-  @ControlP5.Layout
   public String getAddress() {
     return _myAddress;
   }
 
   @Override
-  @ControlP5.Invisible
-  @ControlP5.Layout
   public T setAddress(String theAddress) {
     if (_myAddress.length() == 0) {
       _myAddress = theAddress;
@@ -221,7 +218,6 @@ public abstract class Controller<T>
     set(position, theX, theY);
   }
 
-  @ControlP5.Invisible
   public void init() {
 
     _myDefaultValue = _myValue;
@@ -321,7 +317,6 @@ public abstract class Controller<T>
   }
 
   /** @return float */
-  @ControlP5.Layout
   public float getDefaultValue() {
     return _myDefaultValue;
   }
@@ -332,7 +327,6 @@ public abstract class Controller<T>
    * @param theValue float
    * @return Controller
    */
-  @ControlP5.Layout
   public T setDefaultValue(final float theValue) {
     _myDefaultValue = theValue;
     return me;
@@ -344,7 +338,6 @@ public abstract class Controller<T>
    * @param theValue boolean
    * @return Controller
    */
-  @ControlP5.Layout
   public T setMoveable(final boolean theValue) {
     isMoveable = theValue;
     return me;
@@ -355,7 +348,6 @@ public abstract class Controller<T>
    *
    * @return boolean
    */
-  @ControlP5.Layout
   public boolean isMoveable() {
     return isMoveable;
   }
@@ -366,14 +358,12 @@ public abstract class Controller<T>
    * @param theValue boolean
    * @return Controller
    */
-  @ControlP5.Layout
   public T setLabelVisible(final boolean theValue) {
     isLabelVisible = theValue;
     return me;
   }
 
   /** @return boolean */
-  @ControlP5.Layout
   public boolean isLabelVisible() {
     return isLabelVisible;
   }
@@ -386,7 +376,6 @@ public abstract class Controller<T>
    * @param theFlag boolean
    * @return Controller
    */
-  @ControlP5.Layout
   public T setBroadcast(final boolean theFlag) {
     isBroadcast = theFlag;
     return me;
@@ -399,20 +388,17 @@ public abstract class Controller<T>
    *
    * @return boolean
    */
-  @ControlP5.Layout
   public boolean isBroadcast() {
     return isBroadcast;
   }
 
   /** get the position of a controller. e.g. Controller.getPosition().x; {@inheritDoc} */
-  @ControlP5.Layout
   public float[] getPosition() {
     return position;
   }
 
   /** {@inheritDoc} */
   @Override
-  @ControlP5.Layout
   public T setPosition(float[] thePos) {
     set(position, x(thePos), y(thePos));
     set(positionBuffer, x(thePos), y(thePos));
@@ -439,7 +425,6 @@ public abstract class Controller<T>
 
   /** {@inheritDoc} */
   @Override
-  @ControlP5.Invisible
   public T setAbsolutePosition(float[] thePos) {
     // TODO
     // doesnt work properly yet.
@@ -450,7 +435,6 @@ public abstract class Controller<T>
   }
 
   /** {@inheritDoc} */
-  @ControlP5.Invisible
   public T updateAbsolutePosition() {
     return me;
   }
@@ -461,7 +445,6 @@ public abstract class Controller<T>
    *
    * @exclude
    */
-  @ControlP5.Invisible
   public final void continuousUpdateEvents() {
     if (isBehavior) {
       if (_myBehavior.isActive() && !isMousePressed) {
@@ -474,7 +457,6 @@ public abstract class Controller<T>
    * updateEvents is used for internal updates of a controller. this method is final and can't be
    * overwritten.
    */
-  @ControlP5.Invisible
   public final T updateEvents() {
     if (isInside) {
       boolean moved =
@@ -616,7 +598,6 @@ public abstract class Controller<T>
     };
   }
 
-  @ControlP5.Invisible
   public final boolean setMousePressed(final boolean theStatus) {
     if (!isVisible && !isUserInteraction) {
       return false;
@@ -735,7 +716,6 @@ public abstract class Controller<T>
   }
 
   /** @see ControllerInterface.updateInternalEvents */
-  @ControlP5.Invisible
   public T updateInternalEvents(final PApplet theApplet) {
     return me;
   }
@@ -749,7 +729,6 @@ public abstract class Controller<T>
    * @see controlP5.ControllerView
    * @param theApplet PApplet
    */
-  @ControlP5.Invisible
   @Override
   public void draw(final PGraphics theGraphics) {
 
@@ -766,7 +745,6 @@ public abstract class Controller<T>
    * @param theElement ControllerInterface
    * @return Controller
    */
-  @ControlP5.Invisible
   public T add(final ControllerInterface<?> theElement) {
     ControlP5.L.warn(" add() not supported.");
     return me;
@@ -776,7 +754,6 @@ public abstract class Controller<T>
    * @param theElement ControllerInterface
    * @return Controller
    */
-  @ControlP5.Invisible
   public T remove(final ControllerInterface<?> theElement) {
     ControlP5.L.warn("remove() not supported.");
     return me;
@@ -1011,7 +988,6 @@ public abstract class Controller<T>
    * @param theParent ControllerInterface
    * @return Controller
    */
-  @ControlP5.Invisible
   public final T setParent(final ControllerInterface<?> theParent) {
     if (_myParent != null) {
       _myParent.remove(this);
@@ -1035,9 +1011,7 @@ public abstract class Controller<T>
    *
    * @return ControllerInterface
    */
-  @ControlP5.Invisible
   @Override
-  @ControlP5.Layout
   public ControllerInterface<?> getParent() {
     return _myParent;
   }
@@ -1083,7 +1057,6 @@ public abstract class Controller<T>
    *
    * @return boolean
    */
-  @ControlP5.Layout
   public boolean isActive() {
     return isActive;
   }
@@ -1239,7 +1212,6 @@ public abstract class Controller<T>
   }
 
   /** @param KeyEvent theEvent */
-  @ControlP5.Invisible
   public void keyEvent(final KeyEvent theEvent) {}
 
   /**
@@ -1248,7 +1220,6 @@ public abstract class Controller<T>
    * @param int theId
    * @return Controller
    */
-  @ControlP5.Layout
   public T setId(final int theId) {
     _myId = theId;
     return me;
@@ -1260,7 +1231,6 @@ public abstract class Controller<T>
    *
    * @return int
    */
-  @ControlP5.Layout
   public int getId() {
     return _myId;
   }
@@ -1363,7 +1333,6 @@ public abstract class Controller<T>
   }
 
   /** @param theValue float */
-  @ControlP5.Layout
   public T setValue(float theValue) {
     _myValue = theValue;
     broadcast(FLOAT);
@@ -1384,7 +1353,6 @@ public abstract class Controller<T>
    * @see Controller#getArrayValue()
    * @return float
    */
-  @ControlP5.Layout
   public float getValue() {
     return _myValue;
   }
@@ -1393,7 +1361,6 @@ public abstract class Controller<T>
    * @param theValue
    * @return Controller
    */
-  @ControlP5.Layout
   public T setStringValue(String theValue) {
     _myStringValue = theValue;
     return me;
@@ -1404,7 +1371,6 @@ public abstract class Controller<T>
    * @see Controller#getArrayValue()
    * @return String
    */
-  @ControlP5.Layout
   public String getStringValue() {
     return _myStringValue;
   }
@@ -1416,7 +1382,6 @@ public abstract class Controller<T>
    * @see Controller#getStringValue()
    * @return float[]
    */
-  @ControlP5.Layout
   public float[] getArrayValue() {
     return _myArrayValue;
   }
@@ -1437,7 +1402,6 @@ public abstract class Controller<T>
    * @param theArray
    * @return Controller
    */
-  @ControlP5.Layout
   public T setArrayValue(float[] theArray) {
     _myArrayValue = theArray;
     return me;
@@ -1507,14 +1471,12 @@ public abstract class Controller<T>
     return isUpdate;
   }
 
-  @ControlP5.Invisible
   public int getPickingColor() {
     return _myPickingColor;
   }
 
   /** {@inheritDoc} */
   @Override
-  @ControlP5.Layout
   public CColor getColor() {
     return color;
   }
@@ -1525,7 +1487,6 @@ public abstract class Controller<T>
    * @param theLabel
    * @return Controller
    */
-  @ControlP5.Layout
   public T setCaptionLabel(final String theLabel) {
     _myCaptionLabel.set(theLabel);
     return me;
@@ -1538,7 +1499,6 @@ public abstract class Controller<T>
    * @param theLabel
    * @return Controller
    */
-  @ControlP5.Layout
   public T setValueLabel(final String theLabel) {
     _myValueLabel.set(theLabel);
     return me;
@@ -1549,7 +1509,6 @@ public abstract class Controller<T>
    *
    * @return String
    */
-  @ControlP5.Invisible
   public String getLabel() {
     return _myCaptionLabel.getText();
   }
@@ -1624,7 +1583,6 @@ public abstract class Controller<T>
   }
 
   /** @return boolean */
-  @ControlP5.Layout
   @Override
   public boolean isVisible() {
     if (getParent() != null) {
@@ -1639,7 +1597,6 @@ public abstract class Controller<T>
    * @param theFlag boolean
    * @return Controller
    */
-  @ControlP5.Layout
   public T setVisible(final boolean theFlag) {
     isVisible = theFlag;
     if (theFlag == false) {
@@ -1675,7 +1632,6 @@ public abstract class Controller<T>
 
   /** {@inheritDoc} */
   @Override
-  @ControlP5.Layout
   public T setColorActive(final int theColor) {
     color.setActive(theColor);
     return me;
@@ -1683,7 +1639,6 @@ public abstract class Controller<T>
 
   /** {@inheritDoc} */
   @Override
-  @ControlP5.Layout
   public T setColorForeground(final int theColor) {
     color.setForeground(theColor);
     return me;
@@ -1691,7 +1646,6 @@ public abstract class Controller<T>
 
   /** {@inheritDoc} */
   @Override
-  @ControlP5.Layout
   public T setColorBackground(final int theColor) {
     color.setBackground(theColor);
     return me;
@@ -1703,7 +1657,6 @@ public abstract class Controller<T>
    * @param theColor
    * @return Controller
    */
-  @ControlP5.Layout
   public T setColorCaptionLabel(final int theColor) {
     color.setCaptionLabel(theColor);
     _myCaptionLabel.setColor(color.getCaptionLabel());
@@ -1714,7 +1667,6 @@ public abstract class Controller<T>
    * @param theColor
    * @return Controller
    */
-  @ControlP5.Layout
   public T setColorValueLabel(final int theColor) {
     color.setValueLabel(theColor);
     if (_myValueLabel != null) {
@@ -1850,13 +1802,11 @@ public abstract class Controller<T>
    * @see controlP5.Label
    * @return Label
    */
-  @ControlP5.Layout
   public Label getCaptionLabel() {
     return _myCaptionLabel;
   }
 
   /** @return Label */
-  @ControlP5.Layout
   public Label getValueLabel() {
     return _myValueLabel;
   }
@@ -1866,7 +1816,6 @@ public abstract class Controller<T>
    *
    * @return float
    */
-  @ControlP5.Layout
   public float getMax() {
     return _myMax;
   }
@@ -1876,7 +1825,6 @@ public abstract class Controller<T>
    *
    * @return float
    */
-  @ControlP5.Layout
   public float getMin() {
     return _myMin;
   }
@@ -1887,7 +1835,6 @@ public abstract class Controller<T>
    * @param theValue float
    * @return Controller
    */
-  @ControlP5.Layout
   public T setMin(float theValue) {
     _myMin = theValue;
     changeValue(getValue());
@@ -1900,7 +1847,6 @@ public abstract class Controller<T>
    * @param theValue float
    * @return Controller
    */
-  @ControlP5.Layout
   public T setMax(float theValue) {
     _myMax = theValue;
     changeValue(getValue());
@@ -1911,7 +1857,6 @@ public abstract class Controller<T>
    * @param theWidth
    * @return Controller
    */
-  @ControlP5.Layout
   public T setWidth(int theWidth) {
     width = theWidth;
     return me;
@@ -1921,20 +1866,17 @@ public abstract class Controller<T>
    * @param theHeight
    * @return Controller
    */
-  @ControlP5.Layout
   public T setHeight(int theHeight) {
     height = theHeight;
     return me;
   }
 
   /** @return int */
-  @ControlP5.Layout
   public int getWidth() {
     return width;
   }
 
   /** @return int */
-  @ControlP5.Layout
   public int getHeight() {
     return height;
   }
@@ -1946,7 +1888,6 @@ public abstract class Controller<T>
    * @param theValue
    * @return Controller
    */
-  @ControlP5.Layout
   public T setDecimalPrecision(int theValue) {
     _myDecimalPoints = theValue;
     // TODO transfer color values of existing label
@@ -1965,7 +1906,6 @@ public abstract class Controller<T>
   }
 
   /** @return int */
-  @ControlP5.Layout
   public int getDecimalPrecision() {
     return _myDecimalPoints;
   }
@@ -2052,7 +1992,6 @@ public abstract class Controller<T>
   }
 
   /** @return boolean */
-  @ControlP5.Layout
   public boolean isLock() {
     return isLock;
   }
@@ -2063,14 +2002,12 @@ public abstract class Controller<T>
    * @param theValue
    * @return Controller
    */
-  @ControlP5.Layout
   public T setLock(boolean theValue) {
     isLock = theValue;
     return me;
   }
 
   /** @exclude TODO */
-  @ControlP5.Invisible
   public T setUserInteraction(boolean theValue) {
     isUserInteraction = theValue;
     return me;
@@ -2080,7 +2017,6 @@ public abstract class Controller<T>
    * @exclude
    * @return boolean
    */
-  @ControlP5.Invisible
   public boolean isUserInteraction() {
     return isUserInteraction;
   }

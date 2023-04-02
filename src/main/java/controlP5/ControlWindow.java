@@ -228,7 +228,6 @@ public final class ControlWindow {
   }
 
   /** @exclude */
-  @ControlP5.Invisible
   public void updateEvents() {
     handleMouseOver();
     handleMouseWheelMoved();

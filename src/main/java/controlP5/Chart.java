@@ -328,13 +328,11 @@ public class Chart extends Controller<Chart> {
 
   /** @exclude */
   @Override
-  @ControlP5.Invisible
   public Chart updateDisplayMode(int theMode) {
     return updateViewMode(theMode);
   }
 
   /** @exclude */
-  @ControlP5.Invisible
   public Chart updateViewMode(int theMode) {
     _myDisplayMode = theMode;
     switch (theMode) {

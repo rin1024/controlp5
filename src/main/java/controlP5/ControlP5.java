@@ -58,16 +58,16 @@ import processing.event.MouseEvent;
  */
 public class ControlP5 extends ControlP5Base {
   /** @exclude */
-  @ControlP5.Invisible public ControlWindow controlWindow;
+  public ControlWindow controlWindow;
 
   /** @exclude */
-  @ControlP5.Invisible static CColor color = new CColor(THEME_CP52014);
+  static CColor color = new CColor(THEME_CP52014);
 
   /** @exclude */
-  @ControlP5.Invisible public PApplet papplet;
+  public PApplet papplet;
 
   /** @exclude */
-  @ControlP5.Invisible PGraphics pg;
+  PGraphics pg;
 
   int pgx = 0, pgy = 0, pgw = 0, pgh = 0;
   int ox = 0;
@@ -76,12 +76,12 @@ public class ControlP5 extends ControlP5Base {
   boolean isGraphics = false;
 
   /** @exclude */
-  @ControlP5.Invisible public static final String VERSION = Version.version;
+  public static final String VERSION = Version.version;
 
-  @ControlP5.Invisible public static final String BUILD_DATE = Version.buildDate;
+  public static final String BUILD_DATE = Version.buildDate;
 
   /** @exclude */
-  @ControlP5.Invisible public static boolean isApplet = false;
+  public static boolean isApplet = false;
 
   static int renderer = J2D;
 
@@ -89,7 +89,7 @@ public class ControlP5 extends ControlP5Base {
   public static boolean DEBUG;
 
   /** @exclude */
-  @ControlP5.Invisible public static final Logger L = Logger.getLogger(ControlP5.class.getName());
+  public static final Logger L = Logger.getLogger(ControlP5.class.getName());
 
   private Map<String, ControllerInterface<?>> _myControllerMap;
   protected ControlBroadcaster _myControlBroadcaster;
@@ -610,7 +610,6 @@ public class ControlP5 extends ControlP5Base {
    * @see controlP5.ControlP5#getAll(Class)
    * @return List<ControllerInterface>
    */
-  @ControlP5.Invisible
   public List<ControllerInterface<?>> getList() {
     LinkedList<ControllerInterface<?>> l = new LinkedList<ControllerInterface<?>>();
     l.addAll(controlWindow.getTabs().get());
@@ -676,7 +675,6 @@ public class ControlP5 extends ControlP5Base {
   }
 
   /** @exclude */
-  @ControlP5.Invisible
   public void pre() {
     Iterator<FieldChangedListener> itr = _myFieldChangedListenerMap.values().iterator();
     while (itr.hasNext()) {
@@ -689,7 +687,6 @@ public class ControlP5 extends ControlP5Base {
    *
    * @exclude
    */
-  @ControlP5.Invisible
   public void draw() {
     if (!isAutoDraw()) {
       controlWindow.draw();
@@ -909,7 +906,6 @@ public class ControlP5 extends ControlP5Base {
    * @param theFilePath
    * @return
    */
-  @ControlP5.Invisible
   public boolean loadLayout(String theFilePath) {
     theFilePath = checkPropertiesPath(theFilePath);
     File f = new File(theFilePath);

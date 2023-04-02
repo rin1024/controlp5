@@ -75,7 +75,6 @@ public class Icon extends Controller<Icon> {
 
   /** @exclude */
   @Override
-  @ControlP5.Invisible
   public void mousePressed() {
     isActive = getIsInside();
     isPressed = true;
@@ -87,7 +86,6 @@ public class Icon extends Controller<Icon> {
 
   /** @exclude */
   @Override
-  @ControlP5.Invisible
   public void mouseReleased() {
     isPressed = false;
     if (activateBy == RELEASE) {
@@ -116,7 +114,6 @@ public class Icon extends Controller<Icon> {
   }
 
   @Override
-  @ControlP5.Invisible
   public void mouseReleasedOutside() {
     mouseReleased();
   }
@@ -298,13 +295,11 @@ public class Icon extends Controller<Icon> {
   }
 
   @Override
-  @ControlP5.Invisible
   public Icon updateDisplayMode(int theMode) {
     return updateViewMode(theMode);
   }
 
   /** @exclude */
-  @ControlP5.Invisible
   public Icon updateViewMode(int theMode) {
     _myDisplayMode = theMode;
     switch (theMode) {

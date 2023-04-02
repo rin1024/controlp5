@@ -466,7 +466,6 @@ public class CheckBox extends ControlGroup<CheckBox> {
    *
    * @exclude
    */
-  @ControlP5.Invisible
   @Override
   public void controlEvent(ControlEvent theEvent) {
 

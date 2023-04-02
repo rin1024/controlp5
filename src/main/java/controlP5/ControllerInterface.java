@@ -29,7 +29,6 @@ import processing.event.KeyEvent;
 /** The ControllerInterface is inherited by all ControllerGroup and Controller classes. */
 public interface ControllerInterface<T> {
 
-  @ControlP5.Invisible
   public void init();
 
   public int getWidth();
@@ -56,10 +55,8 @@ public interface ControllerInterface<T> {
 
   public float[] getPosition();
 
-  @ControlP5.Invisible
   public T setPosition(float theX, float theY);
 
-  @ControlP5.Invisible
   public T setPosition(float[] thePosition);
 
   public float[] getAbsolutePosition();
@@ -80,20 +77,16 @@ public interface ControllerInterface<T> {
 
   public boolean isUpdate();
 
-  @ControlP5.Invisible
   public T updateEvents();
 
-  @ControlP5.Invisible
   public void continuousUpdateEvents();
 
   /**
    * a method for putting input events like e.g. mouse or keyboard events and queries. this has been
    * taken out of the draw method for better overwriting capability.
    */
-  @ControlP5.Invisible
   public T updateInternalEvents(PApplet theApplet);
 
-  @ControlP5.Invisible
   public void draw(PGraphics theGraphics);
 
   public T add(ControllerInterface<?> theElement);
@@ -112,10 +105,8 @@ public interface ControllerInterface<T> {
 
   public boolean setMousePressed(boolean theStatus);
 
-  @ControlP5.Invisible
   public void keyEvent(KeyEvent theEvent);
 
-  @ControlP5.Invisible
   public T setAddress(String theAddress);
 
   public T setId(int theValue);
@@ -146,7 +137,6 @@ public interface ControllerInterface<T> {
 
   public T moveTo(ControllerGroup<?> theGroup);
 
-  @ControlP5.Invisible
   public int getPickingColor();
 
   public ControllerProperty getProperty(String thePropertyName);
