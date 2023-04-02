@@ -39,6 +39,7 @@ import controlP5.controller.tab.*;
 import controlP5.controller.textarea.*;
 import controlP5.controller.textfield.*;
 import controlP5.controller.textlabel.*;
+import controlP5.controller.toggle.*;
 import java.util.ArrayList;
 import processing.core.PApplet;
 
@@ -1047,7 +1048,7 @@ public class ControlP5Legacy {
             y(base.currentGroupPointer.autoPosition),
             Toggle.autoWidth,
             Toggle.autoHeight);
-    base.linebreak(t, false, Toggle.autoWidth, Toggle.autoHeight, t.autoSpacing);
+    base.linebreak(t, false, Toggle.autoWidth, Toggle.autoHeight, t.getAutoSpacing());
     t.moveTo(base.currentGroupPointer);
     return t;
   }

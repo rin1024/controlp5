@@ -23,6 +23,7 @@ package controlP5;
 import controlP5.controller.*;
 import controlP5.controller.button.*;
 import controlP5.controller.icon.*;
+import controlP5.controller.toggle.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

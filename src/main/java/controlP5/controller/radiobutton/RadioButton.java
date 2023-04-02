@@ -21,6 +21,7 @@ package controlP5.controller.radiobutton;
  * @version ##version##
  */
 import controlP5.*;
+import controlP5.controller.toggle.*;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;

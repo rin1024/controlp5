@@ -1,4 +1,4 @@
-package controlP5;
+package controlP5.controller.toggle;
 
 /**
  * controlP5 is a processing gui library.
@@ -20,7 +20,7 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
-import controlP5.controller.*;
+import controlP5.*;
 import controlP5.controller.tab.*;
 import processing.core.PGraphics;
 import processing.core.PImage;
@@ -264,5 +264,9 @@ public class Toggle extends Controller<Toggle> {
         _myCaptionLabel.draw(theGraphics, 0, 0, theController);
       }
     }
+  }
+
+  public float[] getAutoSpacing() {
+    return autoSpacing;
   }
 }
