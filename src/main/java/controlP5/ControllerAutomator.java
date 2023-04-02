@@ -28,6 +28,7 @@ import controlP5.controller.numberbox.*;
 import controlP5.controller.scrollablelist.*;
 import controlP5.controller.slider.*;
 import controlP5.controller.textfield.*;
+import controlP5.controller.textlabel.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;

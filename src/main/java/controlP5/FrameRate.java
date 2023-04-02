@@ -22,6 +22,7 @@ package controlP5;
  */
 import controlP5.controller.*;
 import controlP5.controller.tab.*;
+import controlP5.controller.textlabel.*;
 import processing.core.PApplet;
 import processing.core.PGraphics;
 

@@ -1,4 +1,4 @@
-package controlP5;
+package controlP5.controller.textlabel;
 
 /**
  * controlP5 is a processing gui library.
@@ -20,7 +20,7 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
-import controlP5.controller.*;
+import controlP5.*;
 import controlP5.controller.tab.*;
 import java.util.Arrays;
 import java.util.List;
@@ -39,6 +39,8 @@ public class Textlabel extends Controller<Textlabel> {
   private boolean disabled;
 
   /**
+   * TODO: should to be change to protected
+   *
    * @param theControlP5 ControlP5
    * @param theParent Tab
    * @param theName String
@@ -46,7 +48,7 @@ public class Textlabel extends Controller<Textlabel> {
    * @param theX int
    * @param theY int
    */
-  protected Textlabel(
+  public Textlabel(
       final ControlP5 theControlP5,
       final Tab theParent,
       final String theName,
@@ -59,17 +61,20 @@ public class Textlabel extends Controller<Textlabel> {
   }
 
   /**
+   * TODO: should to be change to protected
+   *
    * @param theValue String
    * @param theX int
    * @param theY int
    */
-  protected Textlabel(final String theValue, final int theX, final int theY) {
+  public Textlabel(final String theValue, final int theX, final int theY) {
     super("", theX, theY);
     _myStringValue = theValue;
     setup();
   }
 
-  protected Textlabel(
+  /** TODO: should to be change to protected */
+  public Textlabel(
       final String theValue,
       final int theX,
       final int theY,
@@ -81,7 +86,7 @@ public class Textlabel extends Controller<Textlabel> {
     _myStringValue = theValue;
     _myValueLabel = new Label(cp5, _myStringValue, theW, theH, theColor);
     _myValueLabel.setFont(
-        cp5.controlFont == cp5.defaultFont ? cp5.defaultFontForText : cp5.controlFont);
+        cp5.getFont() == cp5.getDefaultFont() ? cp5.getDefaultFontForText() : cp5.getFont());
     _myValueLabel.setMultiline(false);
     _myValueLabel.toUpperCase(false);
   }
@@ -93,7 +98,7 @@ public class Textlabel extends Controller<Textlabel> {
     _myStringValue = theValue;
     _myValueLabel = new Label(cp5, _myStringValue, 10, 10, 0xffffffff);
     _myValueLabel.setFont(
-        cp5.controlFont == cp5.defaultFont ? cp5.defaultFontForText : cp5.controlFont);
+        cp5.getFont() == cp5.getDefaultFont() ? cp5.getDefaultFontForText() : cp5.getFont());
     _myValueLabel.set(_myStringValue);
     _myValueLabel.setMultiline(false);
     _myValueLabel.toUpperCase(false);
@@ -111,7 +116,7 @@ public class Textlabel extends Controller<Textlabel> {
     _myStringValue = theValue;
     _myValueLabel = new Label(cp5, _myStringValue, theW, theH, 0xffffffff);
     _myValueLabel.setFont(
-        cp5.controlFont == cp5.defaultFont ? cp5.defaultFontForText : cp5.controlFont);
+        cp5.getFont() == cp5.getDefaultFont() ? cp5.getDefaultFontForText() : cp5.getFont());
     _myValueLabel.setMultiline(false);
     _myValueLabel.toUpperCase(false);
   }
@@ -119,7 +124,7 @@ public class Textlabel extends Controller<Textlabel> {
   protected void setup() {
     _myValueLabel = new Label(cp5, _myStringValue);
     _myValueLabel.setFont(
-        cp5.controlFont == cp5.defaultFont ? cp5.defaultFontForText : cp5.controlFont);
+        cp5.getFont() == cp5.getDefaultFont() ? cp5.getDefaultFontForText() : cp5.getFont());
     _myValueLabel.setMultiline(false);
     _myValueLabel.toUpperCase(false);
   }
@@ -150,13 +155,13 @@ public class Textlabel extends Controller<Textlabel> {
   }
 
   public void draw() {
-    draw(cp5.pg);
+    draw(cp5.getGraphics());
   }
 
   public void draw(int theX, int theY) {
     cp5.papplet.pushMatrix();
     cp5.papplet.translate(theX, theY);
-    draw(cp5.pg);
+    draw(cp5.getGraphics());
     cp5.papplet.popMatrix();
   }
 
