@@ -5,6 +5,8 @@
  * broken with version 2.2.1+
  */
 
+import org.apache.log4j.Logger;
+import controlP5.controller.button.*;
 import controlP5.*;
 
 ControlP5 controlP5;

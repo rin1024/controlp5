@@ -1,4 +1,4 @@
-package controlP5;
+package controlP5.controller.multilist;
 
 /**
  * controlP5 is a processing gui library.
@@ -20,7 +20,7 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
-import controlP5.controller.*;
+import controlP5.*;
 import controlP5.controller.button.*;
 import processing.core.PApplet;
 import processing.core.PGraphics;
@@ -146,7 +146,7 @@ public class MultiList extends Controller<MultiList>
         new MultiListButton(
             cp5, theName, theValue, x, y, getWidth(), _myDefaultButtonHeight, this, this);
     b.toUpperCase(isUpperCase);
-    b.isMoveable = false;
+    b.setMoveable(false);
     cp5.register(null, "", b);
     b.addListener(this);
     getSubelements().add(b);

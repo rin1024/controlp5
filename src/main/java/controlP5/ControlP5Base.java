@@ -30,6 +30,7 @@ import controlP5.controller.icon.*;
 import controlP5.controller.knob.*;
 import controlP5.controller.listbox.*;
 import controlP5.controller.matrix.*;
+import controlP5.controller.multilist.*;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;

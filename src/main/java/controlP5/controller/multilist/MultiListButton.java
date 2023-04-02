@@ -1,4 +1,4 @@
-package controlP5.controller.button;
+package controlP5.controller.multilist;
 
 /**
  * controlP5 is a processing gui library.
@@ -21,6 +21,7 @@ package controlP5.controller.button;
  * @version ##version##
  */
 import controlP5.*;
+import controlP5.controller.button.*;
 
 /**
  * Used by MultiList.

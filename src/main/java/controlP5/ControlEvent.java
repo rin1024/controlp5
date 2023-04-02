@@ -21,6 +21,7 @@ package controlP5;
  * @version ##version##
  */
 import controlP5.controller.*;
+import controlP5.controller.multilist.*;
 
 /**
  * A controlEvent is sent to a PApplet or a ControlListener whenever a controller value has changed.
@@ -50,8 +51,12 @@ public class ControlEvent {
 
   protected int myAction;
 
-  /** @param theController Controller */
-  protected ControlEvent(Controller<?> theController) {
+  /**
+   * TODO: should to be change to protected
+   *
+   * @param theController Controller
+   */
+  public ControlEvent(Controller<?> theController) {
     _myController = theController;
     isTab = false;
     isController = true;
