@@ -22,6 +22,7 @@ package controlP5;
  */
 import static controlP5.Controller.*;
 
+import controlP5.controller.accordion.*;
 import controlP5.controller.bang.*;
 import controlP5.controller.button.*;
 import controlP5.controller.checkbox.*;

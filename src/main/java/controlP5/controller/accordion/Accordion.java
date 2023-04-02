@@ -1,4 +1,4 @@
-package controlP5;
+package controlP5.controller.accordion;
 
 /**
  * controlP5 is a processing gui library.
@@ -20,6 +20,7 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
+import controlP5.*;
 import controlP5.controller.tab.*;
 
 /**
@@ -42,7 +43,8 @@ public class Accordion extends ControlGroup<Accordion> {
     theControlP5.register(theControlP5.papplet, theName, this);
   }
 
-  Accordion(ControlP5 theControlP5, Tab theTab, String theName, int theX, int theY, int theW) {
+  public Accordion(
+      ControlP5 theControlP5, Tab theTab, String theName, int theX, int theY, int theW) {
     super(theControlP5, theTab, theName, theX, theY, theW, 9);
     hideBar();
   }
