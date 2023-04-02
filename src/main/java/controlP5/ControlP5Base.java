@@ -26,6 +26,8 @@ import controlP5.controller.*;
 import controlP5.controller.bang.*;
 import controlP5.controller.button.*;
 import controlP5.controller.checkbox.*;
+import controlP5.controller.icon.*;
+import controlP5.controller.knob.*;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;

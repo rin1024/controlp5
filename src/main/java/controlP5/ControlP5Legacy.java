@@ -26,6 +26,8 @@ import controlP5.controller.*;
 import controlP5.controller.bang.*;
 import controlP5.controller.button.*;
 import controlP5.controller.checkbox.*;
+import controlP5.controller.icon.*;
+import controlP5.controller.knob.*;
 import java.util.ArrayList;
 import processing.core.PApplet;
 
@@ -1066,7 +1068,7 @@ public class ControlP5Legacy {
             (int) x(base.currentGroupPointer.autoPosition),
             (int) y(base.currentGroupPointer.autoPosition),
             Knob.autoWidth);
-    base.linebreak(n, false, Knob.autoWidth, Knob.autoHeight, n.autoSpacing);
+    base.linebreak(n, false, Knob.autoWidth, Knob.autoHeight, n.getAutoSpacing());
     n.moveTo(base.currentGroupPointer);
     return n;
   }

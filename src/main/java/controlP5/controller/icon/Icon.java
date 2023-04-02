@@ -49,7 +49,8 @@ public class Icon extends Controller<Icon> {
     theControlP5.register(theControlP5.papplet, theName, this);
   }
 
-  protected Icon(
+  /** TODO: should to be change to protected */
+  public Icon(
       ControlP5 theControlP5,
       ControllerGroup<?> theParent,
       String theName,
