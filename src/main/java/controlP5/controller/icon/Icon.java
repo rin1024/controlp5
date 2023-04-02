@@ -1,4 +1,4 @@
-package controlP5;
+package controlP5.controller.icon;
 
 /**
  * controlP5 is a processing gui library.
@@ -20,6 +20,7 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
+import controlP5.*;
 import controlP5.controller.*;
 import processing.core.PApplet;
 import processing.core.PFont;
