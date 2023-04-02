@@ -1,4 +1,4 @@
-package controlP5.controller.dropdownList;
+package controlP5.controller.dropdownlist;
 
 import static controlP5.ControlP5.b;
 

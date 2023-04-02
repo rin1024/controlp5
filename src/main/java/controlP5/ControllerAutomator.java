@@ -22,7 +22,7 @@ package controlP5;
  */
 import controlP5.controller.*;
 import controlP5.controller.bang.*;
-import controlP5.controller.dropdownList.*;
+import controlP5.controller.dropdownlist.*;
 import controlP5.controller.knob.*;
 import controlP5.controller.listbox.*;
 import controlP5.controller.numberbox.*;
