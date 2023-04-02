@@ -91,12 +91,12 @@ public class Label implements CDrawable {
     _myControllerStyle = new ControllerStyle();
   }
 
-  Label setLabeltype(Labeltype theType) {
+  public Label setLabeltype(Labeltype theType) {
     _myLabeltype = theType;
     return this;
   }
 
-  Labeltype getLabeltype() {
+  public Labeltype getLabeltype() {
     return _myLabeltype;
   }
 
@@ -406,7 +406,8 @@ public class Label implements CDrawable {
     isToUpperCaseDefault = theValue;
   }
 
-  interface Labeltype {
+  /** TODO: should to be change to protected */
+  public interface Labeltype {
 
     public void draw(
         Label theLabel,
@@ -426,14 +427,16 @@ public class Label implements CDrawable {
     public String getTextFormatted();
   }
 
-  class SinglelineTextfield extends SinglelineLabel {
+  /** TODO: should to be change to protected */
+  public class SinglelineTextfield extends SinglelineLabel {
 
     public String getTextFormatted() {
       return _myText;
     }
   }
 
-  class SinglelineLabel implements Labeltype {
+  /** TODO: should to be change to protected */
+  public class SinglelineLabel implements Labeltype {
 
     private void align(PGraphics theGraphics, int theAlignX, int theAlignY, int theW, int theH) {
       int x = 0;

@@ -1,4 +1,4 @@
-package controlP5;
+package controlP5.controller.textfield;
 
 /**
  * controlP5 is a processing gui library.
@@ -20,7 +20,7 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
-import controlP5.controller.*;
+import controlP5.*;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -119,7 +119,7 @@ public class Textfield extends Controller<Textfield> {
 
     _myCaptionLabel = new Label(cp5, theName, 0, 0, color.getCaptionLabel());
     _myValueLabel.setFont(
-        cp5.controlFont == cp5.defaultFont ? cp5.defaultFontForText : cp5.controlFont);
+        cp5.getFont() == cp5.getDefaultFont() ? cp5.getDefaultFontForText() : cp5.getFont());
     _myCaptionLabel.align(ControlP5.LEFT, ControlP5.BOTTOM_OUTSIDE);
     _myCaptionLabel.setPaddingX(0);
 
@@ -274,8 +274,8 @@ public class Textfield extends Controller<Textfield> {
     if (isActive) {
       // TODO System.out.println("adjust cursor");
     }
-    int x = (int) (getControlWindow().mouseX - x(getAbsolutePosition()));
-    int y = (int) (getControlWindow().mouseY - y(getAbsolutePosition()));
+    int x = (int) (getControlWindow().getPointer().getX() - x(getAbsolutePosition()));
+    int y = (int) (getControlWindow().getPointer().getY() - y(getAbsolutePosition()));
 
     // TODO System.out.println(x + ":" + y);
     setFocus(true);
@@ -458,7 +458,8 @@ public class Textfield extends Controller<Textfield> {
   class MoveLeft implements TextfieldCommand {
 
     public void execute() {
-      setIndex(((cp5.modifiers & Event.META) > 0) ? 0 : PApplet.max(0, _myTextBufferIndex - 1));
+      setIndex(
+          ((cp5.getModifiers() & Event.META) > 0) ? 0 : PApplet.max(0, _myTextBufferIndex - 1));
     }
   }
 
@@ -466,7 +467,7 @@ public class Textfield extends Controller<Textfield> {
 
     public void execute() {
       setIndex(
-          ((cp5.modifiers & Event.META) > 0)
+          ((cp5.getModifiers() & Event.META) > 0)
               ? _myTextBuffer.length()
               : PApplet.min(_myTextBuffer.length(), _myTextBufferIndex + 1));
     }

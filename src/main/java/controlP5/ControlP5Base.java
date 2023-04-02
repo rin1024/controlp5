@@ -37,6 +37,7 @@ import controlP5.controller.scrollablelist.*;
 import controlP5.controller.slider.*;
 import controlP5.controller.tab.*;
 import controlP5.controller.textarea.*;
+import controlP5.controller.textfield.*;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
@@ -727,6 +728,10 @@ public class ControlP5Base extends ControlP5Legacy implements ControlP5Constants
   }
 
   protected int modifiers;
+
+  public int getModifiers() {
+    return modifiers;
+  }
 
   public boolean isShiftDown() {
     return (modifiers & Event.SHIFT & (cp5.isShortcuts() ? -1 : 1)) != 0;
