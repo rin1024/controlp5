@@ -1,4 +1,4 @@
-package controlP5;
+package controlP5.controller.bang;
 
 /**
  * controlP5 is a processing gui library.
@@ -20,6 +20,7 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
+import controlP5.*;
 import controlP5.controller.*;
 import processing.core.PGraphics;
 
@@ -48,7 +49,8 @@ public class Bang extends Controller<Bang> {
     theControlP5.register(theControlP5.papplet, theName, this);
   }
 
-  protected Bang(
+  /** TODO: should to be change to protected */
+  public Bang(
       ControlP5 theControlP5,
       ControllerGroup<?> theParent,
       String theName,
