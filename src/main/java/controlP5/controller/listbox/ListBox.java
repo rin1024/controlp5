@@ -1,4 +1,4 @@
-package controlP5;
+package controlP5.controller.listbox;
 
 /**
  * controlP5 is a processing gui library.
@@ -22,6 +22,7 @@ package controlP5;
  */
 import static controlP5.ControlP5.b;
 
+import controlP5.*;
 import controlP5.controller.*;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -64,7 +65,8 @@ public class ListBox extends Controller<ListBox> implements ControlListener {
     theControlP5.register(theControlP5.papplet, theName, this);
   }
 
-  protected ListBox(
+  /** TODO: should to be change to protected */
+  public ListBox(
       ControlP5 theControlP5,
       ControllerGroup<?> theGroup,
       String theName,
@@ -114,9 +116,14 @@ public class ListBox extends Controller<ListBox> implements ControlListener {
      * dimensions of the cp5 area, required since
      * PGraphics as render area has been introduced. */
     float x0 = PApplet.max(0, x(position) + x(_myParent.getAbsolutePosition()));
-    float x1 = PApplet.min(cp5.pgw, x(position) + x(_myParent.getAbsolutePosition()) + getWidth());
+    float x1 =
+        PApplet.min(
+            cp5.getGraphics().width, x(position) + x(_myParent.getAbsolutePosition()) + getWidth());
     float y0 = PApplet.max(0, y(position) + y(_myParent.getAbsolutePosition()));
-    float y1 = PApplet.min(cp5.pgh, y(position) + y(_myParent.getAbsolutePosition()) + getHeight());
+    float y1 =
+        PApplet.min(
+            cp5.getGraphics().height,
+            y(position) + y(_myParent.getAbsolutePosition()) + getHeight());
     if (y1 < y0) {
       float ty = y0;
       y0 = y1;

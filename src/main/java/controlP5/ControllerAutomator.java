@@ -23,6 +23,7 @@ package controlP5;
 import controlP5.controller.*;
 import controlP5.controller.bang.*;
 import controlP5.controller.knob.*;
+import controlP5.controller.listbox.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;

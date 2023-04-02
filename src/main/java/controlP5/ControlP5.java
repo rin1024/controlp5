@@ -240,6 +240,10 @@ public class ControlP5 extends ControlP5Base {
     return this;
   }
 
+  public PGraphics getGraphics() {
+    return pg;
+  }
+
   public ControlP5 setGraphics(PGraphics theGraphics, int theX, int theY) {
     pg = theGraphics;
     pgx = theX;
