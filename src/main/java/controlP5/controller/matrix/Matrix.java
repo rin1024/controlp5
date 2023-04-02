@@ -1,4 +1,4 @@
-package controlP5;
+package controlP5.controller.matrix;
 
 /**
  * controlP5 is a processing gui library.
@@ -20,7 +20,7 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
-import controlP5.controller.*;
+import controlP5.*;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import processing.core.PApplet;
