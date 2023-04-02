@@ -20,8 +20,9 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
-import static controlP5.Controller.*;
+import static controlP5.controller.Controller.*;
 
+import controlP5.controller.*;
 import java.util.ArrayList;
 import processing.core.PApplet;
 

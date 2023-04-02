@@ -21,6 +21,7 @@ package controlP5;
  * @version ##version##
  */
 import controlP5.ControlP5.Invisible;
+import controlP5.controller.*;
 import java.util.ArrayList;
 import processing.core.PApplet;
 import processing.core.PFont;

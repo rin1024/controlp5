@@ -20,6 +20,7 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
+import controlP5.controller.*;
 
 /**
  * control timer is a timer that can be used for example as a stop watch or a duration timer.

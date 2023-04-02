@@ -20,6 +20,7 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
+import controlP5.controller.*;
 
 /**
  * The abstract class control behavior allows you to add custom behavior to controllers. Since it is

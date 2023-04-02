@@ -71,8 +71,9 @@ test {
 // errorのdetailを出すように
 gradle.projectsEvaluated {
   tasks.withType(JavaCompile){
-    options.compilerArgs << "-Xlint:deprecation"
-    options.compilerArgs << "-Xlint:unchecked"
+    //options.compilerArgs << "-Xlint:deprecation"
+    //options.compilerArgs << "-Xlint:unchecked"
+    options.compilerArgs << "-Xlint:none"
   }
 }
 

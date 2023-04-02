@@ -20,6 +20,7 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
+import controlP5.controller.*;
 import java.util.ArrayList;
 import java.util.ListIterator;
 import processing.core.PApplet;

@@ -20,6 +20,7 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
+import controlP5.controller.*;
 import processing.core.PApplet;
 
 /** Constant variables used with ControlP5 are stored here. */

@@ -20,6 +20,7 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
+import controlP5.controller.*;
 import processing.core.PGraphics;
 
 public class Spacer extends Controller<Spacer> {

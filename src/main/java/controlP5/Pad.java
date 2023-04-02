@@ -20,6 +20,8 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
+import controlP5.controller.*;
+
 class Pad {
   // pad for placing controllers, like matrix but without the grid
   // a sequencer

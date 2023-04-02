@@ -20,6 +20,7 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
+import controlP5.controller.*;
 
 /**
  * Use a CallbackListener to listen for controller related actions such as pressed, released, etc.

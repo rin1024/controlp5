@@ -20,6 +20,8 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
+import controlP5.controller.*;
+
 public class Background extends ControlGroup<Background> {
 
   public Background(

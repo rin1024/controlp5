@@ -20,6 +20,7 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
+import controlP5.controller.*;
 import java.lang.reflect.Constructor;
 import java.util.Arrays;
 import processing.core.PApplet;

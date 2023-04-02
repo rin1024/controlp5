@@ -20,6 +20,7 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
+import controlP5.controller.*;
 
 /*
  * Backwards compatibility, cp5magic for example uses it.

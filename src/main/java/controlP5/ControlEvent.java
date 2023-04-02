@@ -20,6 +20,7 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
+import controlP5.controller.*;
 
 /**
  * A controlEvent is sent to a PApplet or a ControlListener whenever a controller value has changed.

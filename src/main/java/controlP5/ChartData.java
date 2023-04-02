@@ -20,6 +20,7 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
+import controlP5.controller.*;
 
 /** Used by Chart, single chart data is stored here including value, (label) text, and color. */
 public class ChartData {

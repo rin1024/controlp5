@@ -20,6 +20,7 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
+import controlP5.controller.*;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import processing.core.PApplet;

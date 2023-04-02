@@ -20,6 +20,7 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
+import controlP5.controller.*;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;

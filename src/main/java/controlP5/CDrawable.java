@@ -20,6 +20,7 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
+import controlP5.controller.*;
 import processing.core.PGraphics;
 
 /** The CDrawable interface is used to draw controllers, primarily for internal use. */
