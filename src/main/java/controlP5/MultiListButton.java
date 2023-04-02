@@ -220,7 +220,8 @@ public class MultiListButton extends Button implements MultiListInterface {
   }
 
   public boolean observe() {
-    return CP.inside(_myRect, _myControlWindow.mouseX, _myControlWindow.mouseY);
+    return CP.inside(
+        _myRect, _myControlWindow.getPointer().getX(), _myControlWindow.getPointer().getY());
   }
 
   public void close(MultiListInterface theInterface) {

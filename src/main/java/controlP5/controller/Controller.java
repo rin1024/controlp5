@@ -460,8 +460,11 @@ public abstract class Controller<T>
   public final T updateEvents() {
     if (isInside) {
       boolean moved =
-          ((_myControlWindow.mouseX - _myControlWindow.pmouseX) != 0
-              || (_myControlWindow.mouseY - _myControlWindow.pmouseY) != 0);
+          ((_myControlWindow.getPointer().getX() - _myControlWindow.getPointer().getPreviousX())
+                  != 0
+              || (_myControlWindow.getPointer().getY()
+                      - _myControlWindow.getPointer().getPreviousY())
+                  != 0);
       if (isMousePressed) {
         if (moved) {
           if (!isDragged) {
@@ -486,8 +489,12 @@ public abstract class Controller<T>
         if (!cp5.isMoveable) {
           set(
               positionBuffer,
-              x(positionBuffer) + _myControlWindow.mouseX - _myControlWindow.pmouseX,
-              y(positionBuffer) + _myControlWindow.mouseY - _myControlWindow.pmouseY);
+              x(positionBuffer)
+                  + _myControlWindow.getPointer().getX()
+                  - _myControlWindow.getPointer().getPreviousX(),
+              y(positionBuffer)
+                  + _myControlWindow.getPointer().getY()
+                  - _myControlWindow.getPointer().getPreviousY());
           if (cp5.isShiftDown()) {
             set(
                 position,
@@ -545,28 +552,28 @@ public abstract class Controller<T>
 
       public int x() {
         return (int)
-            (_myControlWindow.mouseX
+            (_myControlWindow.getPointer().getX()
                 - Controller.x(_myParent.getAbsolutePosition())
                 - Controller.x(position));
       }
 
       public int y() {
         return (int)
-            (_myControlWindow.mouseY
+            (_myControlWindow.getPointer().getY()
                 - Controller.y(_myParent.getAbsolutePosition())
                 - Controller.y(position));
       }
 
       public int px() {
         return (int)
-            (_myControlWindow.pmouseX
+            (_myControlWindow.getPointer().getPreviousX()
                 - Controller.x(_myParent.getAbsolutePosition())
                 - Controller.x(position));
       }
 
       public int py() {
         return (int)
-            (_myControlWindow.pmouseY
+            (_myControlWindow.getPointer().getPreviousY()
                 - Controller.y(_myParent.getAbsolutePosition())
                 - Controller.y(position));
       }
@@ -1037,10 +1044,10 @@ public abstract class Controller<T>
     float x1 = PApplet.min(cp5.pgw, x(position) + x(_myParent.getAbsolutePosition()) + getWidth());
     float y0 = PApplet.max(0, y(position) + y(_myParent.getAbsolutePosition()));
     float y1 = PApplet.min(cp5.pgh, y(position) + y(_myParent.getAbsolutePosition()) + getHeight());
-    return (_myControlWindow.mouseX > x0
-        && _myControlWindow.mouseX < x1
-        && _myControlWindow.mouseY > y0
-        && _myControlWindow.mouseY < y1);
+    return (_myControlWindow.getPointer().getX() > x0
+        && _myControlWindow.getPointer().getX() < x1
+        && _myControlWindow.getPointer().getY() > y0
+        && _myControlWindow.getPointer().getY() < y1);
   }
 
   /**

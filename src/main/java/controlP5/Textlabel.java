@@ -242,11 +242,11 @@ public class Textlabel extends Controller<Textlabel> {
   }
 
   protected boolean inside() {
-    return (_myControlWindow.mouseX > x(position) + x(_myParent.getAbsolutePosition())
-        && _myControlWindow.mouseX
+    return (_myControlWindow.getPointer().getX() > x(position) + x(_myParent.getAbsolutePosition())
+        && _myControlWindow.getPointer().getX()
             < x(position) + x(_myParent.getAbsolutePosition()) + _myValueLabel.getWidth()
-        && _myControlWindow.mouseY > y(position) + y(_myParent.getAbsolutePosition())
-        && _myControlWindow.mouseY
+        && _myControlWindow.getPointer().getY() > y(position) + y(_myParent.getAbsolutePosition())
+        && _myControlWindow.getPointer().getY()
             < y(position) + y(_myParent.getAbsolutePosition()) + _myValueLabel.getHeight());
   }
 

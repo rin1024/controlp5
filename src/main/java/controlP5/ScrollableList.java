@@ -122,10 +122,10 @@ public class ScrollableList extends Controller<ScrollableList> implements Contro
       y0 = y1;
       y1 = ty;
     }
-    return (_myControlWindow.mouseX > x0
-        && _myControlWindow.mouseX < x1
-        && _myControlWindow.mouseY > (y1 < y0 ? y1 : y0)
-        && _myControlWindow.mouseY < (y0 < y1 ? y1 : y0));
+    return (_myControlWindow.getPointer().getX() > x0
+        && _myControlWindow.getPointer().getX() < x1
+        && _myControlWindow.getPointer().getY() > (y1 < y0 ? y1 : y0)
+        && _myControlWindow.getPointer().getY() < (y0 < y1 ? y1 : y0));
   }
 
   @Override

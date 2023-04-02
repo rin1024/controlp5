@@ -530,7 +530,7 @@ public class Slider extends Controller<Slider> {
     void update() {
       float f =
           _myMin
-              + (-(_myControlWindow.mouseY
+              + (-(_myControlWindow.getPointer().getY()
                       - (y(_myParent.getAbsolutePosition()) + y(position))
                       - getHeight()))
                   * _myUnit;
@@ -540,7 +540,7 @@ public class Slider extends Controller<Slider> {
     void updateInternalEvents(PApplet theApplet) {
       float f =
           _myMin
-              + (-(_myControlWindow.mouseY
+              + (-(_myControlWindow.getPointer().getY()
                       - (y(_myParent.getAbsolutePosition()) + y(position))
                       - getHeight()))
                   * _myUnit;
@@ -620,7 +620,8 @@ public class Slider extends Controller<Slider> {
     void update() {
       float f =
           _myMin
-              + (_myControlWindow.mouseX - (x(_myParent.getAbsolutePosition()) + x(position)))
+              + (_myControlWindow.getPointer().getX()
+                      - (x(_myParent.getAbsolutePosition()) + x(position)))
                   * _myUnit;
       setValue(PApplet.map(f, 0, 1, _myMinReal, _myMaxReal));
     }
@@ -628,7 +629,8 @@ public class Slider extends Controller<Slider> {
     void updateInternalEvents(PApplet theApplet) {
       float f =
           _myMin
-              + (_myControlWindow.mouseX - (x(_myParent.getAbsolutePosition()) + x(position)))
+              + (_myControlWindow.getPointer().getX()
+                      - (x(_myParent.getAbsolutePosition()) + x(position)))
                   * _myUnit;
       setValue(PApplet.map(f, 0, 1, _myMinReal, _myMaxReal));
     }
