@@ -1,4 +1,4 @@
-package controlP5;
+package controlP5.controller.range;
 
 /**
  * controlP5 is a processing gui library.
@@ -20,8 +20,7 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
-import controlP5.ControlP5.Invisible;
-import controlP5.controller.*;
+import controlP5.*;
 import java.util.ArrayList;
 import processing.core.PApplet;
 import processing.core.PFont;
@@ -198,7 +197,6 @@ public class Range extends Controller<Range> {
   }
 
   @Override
-  @Invisible
   public void mousePressed() {
 
     final float posX = x(_myParent.getAbsolutePosition()) + x(position);
