@@ -61,7 +61,8 @@ public class CColor implements Serializable {
     return this;
   }
 
-  protected CColor copyTo(ControllerInterface<?> theControl) {
+  /** TODO: should to be change to protected */
+  public CColor copyTo(ControllerInterface<?> theControl) {
     theControl.setColorBackground(colorBackground);
     theControl.setColorForeground(colorForeground);
     theControl.setColorActive(colorActive);

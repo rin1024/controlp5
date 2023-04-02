@@ -1,4 +1,4 @@
-package controlP5;
+package controlP5.controller.checkbox;
 
 /**
  * controlP5 is a processing gui library.
@@ -20,6 +20,7 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
+import controlP5.*;
 import controlP5.controller.*;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -84,7 +85,7 @@ public class CheckBox extends ControlGroup<CheckBox> {
   public final CheckBox activateAll() {
     int n = _myRadioToggles.size();
     for (int i = 0; i < n; i++) {
-      _myRadioToggles.get(i).activate();
+      _myRadioToggles.get(i).setState(true);
     }
     updateValues();
     return this;
@@ -93,7 +94,7 @@ public class CheckBox extends ControlGroup<CheckBox> {
   /** Activates a single checkbox item by index */
   public final CheckBox activate(int theIndex) {
     if (theIndex < _myRadioToggles.size()) {
-      _myRadioToggles.get(theIndex).activate();
+      _myRadioToggles.get(theIndex).setState(true);
       updateValues();
     }
     return this;
@@ -102,7 +103,7 @@ public class CheckBox extends ControlGroup<CheckBox> {
   /** deactivate a single checkbox item by index */
   public final CheckBox deactivate(int theIndex) {
     if (theIndex < _myRadioToggles.size()) {
-      _myRadioToggles.get(theIndex).deactivate();
+      _myRadioToggles.get(theIndex).setState(false);
       updateValues();
     }
     return this;
@@ -113,9 +114,9 @@ public class CheckBox extends ControlGroup<CheckBox> {
     if (theIndex < _myRadioToggles.size()) {
       Toggle t = _myRadioToggles.get(theIndex);
       if (t.getState() == true) {
-        t.deactivate();
+        t.setState(false);
       } else {
-        t.activate();
+        t.setState(true);
       }
       updateValues();
     }
@@ -129,9 +130,9 @@ public class CheckBox extends ControlGroup<CheckBox> {
       Toggle t = _myRadioToggles.get(i);
       if (theName.equals(t.getName())) {
         if (t.getState() == true) {
-          t.deactivate();
+          t.setState(false);
         } else {
-          t.activate();
+          t.setState(true);
         }
         updateValues();
         return;
@@ -145,7 +146,7 @@ public class CheckBox extends ControlGroup<CheckBox> {
     for (int i = 0; i < n; i++) {
       Toggle t = _myRadioToggles.get(i);
       if (theName.equals(t.getName())) {
-        t.activate();
+        t.setState(true);
         updateValues();
         return this;
       }
@@ -159,7 +160,7 @@ public class CheckBox extends ControlGroup<CheckBox> {
     for (int i = 0; i < n; i++) {
       Toggle t = _myRadioToggles.get(i);
       if (theName.equals(t.getName())) {
-        t.deactivate();
+        t.setState(false);
         updateValues();
         return this;
       }
@@ -181,9 +182,9 @@ public class CheckBox extends ControlGroup<CheckBox> {
     for (int i = 0; i < theArray.length; i++) {
       if (_myArrayValue[i] != theArray[i]) {
         if (theArray[i] == 0) {
-          _myRadioToggles.get(i).deactivate();
+          _myRadioToggles.get(i).setState(false);
         } else {
-          _myRadioToggles.get(i).activate();
+          _myRadioToggles.get(i).setState(true);
         }
       }
     }
@@ -245,9 +246,9 @@ public class CheckBox extends ControlGroup<CheckBox> {
    */
   public CheckBox addItem(final Toggle theToggle, final float theValue) {
     theToggle.setGroup(this);
-    theToggle.isMoveable = false;
+    theToggle.setMoveable(false);
     theToggle.setInternalValue(theValue);
-    theToggle.isBroadcast = false;
+    theToggle.setBroadcast(false);
     _myRadioToggles.add(theToggle);
     updateLayout();
     getColor().copyTo(theToggle);
@@ -399,7 +400,7 @@ public class CheckBox extends ControlGroup<CheckBox> {
     int n = _myRadioToggles.size();
     for (int i = 0; i < n; i++) {
       Toggle t = _myRadioToggles.get(i);
-      set(t.position, xx, yy);
+      set(t.getPosition(), xx, yy);
 
       xx += t.getWidth() + spacingColumn;
       nn++;
@@ -454,7 +455,7 @@ public class CheckBox extends ControlGroup<CheckBox> {
     }
     int n = _myRadioToggles.size();
     for (int i = 0; i < n; i++) {
-      ((Toggle) _myRadioToggles.get(i)).deactivate();
+      ((Toggle) _myRadioToggles.get(i)).setState(false);
     }
     _myValue = -1;
     updateValues(true);
@@ -485,9 +486,9 @@ public class CheckBox extends ControlGroup<CheckBox> {
       for (int i = 0; i < n; i++) {
         Toggle t = _myRadioToggles.get(i);
         if (!t.equals(theEvent.getController())) {
-          t.deactivate();
+          t.setState(false);
         } else {
-          if (t.isOn) {
+          if (t.getState()) {
             _myValue = t.internalValue();
           }
         }

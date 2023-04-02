@@ -25,6 +25,7 @@ import static controlP5.Controller.*;
 import controlP5.controller.*;
 import controlP5.controller.bang.*;
 import controlP5.controller.button.*;
+import controlP5.controller.checkbox.*;
 import java.util.ArrayList;
 import processing.core.PApplet;
 

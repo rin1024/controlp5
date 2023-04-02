@@ -23,6 +23,7 @@ package controlP5;
 import controlP5.ControlWindow.Pointer;
 import controlP5.controller.*;
 import controlP5.controller.button.*;
+import controlP5.controller.checkbox.*;
 import java.io.File;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
