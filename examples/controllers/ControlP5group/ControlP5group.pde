@@ -10,7 +10,9 @@
 *
 */
 
-import controlP5.*;
+import controlP5.app.ControlP5;
+import controlP5.ControlEvent;
+import controlP5.Group;
 import org.apache.log4j.Logger;
 
 ControlP5 cp5;

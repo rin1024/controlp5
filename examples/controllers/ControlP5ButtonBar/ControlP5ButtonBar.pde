@@ -10,10 +10,12 @@
  
 import org.apache.log4j.Logger;
 import controlP5.controller.button.*;
-import controlP5.*;
+import controlP5.app.ControlP5;
+import controlP5.ControlEvent;
+import controlP5.CallbackEvent;
+import controlP5.CallbackListener;
 
 ControlP5 cp5;
-
 
 void setup() {
   size(400, 400);

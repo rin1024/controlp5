@@ -11,7 +11,8 @@
  */
  
 import org.apache.log4j.Logger;
-import controlP5.*;
+import controlP5.app.ControlP5;
+import controlP5.ControlEvent;
 
 ControlP5 cp5;
 

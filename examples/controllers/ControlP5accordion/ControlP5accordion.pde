@@ -15,7 +15,9 @@
  *
  */
 
-import controlP5.*;
+import controlP5.Group;
+import controlP5.ControlKey;
+import controlP5.app.ControlP5;
 import controlP5.controller.accordion.*;
 import org.apache.log4j.Logger;
 

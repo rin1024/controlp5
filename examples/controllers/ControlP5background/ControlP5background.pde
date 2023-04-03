@@ -10,7 +10,7 @@
 *
 */
 
-import controlP5.*;
+import controlP5.app.ControlP5;
 import controlP5.controller.background.*;
 import controlP5.controller.toggle.*;
 import org.apache.log4j.Logger;

@@ -9,8 +9,9 @@
  *
  */
 
-
-import controlP5.*;
+import controlP5.app.ControlP5;
+import controlP5.ControlEvent;
+import controlP5.CColor;
 import controlP5.controller.scrollablelist.*;
 import java.util.*;
 import org.apache.log4j.Logger;
