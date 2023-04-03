@@ -42,7 +42,7 @@ public class ButtonBar extends Controller<ButtonBar> {
   /** Convenience constructor to extend ButtonBar. */
   public ButtonBar(ControlP5 theControlP5, String theName) {
     this(theControlP5, theControlP5.getDefaultTab(), theName, 0, 0, autoWidth, autoHeight);
-    theControlP5.register(theControlP5.papplet, theName, this);
+    theControlP5.register(theControlP5.getApp(), theName, this);
   }
 
   /** TODO: should to be change to protected */

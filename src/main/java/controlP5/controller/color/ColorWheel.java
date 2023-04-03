@@ -57,7 +57,7 @@ public class ColorWheel extends Controller<ColorWheel> {
 
   public ColorWheel(ControlP5 theControlP5, String theName) {
     this(theControlP5, theControlP5.getDefaultTab(), theName, 0, 0, autoWidth, autoHeight);
-    theControlP5.register(theControlP5.papplet, theName, this);
+    theControlP5.register(theControlP5.getApp(), theName, this);
   }
 
   public ColorWheel(
@@ -71,7 +71,7 @@ public class ColorWheel extends Controller<ColorWheel> {
     super(theControlP5, theParent, theName, theX, theY, theWidth, theHeight);
 
     _myColorResources = new HashMap<String, PGraphics>();
-    _myColorResources.put("default", cp5.papplet.createGraphics(theWidth, theHeight));
+    _myColorResources.put("default", cp5.getApp().createGraphics(theWidth, theHeight));
     _myCursor = new float[] {getWidth() / 2, getHeight() / 2};
     _myCaptionLabel.align(LEFT, BOTTOM_OUTSIDE);
     _myCaptionLabel.setPaddingX(0);

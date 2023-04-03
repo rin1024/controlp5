@@ -150,7 +150,7 @@ public abstract class Controller<T>
    */
   public Controller(ControlP5 theControlP5, String theName) {
     this(theControlP5, theControlP5.getDefaultTab(), theName, 0, 0, autoWidth, autoHeight);
-    theControlP5.register(theControlP5.papplet, theName, this);
+    theControlP5.register(theControlP5.getApp(), theName, this);
   }
 
   protected Controller(
@@ -236,7 +236,7 @@ public abstract class Controller<T>
     // method inside
     // the main papplet is done by the
     // controlbroadcaster.
-    cp5.getControlBroadcaster().plug(cp5.papplet, this, _myName);
+    cp5.getControlBroadcaster().plug(cp5.getApp(), this, _myName);
     initControllerValue();
     isInit = cp5.isAutoInitialization;
     setValue(_myDefaultValue);
@@ -1049,9 +1049,14 @@ public abstract class Controller<T>
     /* constrain the bounds of the controller to the dimensions of the cp5 area, required since PGraphics as render
      * area has been introduced. */
     float x0 = PApplet.max(0, x(position) + x(_myParent.getAbsolutePosition()));
-    float x1 = PApplet.min(cp5.pgw, x(position) + x(_myParent.getAbsolutePosition()) + getWidth());
+    float x1 =
+        PApplet.min(
+            cp5.getGraphics().width, x(position) + x(_myParent.getAbsolutePosition()) + getWidth());
     float y0 = PApplet.max(0, y(position) + y(_myParent.getAbsolutePosition()));
-    float y1 = PApplet.min(cp5.pgh, y(position) + y(_myParent.getAbsolutePosition()) + getHeight());
+    float y1 =
+        PApplet.min(
+            cp5.getGraphics().height,
+            y(position) + y(_myParent.getAbsolutePosition()) + getHeight());
     return (_myControlWindow.getPointer().getX() > x0
         && _myControlWindow.getPointer().getX() < x1
         && _myControlWindow.getPointer().getY() > y0

@@ -69,12 +69,13 @@ public class ControlP5 extends ControlP5Base {
   static CColor color = new CColor(THEME_CP52014);
 
   /** @exclude */
-  public PApplet papplet;
+  protected PApplet papplet;
 
   /** @exclude */
   PGraphics pg;
 
-  int pgx = 0, pgy = 0, pgw = 0, pgh = 0;
+  int pgx = 0;
+  int pgy = 0;
   int ox = 0;
   int oy = 0;
 
@@ -86,15 +87,12 @@ public class ControlP5 extends ControlP5Base {
   public static final String BUILD_DATE = Version.buildDate;
 
   /** @exclude */
-  public static boolean isApplet = false;
+  protected static boolean isApplet = false;
 
   static int renderer = J2D;
 
-  /** use this static variable to turn DEBUG on or off. */
-  public static boolean DEBUG;
-
   /** @exclude */
-  public static final Logger L = Logger.getLogger(ControlP5.class.getName());
+  protected static final Logger L = Logger.getLogger(ControlP5.class.getName());
 
   private Map<String, ControllerInterface<?>> _myControllerMap;
   protected ControlBroadcaster _myControlBroadcaster;
@@ -236,6 +234,10 @@ public class ControlP5 extends ControlP5Base {
     L.info("ControlP5 " + VERSION + " " + BUILD_DATE);
   }
 
+  public PApplet getApp() {
+    return papplet;
+  }
+
   public ControlP5 setGraphics(PApplet theApplet, int theX, int theY) {
     setGraphics(theApplet.g, theX, theY);
     isGraphics = false;
@@ -258,8 +260,6 @@ public class ControlP5 extends ControlP5Base {
     pg = theGraphics;
     pgx = theX;
     pgy = theY;
-    pgw = pg.width;
-    pgh = pg.height;
     isGraphics = true;
     return this;
   }

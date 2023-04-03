@@ -23,6 +23,7 @@ package controlP5.controller.toggle;
 import controlP5.*;
 import controlP5.controller.tab.*;
 import controlP5.label.Label;
+import org.apache.log4j.Logger;
 import processing.core.PGraphics;
 import processing.core.PImage;
 
@@ -33,6 +34,8 @@ import processing.core.PImage;
  * @nosuperclasses Controller Controller
  */
 public class Toggle extends Controller<Toggle> {
+  /** @exclude */
+  protected static final Logger L = Logger.getLogger(Toggle.class.getName());
 
   protected int cnt;
   protected boolean isOn = false;
@@ -50,7 +53,7 @@ public class Toggle extends Controller<Toggle> {
    */
   public Toggle(ControlP5 theControlP5, String theName) {
     this(theControlP5, theControlP5.getDefaultTab(), theName, 0, 0, 0, autoWidth, autoHeight);
-    theControlP5.register(theControlP5.papplet, theName, this);
+    theControlP5.register(theControlP5.getApp(), theName, this);
   }
 
   public Toggle(

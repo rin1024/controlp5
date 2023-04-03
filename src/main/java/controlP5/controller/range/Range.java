@@ -24,6 +24,7 @@ import controlP5.*;
 import controlP5.font.*;
 import controlP5.label.Label;
 import java.util.ArrayList;
+import org.apache.log4j.Logger;
 import processing.core.PApplet;
 import processing.core.PFont;
 import processing.core.PGraphics;
@@ -36,6 +37,8 @@ import processing.core.PGraphics;
  * @nosuperclasses Controller Controller
  */
 public class Range extends Controller<Range> {
+  /** @exclude */
+  protected static final Logger L = Logger.getLogger(Range.class.getName());
 
   /* TODO if range value is int, value labels do initialize as floats. first click makes them
    * display as ints without decimal point */
@@ -75,7 +78,7 @@ public class Range extends Controller<Range> {
    */
   public Range(ControlP5 theControlP5, String theName) {
     this(theControlP5, theControlP5.getDefaultTab(), theName, 0, 100, 0, 100, 0, 0, 99, 9);
-    theControlP5.register(theControlP5.papplet, theName, this);
+    theControlP5.register(theControlP5.getApp(), theName, this);
   }
 
   /**
@@ -448,7 +451,7 @@ public class Range extends Controller<Range> {
 
     public void display(PGraphics theGraphics, Range theController) {
 
-      ControlP5.L.info("RangeSpriteDisplay not available.");
+      L.info("RangeSpriteDisplay not available.");
     }
   }
 
@@ -529,7 +532,7 @@ public class Range extends Controller<Range> {
 
     public void display(PGraphics theGraphics, Range theController) {
 
-      ControlP5.L.info("RangeImageDisplay not implemented.");
+      L.info("RangeImageDisplay not implemented.");
     }
   }
 

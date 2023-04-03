@@ -402,7 +402,7 @@ public class ControlP5Base extends ControlP5Legacy implements ControlP5Constants
   public void linebreak(
       Controller<?> theController, boolean theFlag, int theW, int theH, float[] theSpacing) {
     if (x(currentGroupPointer.autoPosition) + x(theController.autoSpacing) + theW
-        > cp5.papplet.width) {
+        > cp5.getApp().width) {
       float x = x(currentGroupPointer.autoPosition) + currentGroupPointer.autoPositionOffsetX;
       float y = y(currentGroupPointer.autoPosition) + currentGroupPointer.tempAutoPositionHeight;
       set(currentGroupPointer.autoPosition, x, y);

@@ -50,7 +50,7 @@ public class ControlGroup<T> extends ControllerGroup<T> implements ControlListen
   /** Convenience constructor to extend ControlGroup. */
   public ControlGroup(ControlP5 theControlP5, String theName) {
     this(theControlP5, theControlP5.getDefaultTab(), theName, 0, 0, 100, 9);
-    theControlP5.register(theControlP5.papplet, theName, this);
+    theControlP5.register(theControlP5.getApp(), theName, this);
   }
 
   public ControlGroup(

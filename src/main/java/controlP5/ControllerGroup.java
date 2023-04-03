@@ -81,7 +81,7 @@ public abstract class ControllerGroup<T>
   /** Convenience constructor to extend ControllerGroup. */
   public ControllerGroup(ControlP5 theControlP5, String theName) {
     this(theControlP5, theControlP5.getDefaultTab(), theName, 0, 0);
-    theControlP5.register(theControlP5.papplet, theName, this);
+    theControlP5.register(theControlP5.getApp(), theName, this);
   }
 
   public ControllerGroup(
@@ -403,7 +403,7 @@ public abstract class ControllerGroup<T>
       theGraphics.pushMatrix();
       theGraphics.translate(x(position), y(position));
       preDraw(theGraphics);
-      drawControllers(cp5.papplet, theGraphics);
+      drawControllers(cp5.getApp(), theGraphics);
       postDraw(theGraphics);
       if (_myValueLabel != null) {
         _myValueLabel.draw(theGraphics, 2, 2, this);
@@ -449,7 +449,7 @@ public abstract class ControllerGroup<T>
    */
   public Canvas addCanvas(Canvas theCanvas) {
     _myCanvas.add(theCanvas);
-    // TODO theCanvas.setup( cp5.papplet );
+    // TODO theCanvas.setup( cp5.getApp() );
     return theCanvas;
   }
 

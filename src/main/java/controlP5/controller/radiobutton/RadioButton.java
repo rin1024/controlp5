@@ -27,6 +27,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.log4j.Logger;
 import processing.core.PImage;
 
 /**
@@ -44,6 +45,8 @@ import processing.core.PImage;
  * @nosuperclasses Controller Controller
  */
 public class RadioButton extends ControlGroup<RadioButton> {
+  /** @exclude */
+  protected static final Logger L = Logger.getLogger(RadioButton.class.getName());
 
   protected List<Toggle> _myRadioToggles;
   protected int spacingRow = 1;
@@ -71,7 +74,7 @@ public class RadioButton extends ControlGroup<RadioButton> {
    */
   public RadioButton(ControlP5 theControlP5, String theName) {
     this(theControlP5, theControlP5.getDefaultTab(), theName, 0, 0);
-    theControlP5.register(theControlP5.papplet, theName, this);
+    theControlP5.register(theControlP5.getApp(), theName, this);
   }
 
   /**
@@ -93,7 +96,7 @@ public class RadioButton extends ControlGroup<RadioButton> {
     isCollapse = false;
     _myRadioToggles = new ArrayList<Toggle>();
     setItemsPerRow(1);
-    _myPlug = cp5.papplet;
+    _myPlug = cp5.getApp();
     _myPlugName = getName();
     if (!ControllerPlug.checkPlug(_myPlug, _myPlugName, new Class[] {int.class})) {
       _myPlug = null;
@@ -475,7 +478,7 @@ public class RadioButton extends ControlGroup<RadioButton> {
     // updateValues(true);
     // }
     // }
-    ControlP5.L.info("toggle() not yet implemented, working on it.");
+    L.info("toggle() not yet implemented, working on it.");
     return this;
   }
 

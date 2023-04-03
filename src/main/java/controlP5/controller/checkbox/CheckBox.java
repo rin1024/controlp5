@@ -51,7 +51,7 @@ public class CheckBox extends ControlGroup<CheckBox> {
    */
   public CheckBox(ControlP5 theControlP5, String theName) {
     this(theControlP5, theControlP5.getDefaultTab(), theName, 0, 0);
-    theControlP5.register(theControlP5.papplet, theName, this);
+    theControlP5.register(theControlP5.getApp(), theName, this);
   }
 
   /**
@@ -76,7 +76,7 @@ public class CheckBox extends ControlGroup<CheckBox> {
     _myRadioToggles = new ArrayList<Toggle>();
     setItemsPerRow(1);
     isMultipleChoice = true;
-    _myPlug = cp5.papplet;
+    _myPlug = cp5.getApp();
     _myPlugName = getName();
     if (!ControllerPlug.checkPlug(_myPlug, _myPlugName, new Class[] {float[].class})) {
       _myPlug = null;

@@ -24,6 +24,7 @@ import controlP5.*;
 import controlP5.label.Label;
 import java.util.HashMap;
 import java.util.Map;
+import org.apache.log4j.Logger;
 import processing.core.PApplet;
 import processing.core.PGraphics;
 
@@ -33,6 +34,8 @@ import processing.core.PGraphics;
  * @example controllers/ControlP5tooltip
  */
 public class Tooltip {
+  /** @exclude */
+  protected static final Logger L = Logger.getLogger(Tooltip.class.getName());
 
   private ControllerView<?> _myView;
   private float[] position = new float[3];
@@ -255,7 +258,7 @@ public class Tooltip {
    * @return Tooltip
    */
   public Tooltip setHeight(int theHeight) {
-    ControlP5.L.warn("Tooltip.setHeight is disabled with this version");
+    L.warn("Tooltip.setHeight is disabled with this version");
     _myHeight = theHeight;
     return this;
   }

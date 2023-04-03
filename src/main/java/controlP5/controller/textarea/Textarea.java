@@ -26,6 +26,7 @@ import controlP5.font.*;
 import controlP5.label.Label;
 import java.util.Arrays;
 import java.util.List;
+import org.apache.log4j.Logger;
 import processing.core.PApplet;
 import processing.core.PFont;
 import processing.core.PGraphics;
@@ -38,6 +39,8 @@ import processing.core.PGraphics;
  * @example controllers/ControlP5textarea
  */
 public class Textarea extends ControllerGroup<Textarea> implements ControlListener {
+  /** @exclude */
+  protected static final Logger L = Logger.getLogger(Textarea.class.getName());
 
   protected String _myText;
   protected Slider _myScrollbar;
@@ -57,7 +60,7 @@ public class Textarea extends ControllerGroup<Textarea> implements ControlListen
    */
   public Textarea(ControlP5 theControlP5, String theName) {
     this(theControlP5, theControlP5.getDefaultTab(), theName, "", 0, 0, 199, 99);
-    theControlP5.register(theControlP5.papplet, theName, this);
+    theControlP5.register(theControlP5.getApp(), theName, this);
   }
 
   /**

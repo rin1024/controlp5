@@ -48,12 +48,14 @@ import controlP5.controller.textlabel.*;
 import controlP5.controller.toggle.*;
 import controlP5.controller.tooltip.*;
 import java.util.ArrayList;
+import org.apache.log4j.Logger;
 import processing.core.PApplet;
 
 public class ControlP5Legacy {
-
   private ControlP5Base base;
-  public static boolean DEBUG = false;
+
+  /** @exclude */
+  protected static final Logger L = Logger.getLogger(ControlP5Legacy.class.getName());
 
   void init(ControlP5Base theControlP5) {
     base = theControlP5;
@@ -72,7 +74,7 @@ public class ControlP5Legacy {
   }
 
   public Background addBackground(final String theName) {
-    return addBackground(null, "", theName, 0, 0, 300, base.cp5.papplet.height);
+    return addBackground(null, "", theName, 0, 0, 300, base.cp5.getApp().height);
   }
 
   public Background addBackground(
@@ -1193,16 +1195,13 @@ public class ControlP5Legacy {
   }
 
   public static void debug(final Object... strs) {
-    if (DEBUG) {
-      println(strs);
-    }
+    L.debug(strs);
   }
 
   public static void printerr(final Object... strs) {
     for (Object str : strs) {
-      System.err.print(str + " ");
+      L.error(str);
     }
-    System.err.println();
   }
 
   @Deprecated

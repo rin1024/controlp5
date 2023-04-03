@@ -22,6 +22,7 @@ package controlP5.label;
  */
 import controlP5.*;
 import controlP5.font.*;
+import org.apache.log4j.Logger;
 import processing.core.PFont;
 import processing.core.PGraphics;
 
@@ -32,6 +33,8 @@ import processing.core.PGraphics;
  * @example controllers/ControlP5Textlabel
  */
 public class Label implements CDrawable {
+  /** @exclude */
+  protected static final Logger L = Logger.getLogger(Label.class.getName());
 
   public static boolean isToUpperCaseDefault = true;
   protected int _myLetterSpacing = 0;
@@ -286,7 +289,7 @@ public class Label implements CDrawable {
   }
 
   public Label setFont(int theBitFontIndex) {
-    ControlP5.L.warn("BitFont is now of type PFont, use setFont(PFont) instead.");
+    L.warn("BitFont is now of type PFont, use setFont(PFont) instead.");
     return this;
   }
 

@@ -21,6 +21,7 @@ package controlP5.controller.tab;
  * @version ##version##
  */
 import controlP5.*;
+import org.apache.log4j.Logger;
 import processing.core.PGraphics;
 
 /**
@@ -32,6 +33,8 @@ import processing.core.PGraphics;
  * @nosuperclasses ControllerGroup ControllerGroup
  */
 public class Tab extends ControllerGroup<Tab> {
+  /** @exclude */
+  protected static final Logger L = Logger.getLogger(Tab.class.getName());
 
   protected int _myOffsetX = -1000;
   protected int _myOffsetY = -1000;

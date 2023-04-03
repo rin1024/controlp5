@@ -51,7 +51,7 @@ public class Slider2D extends Controller<Slider2D> {
    */
   public Slider2D(ControlP5 theControlP5, String theName) {
     this(theControlP5, theControlP5.getDefaultTab(), theName, 0, 0, 99, 9);
-    theControlP5.register(theControlP5.papplet, theName, this);
+    theControlP5.register(theControlP5.getApp(), theName, this);
   }
 
   /** TODO: should to be change to protected */

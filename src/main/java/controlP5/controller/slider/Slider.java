@@ -75,7 +75,7 @@ public class Slider extends Controller<Slider> {
         0,
         autoWidth,
         autoHeight);
-    theControlP5.register(theControlP5.papplet, theName, this);
+    theControlP5.register(theControlP5.getApp(), theName, this);
   }
 
   public Slider(
@@ -115,7 +115,7 @@ public class Slider extends Controller<Slider> {
     // in order not to break anything, init() will be overwritten here.
 
     _myDefaultValue = getValue();
-    cp5.getControlBroadcaster().plug(cp5.papplet, this, _myName);
+    cp5.getControlBroadcaster().plug(cp5.getApp(), this, _myName);
     initControllerValue();
     isInit = cp5.getAutoInitialization();
     setValue(_myDefaultValue);

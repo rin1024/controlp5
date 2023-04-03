@@ -64,10 +64,10 @@ public class ControlBroadcaster {
     _myControlListeners = new ArrayList<ControlListener>();
     _myControllerCallbackListeners = new HashSet<Entry<CallbackListener, Controller<?>>>();
     _myControlEventPlug =
-        checkObject(cp5.papplet, getEventMethod(), new Class[] {ControlEvent.class});
+        checkObject(cp5.getApp(), getEventMethod(), new Class[] {ControlEvent.class});
     _myControllerCallbackEventPlug =
         checkObject(
-            cp5.papplet, _myControllerCallbackEventMethod, new Class[] {CallbackEvent.class});
+            cp5.getApp(), _myControllerCallbackEventMethod, new Class[] {CallbackEvent.class});
     if (_myControlEventPlug != null) {
       _myControlEventType = ControlP5Constants.METHOD;
     }
@@ -379,7 +379,7 @@ public class ControlBroadcaster {
 
     if (_myControllerCallbackEventPlug != null) {
       invokeMethod(
-          cp5.papplet, _myControllerCallbackEventPlug.getMethod(), new Object[] {theEvent});
+          cp5.getApp(), _myControllerCallbackEventPlug.getMethod(), new Object[] {theEvent});
     }
   }
 

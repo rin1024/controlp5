@@ -28,6 +28,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import org.apache.log4j.Logger;
 import processing.core.PApplet;
 import processing.core.PGraphics;
 import processing.event.Event;
@@ -44,6 +45,8 @@ import processing.event.KeyEvent;
  * @nosuperclasses Controller Controller
  */
 public class Textfield extends Controller<Textfield> {
+  /** @exclude */
+  protected static final Logger L = Logger.getLogger(Textfield.class.getName());
 
   /* TODO textspacing does not work properly for bitfonts sometimes first row of pixels in a
    * bitfont texture gets cut off */
@@ -105,7 +108,7 @@ public class Textfield extends Controller<Textfield> {
    */
   public Textfield(ControlP5 theControlP5, String theName) {
     this(theControlP5, theControlP5.getDefaultTab(), theName, "", 0, 0, 199, 19);
-    theControlP5.register(theControlP5.papplet, theName, this);
+    theControlP5.register(theControlP5.getApp(), theName, this);
   }
 
   public Textfield(
@@ -311,7 +314,7 @@ public class Textfield extends Controller<Textfield> {
   @Override
   public Textfield setSize(int theWidth, int theHeight) {
     super.setSize(theWidth, theHeight);
-    buffer = cp5.papplet.createGraphics(getWidth(), getHeight());
+    buffer = cp5.getApp().createGraphics(getWidth(), getHeight());
     return this;
   }
 
@@ -341,8 +344,9 @@ public class Textfield extends Controller<Textfield> {
     _myValueLabel.draw(buffer, -dif, 0, this);
     buffer.noStroke();
     if (isTexfieldActive) {
-      if (!cp5.papplet.keyPressed) {
-        buffer.fill(_myColorCursor, PApplet.abs(PApplet.sin(cp5.papplet.frameCount * 0.05f)) * 255);
+      if (!cp5.getApp().keyPressed) {
+        buffer.fill(
+            _myColorCursor, PApplet.abs(PApplet.sin(cp5.getApp().frameCount * 0.05f)) * 255);
       } else {
         buffer.fill(_myColorCursor);
       }

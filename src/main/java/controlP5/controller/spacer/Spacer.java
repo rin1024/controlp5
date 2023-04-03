@@ -21,15 +21,18 @@ package controlP5.controller.spacer;
  * @version ##version##
  */
 import controlP5.*;
+import org.apache.log4j.Logger;
 import processing.core.PGraphics;
 
 public class Spacer extends Controller<Spacer> {
+  /** @exclude */
+  protected static final Logger L = Logger.getLogger(Spacer.class.getName());
 
   private int _myWeight = 1;
 
   public Spacer(ControlP5 theControlP5, String theName) {
     this(theControlP5, theControlP5.getDefaultTab(), theName, 0, 0, 20, 20);
-    theControlP5.register(theControlP5.papplet, theName, this);
+    theControlP5.register(theControlP5.getApp(), theName, this);
   }
 
   public Spacer(

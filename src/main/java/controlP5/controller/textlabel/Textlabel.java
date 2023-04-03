@@ -26,6 +26,7 @@ import controlP5.font.*;
 import controlP5.label.Label;
 import java.util.Arrays;
 import java.util.List;
+import org.apache.log4j.Logger;
 import processing.core.PApplet;
 import processing.core.PFont;
 import processing.core.PGraphics;
@@ -35,6 +36,8 @@ import processing.core.PGraphics;
  * @nosuperclasses Controller Controller Textarea
  */
 public class Textlabel extends Controller<Textlabel> {
+  /** @exclude */
+  protected static final Logger L = Logger.getLogger(Textlabel.class.getName());
 
   protected int _myLetterSpacing = 0;
 
@@ -161,10 +164,10 @@ public class Textlabel extends Controller<Textlabel> {
   }
 
   public void draw(int theX, int theY) {
-    cp5.papplet.pushMatrix();
-    cp5.papplet.translate(theX, theY);
+    cp5.getApp().pushMatrix();
+    cp5.getApp().translate(theX, theY);
     draw(cp5.getGraphics());
-    cp5.papplet.popMatrix();
+    cp5.getApp().popMatrix();
   }
 
   public Textlabel setValue(float theValue) {
@@ -263,7 +266,7 @@ public class Textlabel extends Controller<Textlabel> {
   }
 
   private void printConstructorError(String theValue) {
-    ControlP5.L.error(
+    L.error(
         "The Textlabel constructor you are using has been deprecated, please use constructor\nnew Textlabel(ControlP5,String,int,int) or\nnew Textlabel(ControlP5,String,int,int,int,int) or\nnew Textlabel(ControlP5,String,int,int,int,int,int,int)\ninstead. The Textlabel with value '"
             + theValue
             + "' is disabled and will not be rendered.");

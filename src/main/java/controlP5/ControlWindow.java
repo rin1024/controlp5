@@ -489,7 +489,7 @@ public final class ControlWindow {
     pg.pushMatrix();
     pg.translate(cp5.getPositionX(), cp5.getPositionY());
     if (cp5.isAndroid()) {
-      mouseEvent(cp5.papplet.mouseX, cp5.papplet.mouseY, cp5.papplet.mousePressed);
+      mouseEvent(cp5.getApp().mouseX, cp5.getApp().mouseY, cp5.getApp().mousePressed);
     } else {
       updateEvents();
     }
@@ -582,7 +582,7 @@ public final class ControlWindow {
 
       if (cp5.isGraphics()) {
         pg.endDraw();
-        cp5.papplet.image(pg, cp5.getGraphicsX(), cp5.getGraphicsY());
+        cp5.getApp().image(pg, cp5.getGraphicsX(), cp5.getGraphicsY());
       }
     }
     pg.popMatrix();

@@ -66,7 +66,7 @@ public class Matrix extends Controller<Matrix> {
    */
   public Matrix(ControlP5 theControlP5, String theName) {
     this(theControlP5, theControlP5.getDefaultTab(), theName, 10, 10, 0, 0, 100, 100);
-    theControlP5.register(theControlP5.papplet, theName, this);
+    theControlP5.register(theControlP5.getApp(), theName, this);
   }
 
   public Matrix(
@@ -83,7 +83,7 @@ public class Matrix extends Controller<Matrix> {
     _myInterval = 100;
     setGrid(theCellX, theCellY);
 
-    _myPlug = cp5.papplet;
+    _myPlug = cp5.getApp();
     _myPlugName = getName();
     _myCaptionLabel.align(ControlP5.LEFT, ControlP5.BOTTOM_OUTSIDE);
     _myCaptionLabel.setPadding(0, 4);

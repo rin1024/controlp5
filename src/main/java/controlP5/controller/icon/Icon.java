@@ -46,7 +46,7 @@ public class Icon extends Controller<Icon> {
 
   public Icon(ControlP5 theControlP5, String theName) {
     this(theControlP5, theControlP5.getDefaultTab(), theName, 0, 0, 0, autoWidth, autoHeight);
-    theControlP5.register(theControlP5.papplet, theName, this);
+    theControlP5.register(theControlP5.getApp(), theName, this);
   }
 
   /** TODO: should to be change to protected */
