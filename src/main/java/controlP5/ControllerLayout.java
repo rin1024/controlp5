@@ -23,7 +23,6 @@ package controlP5;
 import controlP5.app.ControlP5;
 import controlP5.controller.*;
 import controlP5.controller.color.*;
-import controlP5.controller.listbox.*;
 import controlP5.controller.radiobutton.*;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -60,7 +59,7 @@ public class ControllerLayout {
 
   public void save(String theLayoutPath) {
     theLayoutPath = cp5.checkPropertiesPath(theLayoutPath);
-    Class<?>[] classes = new Class<?>[] {RadioButton.class, ListBox.class, ColorPicker.class};
+    Class<?>[] classes = new Class<?>[] {RadioButton.class, ColorPicker.class};
     HashSet<ControllerLayoutElement> layoutelements = new HashSet<ControllerLayoutElement>();
     for (ControllerInterface<?> c : cp5.getList()) {
       if (!Arrays.asList(classes).contains(c.getParent().getClass())) {

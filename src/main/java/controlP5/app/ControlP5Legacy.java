@@ -32,7 +32,6 @@ import controlP5.controller.checkbox.*;
 import controlP5.controller.color.*;
 import controlP5.controller.icon.*;
 import controlP5.controller.knob.*;
-import controlP5.controller.listbox.*;
 import controlP5.controller.matrix.*;
 import controlP5.controller.numberbox.*;
 import controlP5.controller.radiobutton.*;
@@ -741,42 +740,6 @@ public class ControlP5Legacy {
     return addScrollableList(null, "", theName, theX, theY, theW, theH);
   }
 
-  /**
-   * A list box is a list of items a user can choose from. When items exceed the dedicated area of a
-   * list box, a scrollbar is added to the right of the box. the Box can be navigated using mouse
-   * click, drag and the mouse-wheel.
-   */
-  public ListBox addListBox(final String theName) {
-    return addListBox(theName, 0, 0, 99, 199);
-  }
-
-  public ListBox addListBox(
-      final Object theObject,
-      String theIndex,
-      final String theName,
-      final int theX,
-      final int theY,
-      final int theW,
-      final int theH) {
-    ListBox myController =
-        new ListBox(
-            base.cp5,
-            (Tab) base.cp5.controlWindow.getTabs().get(1),
-            theName,
-            theX,
-            theY,
-            theW,
-            theH);
-    base.cp5.register(theObject, theIndex, myController);
-    myController.registerProperty("listBoxItems").registerProperty("value");
-    return myController;
-  }
-
-  public ListBox addListBox(
-      final String theName, final int theX, final int theY, final int theW, final int theH) {
-    return addListBox(null, "", theName, theX, theY, theW, theH);
-  }
-
   public ColorWheel addColorWheel(
       final Object theObject,
       final String theIndex,
@@ -1071,8 +1034,6 @@ public class ControlP5Legacy {
       c = addRange(theObject, theIndex, theName, 0, 100, 0, 100, 0, 0, 99, 9);
     } else if (theClass.equals(Slider2D.class)) {
       c = addSlider2D(theObject, theIndex, theName, 0, 100, 0, 100, 0, 0, 0, 0, 99, 99);
-    } else if (theClass.equals(ListBox.class)) {
-      c = addListBox(theObject, theIndex, theName, theX, theY, 199, 99);
     } else if (theClass.equals(ScrollableList.class)) {
       c = addScrollableList(theObject, theIndex, theName, theX, theY, 199, 99);
     } else if (theClass.equals(Textlabel.class)) {

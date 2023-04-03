@@ -39,7 +39,6 @@ import controlP5.controller.checkbox.*;
 import controlP5.controller.color.*;
 import controlP5.controller.icon.*;
 import controlP5.controller.knob.*;
-import controlP5.controller.listbox.*;
 import controlP5.controller.matrix.*;
 import controlP5.controller.numberbox.*;
 import controlP5.controller.radiobutton.*;
