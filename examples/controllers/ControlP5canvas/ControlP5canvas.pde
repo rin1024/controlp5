@@ -11,40 +11,17 @@
  * 
  */
 
-
-import controlP5.*;
+import controlP5.app.ControlP5;
+import controlP5.ControlEvent;
+import controlP5.ControlWindow;
+import controlP5.Canvas;
+import org.apache.log4j.Logger;
 
 ControlP5 cp5;
 
 ControlWindow controlWindow;
 
 Canvas cc;
-
-// MyCanvas, your Canvas render class
-class MyCanvas extends Canvas {
-
-  int y;
-  int mx = 0;
-  int my = 0;
-  public void setup(PGraphics pg) {
-    y = 200;
-  }  
-
-  public void update(PApplet p) {
-    mx = p.mouseX;
-    my = p.mouseY;
-  }
-
-  public void draw(PGraphics pg) {
-    // renders a square with randomly changing colors
-    // make changes here.
-    pg.fill(100);
-    pg.rect(mx-20, y-20, 240, 30);
-    pg.fill(255);
-    pg.text("This text is drawn by MyCanvas", mx,y);
-  }
-}
-
 
 void setup() {
   size(400, 400);
@@ -85,5 +62,3 @@ java.lang.Object : boolean equals(Object)
 created: 2015/03/24 12:20:53
 
 */
-
-

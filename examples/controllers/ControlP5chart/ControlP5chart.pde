@@ -9,8 +9,10 @@
 *
 */
 
-
-import controlP5.*;
+import controlP5.app.ControlP5;
+import controlP5.ControlEvent;
+import controlP5.controller.chart.*;
+import org.apache.log4j.Logger;
 
 ControlP5 cp5;
 
@@ -30,10 +32,7 @@ void setup() {
 
   myChart.addDataSet("incoming");
   myChart.setData("incoming", new float[100]);
-  
-
 }
-
 
 void draw() {
   background(200);
@@ -43,12 +42,6 @@ void draw() {
   // push: add data from right to left (last in)
   myChart.push("incoming", (sin(frameCount*0.1)*10));
 }
-
-
-
-
-
-
 
 /*
 a list of all methods available for the Chart Controller
@@ -239,5 +232,3 @@ java.lang.Object : boolean equals(Object)
 created: 2015/03/24 12:20:54
 
 */
-
-

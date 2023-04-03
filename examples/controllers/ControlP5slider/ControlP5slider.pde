@@ -17,8 +17,10 @@
 * www.sojamo.de/libraries/controlp5
 *
 */
-
-import controlP5.*;
+import org.apache.log4j.Logger;
+import controlP5.app.ControlP5;
+import controlP5.ControlEvent;
+import controlP5.controller.slider.*;
 
 ControlP5 cp5;
 int myColor = color(0,0,0);
@@ -293,5 +295,3 @@ java.lang.Object : boolean equals(Object)
 created: 2015/03/24 12:25:46
 
 */
-
-

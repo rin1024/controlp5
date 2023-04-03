@@ -3,7 +3,10 @@
  * by andreas schlegel, 2012
  */
 
-import controlP5.*;
+import org.apache.log4j.Logger;
+import controlP5.app.ControlP5;
+import controlP5.ControlEvent;
+import controlP5.ControlWindow;
 
 ControlP5 cp5;
 
@@ -27,15 +30,6 @@ void setup() {
 // a ControlWindow alternative.
 
 
-
-
-
-
-
-
-
-
-
 //  controlWindow = cp5.addControlWindow("controlP5window", 100, 100, 400, 200)
 //    .hideCoordinates()
 //    .setBackground(color(40))
@@ -48,7 +42,6 @@ void setup() {
      //.moveTo(controlWindow)
      ;
 }
-
 
 void draw() {
   background(sliderValue);
@@ -79,4 +72,3 @@ void keyPressed() {
   //   controlWindow.toggleUndecorated();
   // }
 }
-

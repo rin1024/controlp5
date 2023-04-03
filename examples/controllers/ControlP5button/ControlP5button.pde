@@ -10,7 +10,9 @@
  *
  */
  
-import controlP5.*;
+import org.apache.log4j.Logger;
+import controlP5.app.ControlP5;
+import controlP5.ControlEvent;
 
 ControlP5 cp5;
 
@@ -263,5 +265,3 @@ java.lang.Object : boolean equals(Object)
 created: 2015/03/24 12:20:49
 
 */
-
-

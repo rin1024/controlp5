@@ -9,17 +9,26 @@
  *
  */
 
-
-import controlP5.*;
+import controlP5.app.ControlP5;
+import controlP5.ControlEvent;
+import controlP5.CColor;
+import controlP5.controller.scrollablelist.*;
 import java.util.*;
-
+import org.apache.log4j.Logger;
 
 ControlP5 cp5;
 
+void settings() {
+  size(400, 400, P2D);
+}
+
 void setup() {
-  size(400, 400);
   cp5 = new ControlP5(this);
-  List l = Arrays.asList("a", "b", "c", "d", "e", "f", "g", "h");
+  cp5.setAutoDraw(false);
+
+  cp5.addTextlabel("labelForEditModeList").setText("Edit Mode").setPosition(20, 20);
+
+  ArrayList<String> l = new ArrayList<String>(Arrays.asList("a", "b", "c", "d", "e", "f", "g", "h"));
   /* add a ScrollableList, by default it behaves like a DropdownList */
   cp5.addScrollableList("dropdown")
      .setPosition(100, 100)
@@ -27,14 +36,21 @@ void setup() {
      .setBarHeight(20)
      .setItemHeight(20)
      .addItems(l)
+     .close()
      // .setType(ScrollableList.LIST) // currently supported DROPDOWN and LIST
      ;
      
-     
+    ScrollableList editModeList = cp5.get(ScrollableList.class, "dropdown");
+    editModeList.getCaptionLabel().setText("-----").toUpperCase(false);
+    editModeList.getValueLabel().toUpperCase(false);
 }
 
 void draw() {
-  background(240);
+  background(0);
+  fill(255);
+  stroke(255);
+  
+  cp5.draw();
 }
 
 void dropdown(int n) {
@@ -257,5 +273,3 @@ java.lang.Object : boolean equals(Object)
 created: 2015/03/24 12:21:22
 
 */
-
-
