@@ -30,7 +30,6 @@ import controlP5.controller.button.*;
 import controlP5.controller.chart.*;
 import controlP5.controller.checkbox.*;
 import controlP5.controller.color.*;
-import controlP5.controller.dropdownlist.*;
 import controlP5.controller.icon.*;
 import controlP5.controller.knob.*;
 import controlP5.controller.listbox.*;
@@ -778,37 +777,6 @@ public class ControlP5Legacy {
     return addListBox(null, "", theName, theX, theY, theW, theH);
   }
 
-  public DropdownList addDropdownList(final String theName) {
-    return addDropdownList(theName, 0, 0, 99, 99);
-  }
-
-  public DropdownList addDropdownList(
-      final Object theObject,
-      final String theIndex,
-      final String theName,
-      final int theX,
-      final int theY,
-      final int theW,
-      final int theH) {
-    DropdownList myController =
-        new DropdownList(
-            base.cp5,
-            (Tab) base.cp5.controlWindow.getTabs().get(1),
-            theName,
-            theX,
-            theY,
-            theW,
-            theH);
-    base.cp5.register(theObject, theIndex, myController);
-    myController.registerProperty("listBoxItems").registerProperty("value");
-    return myController;
-  }
-
-  public DropdownList addDropdownList(
-      final String theName, final int theX, final int theY, final int theW, final int theH) {
-    return addDropdownList(null, "", theName, theX, theY, theW, theH);
-  }
-
   public ColorWheel addColorWheel(
       final Object theObject,
       final String theIndex,
@@ -1103,8 +1071,6 @@ public class ControlP5Legacy {
       c = addRange(theObject, theIndex, theName, 0, 100, 0, 100, 0, 0, 99, 9);
     } else if (theClass.equals(Slider2D.class)) {
       c = addSlider2D(theObject, theIndex, theName, 0, 100, 0, 100, 0, 0, 0, 0, 99, 99);
-    } else if (theClass.equals(DropdownList.class)) {
-      c = addDropdownList(theObject, theIndex, theName, theX, theY, 199, 99);
     } else if (theClass.equals(ListBox.class)) {
       c = addListBox(theObject, theIndex, theName, theX, theY, 199, 99);
     } else if (theClass.equals(ScrollableList.class)) {

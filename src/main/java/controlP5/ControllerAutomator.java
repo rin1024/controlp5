@@ -23,7 +23,6 @@ package controlP5;
 import controlP5.app.ControlP5;
 import controlP5.controller.*;
 import controlP5.controller.bang.*;
-import controlP5.controller.dropdownlist.*;
 import controlP5.controller.knob.*;
 import controlP5.controller.listbox.*;
 import controlP5.controller.numberbox.*;
@@ -78,7 +77,6 @@ public class ControllerAutomator {
     types.put("label", Textlabel.class);
     types.put("textlabel", Textlabel.class);
     types.put("list", ListBox.class);
-    types.put("dropdown", DropdownList.class);
     types.put("scrollable", ScrollableList.class);
   }
 
@@ -165,14 +163,6 @@ public class ControllerAutomator {
               ((ScrollableList) cntr).addItems(params.get("setItems").split(","));
               ((ScrollableList) cntr).setOpen(true);
               ((ScrollableList) cntr).setType(ScrollableList.LIST);
-
-            } else if (type.equals(DropdownList.class)) {
-
-              cntr =
-                  cp5.addScrollableList(t, theAddressSpace, m.getName(), ce.x(), ce.y(), 100, 100);
-              ((ScrollableList) cntr).addItems(params.get("setItems").split(","));
-              ((ScrollableList) cntr).setOpen(false);
-              ((ScrollableList) cntr).setType(ScrollableList.DROPDOWN);
 
             } else if (type.equals(ScrollableList.class)) {
 
