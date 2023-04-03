@@ -35,7 +35,6 @@ import controlP5.controller.icon.*;
 import controlP5.controller.knob.*;
 import controlP5.controller.listbox.*;
 import controlP5.controller.matrix.*;
-import controlP5.controller.multilist.*;
 import controlP5.controller.numberbox.*;
 import controlP5.controller.radiobutton.*;
 import controlP5.controller.range.*;
@@ -552,37 +551,6 @@ public class ControlP5Legacy {
       final int theY,
       final int theDiameter) {
     return addKnob(null, "", theName, theMin, theMax, theDefaultValue, theX, theY, theDiameter);
-  }
-
-  public MultiList addMultiList(
-      final Object theObject,
-      final String theIndex,
-      final String theName,
-      final int theX,
-      final int theY,
-      final int theWidth,
-      final int theHeight) {
-    MultiList myController =
-        new MultiList(
-            base.cp5,
-            (Tab) base.cp5.controlWindow.getTabs().get(1),
-            theName,
-            theX,
-            theY,
-            theWidth,
-            theHeight);
-    base.cp5.register(theObject, theIndex, myController);
-    myController.registerProperty("value");
-    return myController;
-  }
-
-  public MultiList addMultiList(
-      final String theName,
-      final int theX,
-      final int theY,
-      final int theWidth,
-      final int theHeight) {
-    return addMultiList(null, "", theName, theX, theY, theWidth, theHeight);
   }
 
   public Textlabel addLabel(String theIndex) {

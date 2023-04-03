@@ -42,7 +42,6 @@ import controlP5.controller.icon.*;
 import controlP5.controller.knob.*;
 import controlP5.controller.listbox.*;
 import controlP5.controller.matrix.*;
-import controlP5.controller.multilist.*;
 import controlP5.controller.numberbox.*;
 import controlP5.controller.radiobutton.*;
 import controlP5.controller.range.*;
@@ -304,16 +303,6 @@ public class ControlP5Base extends ControlP5Legacy implements ControlP5Constants
 
   public ScrollableList addScrollableList(final Object theObject, String theName) {
     return addScrollableList(
-        theObject, theObject != null ? theObject.toString() : "", theName, 0, 0, 100, 100);
-  }
-
-  /** Multilist is a tree like menu. */
-  public MultiList addMultiList(final String theName) {
-    return addMultiList(null, theName);
-  }
-
-  public MultiList addMultiList(final Object theObject, final String theName) {
-    return addMultiList(
         theObject, theObject != null ? theObject.toString() : "", theName, 0, 0, 100, 100);
   }
 
