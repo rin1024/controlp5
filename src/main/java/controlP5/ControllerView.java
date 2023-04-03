@@ -31,7 +31,6 @@ import processing.core.PGraphics;
  * @example use/ControlP5customDisplay
  */
 public interface ControllerView<T> {
-
   /**
    * draws your custom controllers. display() will be called by a controller's draw() function and
    * will pass a reference of PApplet as well as the Controller itself to your custom display class.

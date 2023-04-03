@@ -30,6 +30,7 @@ import controlP5.label.Label;
 import controlP5.property.*;
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.log4j.Logger;
 import processing.core.PApplet;
 import processing.core.PFont;
 import processing.core.PGraphics;
@@ -40,6 +41,7 @@ import processing.event.KeyEvent;
  */
 public abstract class ControllerGroup<T>
     implements ControllerInterface<T>, ControlP5Constants, ControlListener {
+  protected static final Logger L = Logger.getLogger(ControllerGroup.class.getName());
 
   protected float[] position = new float[2];
   protected float[] positionBuffer = new float[2];

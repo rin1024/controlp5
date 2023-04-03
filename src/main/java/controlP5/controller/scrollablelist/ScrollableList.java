@@ -30,6 +30,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.apache.log4j.Logger;
 import processing.core.PApplet;
 import processing.core.PGraphics;
 import processing.event.KeyEvent;
@@ -40,6 +41,7 @@ import processing.event.KeyEvent;
  * @example controllers/ControlP5scrollableList
  */
 public class ScrollableList extends Controller<ScrollableList> implements ControlListener {
+  protected static final Logger L = Logger.getLogger(ScrollableList.class.getName());
 
   private int _myType = DROPDOWN;
   protected int _myBackgroundColor = 0x00ffffff;

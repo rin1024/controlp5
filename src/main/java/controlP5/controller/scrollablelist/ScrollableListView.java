@@ -24,12 +24,18 @@ import static controlP5.app.ControlP5.b;
 
 import controlP5.*;
 import java.util.Map;
+import org.apache.log4j.Logger;
 import processing.core.PApplet;
 import processing.core.PGraphics;
 
 /** */
 public class ScrollableListView implements ControllerView<ScrollableList> {
+  protected static final Logger L = Logger.getLogger(ControllerView.class.getName());
 
+  /**
+   * @param g PGraphics
+   * @param c ScrollableList
+   */
   public void display(PGraphics g, ScrollableList c) {
 
     // setHeight( -200 ); /* UP */
@@ -40,8 +46,11 @@ public class ScrollableListView implements ControllerView<ScrollableList> {
       boolean b = c.itemHover == -1 && c.isInside() && !c.isDragged();
       g.fill(b ? c.getColor().getForeground() : c.getColor().getBackground());
       g.rect(0, 0, c.getWidth(), c.barHeight);
+
       g.pushMatrix();
       g.translate(c.getWidth() - 8, c.barHeight / 2 - 2);
+
+      // キャプション部分
       g.fill(c.getColor().getCaptionLabel());
       if (c.isOpen()) {
         g.triangle(-3, 0, 3, 0, 0, 3);
@@ -53,14 +62,19 @@ public class ScrollableListView implements ControllerView<ScrollableList> {
       c.getCaptionLabel().draw(g, 4, c.barHeight / 2);
     }
 
+    // リスト表示
     if (c.isOpen()) {
       int bar = (c.isBarVisible() ? c.barHeight : 0);
       int h = ((c.updateHeight()));
+
+      // 箱の色
       g.pushMatrix();
       // g.translate( 0 , - ( h + bar +
       // c.getItemSpacing() ) ); /* UP */
       g.fill(c.getBackgroundColor());
       g.rect(0, bar, c.getWidth(), h);
+
+      // 中身
       g.pushMatrix();
       g.translate(0, (bar == 0 ? 0 : (c.barHeight + c.getItemSpacing())));
       /* draw visible items */
@@ -68,6 +82,7 @@ public class ScrollableListView implements ControllerView<ScrollableList> {
       int m0 = c.getItemIndexOffset();
       int m1 =
           c.items.size() > c.itemRange ? (c.getItemIndexOffset() + c.itemRange) : c.items.size();
+
       for (int i = m0; i < m1; i++) {
         Map<String, Object> item = c.items.get(i);
         CColor color = (CColor) item.get("color");
@@ -81,6 +96,7 @@ public class ScrollableListView implements ControllerView<ScrollableList> {
         c.getValueLabel().set(item.get("text").toString()).draw(g, 4, c.itemHeight / 2);
         g.translate(0, c.itemHeight);
       }
+
       g.popMatrix();
 
       if (c.isInside()) {
