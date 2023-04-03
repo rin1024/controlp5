@@ -230,7 +230,8 @@ public class ScrollableList extends Controller<ScrollableList> implements Contro
     updateHover();
   }
 
-  private int updateHeight() {
+  /** TODO: should to be private */
+  public int updateHeight() {
     itemRange = (PApplet.abs(getHeight()) - (isBarVisible() ? barHeight : 0)) / itemHeight;
     return itemHeight * (items.size() < itemRange ? items.size() : itemRange);
   }
@@ -409,79 +410,6 @@ public class ScrollableList extends Controller<ScrollableList> implements Contro
     return this;
   }
 
-  public static class ScrollableListView implements ControllerView<ScrollableList> {
-
-    public void display(PGraphics g, ScrollableList c) {
-
-      // setHeight( -200 ); /* UP */
-
-      g.noStroke();
-
-      if (c.isBarVisible()) {
-        boolean b = c.itemHover == -1 && c.isInside && !c.isDragged;
-        g.fill(b ? c.getColor().getForeground() : c.getColor().getBackground());
-        g.rect(0, 0, c.getWidth(), c.barHeight);
-        g.pushMatrix();
-        g.translate(c.getWidth() - 8, c.barHeight / 2 - 2);
-        g.fill(c.getColor().getCaptionLabel());
-        if (c.isOpen()) {
-          g.triangle(-3, 0, 3, 0, 0, 3);
-        } else {
-          g.triangle(-3, 3, 3, 3, 0, 0);
-        }
-        g.popMatrix();
-
-        c.getCaptionLabel().draw(g, 4, c.barHeight / 2);
-      }
-
-      if (c.isOpen()) {
-        int bar = (c.isBarVisible() ? c.barHeight : 0);
-        int h = ((c.updateHeight()));
-        g.pushMatrix();
-        // g.translate( 0 , - ( h + bar +
-        // c.itemSpacing ) ); /* UP */
-        g.fill(c.getBackgroundColor());
-        g.rect(0, bar, c.getWidth(), h);
-        g.pushMatrix();
-        g.translate(0, (bar == 0 ? 0 : (c.barHeight + c.itemSpacing)));
-        /* draw visible items */
-        c.updateItemIndexOffset();
-        int m0 = c.itemIndexOffset;
-        int m1 = c.items.size() > c.itemRange ? (c.itemIndexOffset + c.itemRange) : c.items.size();
-        for (int i = m0; i < m1; i++) {
-          Map<String, Object> item = c.items.get(i);
-          CColor color = (CColor) item.get("color");
-          g.fill(
-              (b(item.get("state")))
-                  ? color.getActive()
-                  : (i == c.itemHover)
-                      ? (c.isMousePressed ? color.getActive() : color.getForeground())
-                      : color.getBackground());
-          g.rect(0, 0, c.getWidth(), c.itemHeight - 1);
-          c.getValueLabel().set(item.get("text").toString()).draw(g, 4, c.itemHeight / 2);
-          g.translate(0, c.itemHeight);
-        }
-        g.popMatrix();
-
-        if (c.isInside) {
-          int m = c.items.size() - c.itemRange;
-          if (m > 0) {
-            g.fill(c.getColor().getCaptionLabel());
-            g.pushMatrix();
-            int s = 4; /* spacing */
-            int s2 = s / 2;
-            g.translate(c.getWidth() - s, c.barHeight);
-            int len = (int) PApplet.map((float) Math.log(m * 10), 0, 10, h, 0);
-            int pos = (int) (PApplet.map(c.itemIndexOffset, 0, m, s2, h - len - s2));
-            g.rect(0, pos, s2, len);
-            g.popMatrix();
-          }
-        }
-        g.popMatrix();
-      }
-    }
-  }
-
   public void keyEvent(KeyEvent theKeyEvent) {
     if (isInside && theKeyEvent.getAction() == KeyEvent.PRESS) {
       switch (theKeyEvent.getKeyCode()) {
@@ -508,4 +436,12 @@ public class ScrollableList extends Controller<ScrollableList> implements Contro
   }
   /* TODO keycontrol: arrows, return dragging moving items
    * sorting custom view custom event types */
+
+  public int getItemSpacing() {
+    return itemSpacing;
+  }
+
+  public int getItemIndexOffset() {
+    return itemIndexOffset;
+  }
 }
