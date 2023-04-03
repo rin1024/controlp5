@@ -22,15 +22,6 @@ package controlP5.property;
  */
 import controlP5.*;
 import controlP5.app.ControlP5;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.StringReader;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -40,19 +31,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import org.apache.log4j.Logger;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
-import processing.core.PApplet;
-import processing.data.JSONArray;
-import processing.data.JSONObject;
 
 /**
  * Values of controllers can be stored inside properties files which can be saved to file or memory.
@@ -79,15 +58,15 @@ public class ControllerProperties {
   /** A set of unique property-set names. */
   private Set<String> allSets;
 
-  final ControlP5 controlP5;
+  private final ControlP5 controlP5;
   private String _myDefaultSetName = "default";
   protected static final Logger L = Logger.getLogger(ControllerProperties.class.getName());
   private Map<String, Set<ControllerProperty>> _mySnapshots;
 
   public ControllerProperties(ControlP5 theControlP5) {
     controlP5 = theControlP5;
-    // setFormat( new SerializedFormat( ) );
-    setFormat(new JSONFormat());
+    // setFormat( new SerializedFormat(controlP5) );
+    setFormat(new JSONFormat(controlP5));
     allProperties = new HashMap<ControllerProperty, HashSet<String>>();
     allSets = new HashSet<String>();
     addSet(_myDefaultSetName);
@@ -301,34 +280,6 @@ public class ControllerProperties {
     return this;
   }
 
-  private boolean updatePropertyValue(ControllerProperty theProperty) {
-    Method method;
-    try {
-      method = theProperty.getController().getClass().getMethod(theProperty.getGetter());
-      Object value = method.invoke(theProperty.getController());
-      theProperty.setType(method.getReturnType());
-      theProperty.setValue(value);
-      if (checkSerializable(value)) {
-        return true;
-      }
-    } catch (Exception e) {
-      L.error("" + e);
-    }
-    return false;
-  }
-
-  private boolean checkSerializable(Object theProperty) {
-    try {
-      ByteArrayOutputStream out = new ByteArrayOutputStream();
-      ObjectOutputStream stream = new ObjectOutputStream(out);
-      stream.writeObject(theProperty);
-      stream.close();
-      return true;
-    } catch (Exception e) {
-      return false;
-    }
-  }
-
   /**
    * logs all registered properties in memory. Here, clones of properties are stored inside a map
    * and can be accessed by key using the getLog method.
@@ -340,7 +291,7 @@ public class ControllerProperties {
   public ControllerProperties setSnapshot(String theKey) {
     Set<ControllerProperty> l = new HashSet<ControllerProperty>();
     for (ControllerProperty cp : allProperties.keySet()) {
-      updatePropertyValue(cp);
+      format.updatePropertyValue(cp);
       try {
         l.add((ControllerProperty) cp.clone());
       } catch (CloneNotSupportedException e) {
@@ -444,9 +395,9 @@ public class ControllerProperties {
 
   public void setFormat(String theFormat) {
     if (theFormat.equals(ControlP5.JSON)) {
-      setFormat(new JSONFormat());
+      setFormat(new JSONFormat(controlP5));
     } else if (theFormat.equals(ControlP5.SERIALIZED)) {
-      setFormat(new SerializedFormat());
+      setFormat(new SerializedFormat(controlP5));
     } else {
       System.out.println("sorry format " + theFormat + " does not exist.");
     }
@@ -513,407 +464,5 @@ public class ControllerProperties {
       s += "\t" + set + "\n";
     }
     return s;
-  }
-
-  public interface PropertiesStorageFormat {
-
-    public void compile(Set<ControllerProperty> theProperties, String thePropertiesPath);
-
-    public boolean load(String thePropertiesPath);
-
-    public String getExtension();
-  }
-
-  public class XMLFormat implements PropertiesStorageFormat {
-    public void compile(Set<ControllerProperty> theProperties, String thePropertiesPath) {
-      System.out.println(
-          "Dont use the XMLFormat yet, it is not fully implemented with 0.5.9, use SERIALIZED instead.");
-      System.out.println("Compiling with XMLFormat");
-      StringBuffer xml = new StringBuffer();
-      xml.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
-      xml.append("<properties name=\"" + thePropertiesPath + "\">\n");
-      for (ControllerProperty cp : theProperties) {
-        if (cp.isActive()) {
-          updatePropertyValue(cp);
-          xml.append(getXML(cp));
-        }
-      }
-      xml.append("</properties>");
-      controlP5.getApp().saveStrings(thePropertiesPath, PApplet.split(xml.toString(), "\n"));
-      System.out.println("saving xml, " + thePropertiesPath);
-    }
-
-    public String getExtension() {
-      return "xml";
-    }
-
-    public boolean load(String thePropertiesPath) {
-      String s;
-      try {
-        s = PApplet.join(controlP5.getApp().loadStrings(thePropertiesPath), "\n");
-      } catch (Exception e) {
-        L.warn(thePropertiesPath + ", file not found.");
-        return false;
-      }
-      System.out.println("loading xml \n" + s);
-      try {
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        DocumentBuilder db = dbf.newDocumentBuilder();
-        InputSource is = new InputSource();
-        is.setCharacterStream(new StringReader(s));
-        Document doc = db.parse(is);
-        doc.getDocumentElement().normalize();
-        NodeList nodeLst = doc.getElementsByTagName("property");
-        for (int i = 0; i < nodeLst.getLength(); i++) {
-          Node node = nodeLst.item(i);
-          if (node.getNodeType() == Node.ELEMENT_NODE) {
-            Element fstElmnt = (Element) node;
-            String myAddress = getElement(fstElmnt, "address");
-            String mySetter = getElement(fstElmnt, "setter");
-            String myType = getElement(fstElmnt, "type");
-            String myValue = getElement(fstElmnt, "value");
-            // String myClass = getElement(fstElmnt, "class");
-            // String myGetter = getElement(fstElmnt, "getter");
-            try {
-              System.out.print("setting controller " + myAddress + "   ");
-              ControllerInterface<?> ci = controlP5.getController(myAddress);
-              ci = (ci == null) ? controlP5.getGroup(myAddress) : ci;
-              System.out.println(ci);
-              Method method;
-              try {
-                Class<?> c = getClass(myType);
-                System.out.println(myType + " / " + c);
-                method = ci.getClass().getMethod(mySetter, new Class[] {c});
-                method.setAccessible(true);
-                method.invoke(ci, new Object[] {getValue(myValue, myType, c)});
-              } catch (Exception e) {
-                L.error(e.toString());
-              }
-            } catch (Exception e) {
-              L.warn("skipping a property, " + e);
-            }
-          }
-        }
-      } catch (SAXException e) {
-        L.warn("SAXException, " + e);
-        return false;
-      } catch (IOException e) {
-        L.warn("IOException, " + e);
-        return false;
-      } catch (ParserConfigurationException e) {
-        L.warn("ParserConfigurationException, " + e);
-        return false;
-      }
-      return true;
-    }
-
-    private Object getValue(String theValue, String theType, Class<?> theClass) {
-      if (theClass == int.class) {
-        return Integer.parseInt(theValue);
-      } else if (theClass == float.class) {
-        return Float.parseFloat(theValue);
-      } else if (theClass == boolean.class) {
-        return Boolean.parseBoolean(theValue);
-      } else if (theClass.isArray()) {
-        System.out.println("this is an array: " + theType + ", " + theValue + ", " + theClass);
-        int dim = 0;
-        while (true) {
-          if (theType.charAt(dim) != '[' || dim >= theType.length()) {
-            break;
-          }
-          dim++;
-        }
-      } else {
-        System.out.println("is array? " + theClass.isArray());
-      }
-      return theValue;
-    }
-
-    private Class<?> getClass(String theType) {
-      if (theType.equals("int")) {
-        return int.class;
-      } else if (theType.equals("float")) {
-        return float.class;
-      } else if (theType.equals("String")) {
-        return String.class;
-      }
-      try {
-        return Class.forName(theType);
-      } catch (ClassNotFoundException e) {
-        L.warn("ClassNotFoundException, " + e);
-      }
-      return null;
-    }
-
-    private String getElement(Element theElement, String theName) {
-      NodeList fstNmElmntLst = theElement.getElementsByTagName(theName);
-      Element fstNmElmnt = (Element) fstNmElmntLst.item(0);
-      NodeList fstNm = fstNmElmnt.getChildNodes();
-      return ((Node) fstNm.item(0)).getNodeValue();
-    }
-
-    public String getXML(ControllerProperty theProperty) {
-      // Mapping Between JSON and Java Entities
-      // http://code.google.com/p/json-simple/wiki/MappingBetweenJSONAndJavaEntities
-      String s = "\t<property>\n";
-      s += "\t\t<address>" + theProperty.getAddress() + "</address>\n";
-      s += "\t\t<class>" + CP.formatGetClass(theProperty.getController().getClass()) + "</class>\n";
-      s += "\t\t<setter>" + theProperty.getSetter() + "</setter>\n";
-      s += "\t\t<getter>" + theProperty.getGetter() + "</getter>\n";
-      s += "\t\t<type>" + CP.formatGetClass(theProperty.getType()) + "</type>\n";
-      s +=
-          "\t\t<value>"
-              + cdata(OPEN, theProperty.getValue().getClass())
-              + (theProperty.getValue().getClass().isArray()
-                  ? CP.arrayToString(theProperty.getValue())
-                  : theProperty.getValue())
-              + cdata(CLOSE, theProperty.getValue().getClass())
-              + "</value>\n";
-      s += "\t</property>\n";
-      return s;
-    }
-
-    private String cdata(int a, Class<?> c) {
-      if (c == String.class || c.isArray()) {
-        return (a == OPEN ? "<![CDATA[" : "]]>");
-      }
-      return "";
-    }
-  }
-
-  public class JSONFormat implements PropertiesStorageFormat {
-
-    public void compile(Set<ControllerProperty> theProperties, String thePropertiesPath) {
-      long t = System.currentTimeMillis();
-      JSONObject json = new JSONObject();
-      for (ControllerProperty cp : theProperties) {
-
-        if (cp.isActive()) {
-          if (updatePropertyValue(cp)) {
-            cp.setId(cp.getController().getId());
-
-            if (!json.keys().contains(cp.getAddress())) {
-              json.setJSONObject(cp.getAddress(), new JSONObject());
-            }
-            JSONObject item = json.getJSONObject(cp.getAddress());
-            String key = cp.getSetter();
-            key = Character.toLowerCase(key.charAt(3)) + key.substring(4);
-            if (cp.getValue() instanceof Number) {
-              if (cp.getValue() instanceof Integer) {
-                item.setInt(key, ControlP5.i(cp.getValue()));
-              } else if (cp.getValue() instanceof Float) {
-                item.setFloat(key, ControlP5.f(cp.getValue()));
-              } else if (cp.getValue() instanceof Double) {
-                item.setDouble(key, ControlP5.d(cp.getValue()));
-              }
-            } else if (cp.getValue() instanceof Boolean) {
-              item.setBoolean(key, ControlP5.b(cp.getValue()));
-            } else {
-
-              if (cp.getValue().getClass().isArray()) {
-                JSONArray arr = new JSONArray();
-                if (cp.getValue() instanceof int[]) {
-                  for (Object o : (int[]) cp.getValue()) {
-                    arr.append(ControlP5.i(o));
-                  }
-                } else if (cp.getValue() instanceof float[]) {
-                  for (Object o : (float[]) cp.getValue()) {
-                    arr.append(ControlP5.f(o));
-                  }
-                }
-                item.setJSONArray(key, arr);
-              } else {
-                item.setString(key, cp.getValue().toString());
-              }
-            }
-          }
-        }
-      }
-      json.save(new File(getPathWithExtension(this, thePropertiesPath)), "");
-    }
-
-    public String getExtension() {
-      return "json";
-    }
-
-    public boolean load(String thePropertiesPath) {
-      JSONReader reader = new JSONReader(controlP5.getApp());
-      Map<?, ?> entries = ControlP5.toMap(reader.parse(thePropertiesPath));
-      for (Map.Entry entry : entries.entrySet()) {
-        String name = entry.getKey().toString();
-        Controller c = controlP5.getController(name);
-        Map<?, ?> values = ControlP5.toMap(entry.getValue());
-        for (Map.Entry value : values.entrySet()) {
-          String i0 = value.getKey().toString();
-          String member = "set" + Character.toUpperCase(i0.charAt(0)) + i0.substring(1);
-          Object i1 = value.getValue();
-          if (i1 instanceof Number) {
-            ControlP5.invoke(c, member, ControlP5.f(value.getValue()));
-          } else if (i1 instanceof String) {
-            ControlP5.invoke(c, member, ControlP5.s(value.getValue()));
-          } else if (i1 instanceof float[]) {
-            ControlP5.invoke(c, member, (float[]) i1);
-          } else {
-            if (i1 instanceof List) {
-              List l = (List) i1;
-              float[] arr = new float[l.size()];
-              for (int i = 0; i < l.size(); i++) {
-                arr[i] = ControlP5.f(l.get(i));
-              }
-              ControlP5.invoke(c, member, arr);
-            } else {
-              ControlP5.invoke(c, member, value.getValue());
-            }
-          }
-        }
-      }
-      return false;
-    }
-  }
-
-  private class JSONReader {
-
-    private final PApplet papplet;
-
-    public JSONReader(Object o) {
-      if (o instanceof PApplet) {
-        papplet = (PApplet) o;
-      } else {
-        papplet = null;
-        System.out.println("Sorry, argument is not of instance PApplet");
-      }
-    }
-
-    public Object parse(String s) {
-      if (s.indexOf("{") >= 0) {
-        return get(JSONObject.parse(s), new LinkedHashMap());
-      } else {
-        return get(papplet.loadJSONObject(s), new LinkedHashMap());
-      }
-    }
-
-    Object get(Object o, Object m) {
-      if (o instanceof JSONObject) {
-        if (m instanceof Map) {
-          Set set = ((JSONObject) o).keys();
-          for (Object o1 : set) {
-            Object o2 = ControlP5.invoke(o, "opt", o1.toString());
-            if (o2 instanceof JSONObject) {
-              Map m1 = new LinkedHashMap();
-              ((Map) m).put(o1.toString(), m1);
-              get(o2, m1);
-            } else if (o2 instanceof JSONArray) {
-              List l1 = new ArrayList();
-              ((Map) m).put(o1.toString(), l1);
-              get(o2, l1);
-            } else {
-              ((Map) m).put(o1.toString(), o2);
-            }
-          }
-        }
-      } else if (o instanceof JSONArray) {
-        if (m instanceof List) {
-          List l = ((List) m);
-          int n = 0;
-          Object o3 = ControlP5.invoke(o, "opt", n);
-          while (o3 != null) {
-            if (o3 instanceof JSONArray) {
-              List l1 = new ArrayList();
-              l.add(l1);
-              get(o3, l1);
-            } else if (o3 instanceof JSONObject) {
-              Map l1 = new LinkedHashMap();
-              l.add(l1);
-              get(o3, l1);
-            } else {
-              l.add(o3);
-            }
-            o3 = ControlP5.invoke(o, "opt", ++n);
-          }
-        } else {
-          System.err.println("JSONReader type mismatch.");
-        }
-      }
-      return m;
-    }
-  }
-
-  public class SerializedFormat implements PropertiesStorageFormat {
-
-    public boolean load(String thePropertiesPath) {
-      try {
-        FileInputStream fis = new FileInputStream(thePropertiesPath);
-        ObjectInputStream ois = new ObjectInputStream(fis);
-        int size = ois.readInt();
-        L.info("loading " + size + " property-items. ");
-
-        for (int i = 0; i < size; i++) {
-          try {
-            ControllerProperty cp = (ControllerProperty) ois.readObject();
-            ControllerInterface<?> ci = controlP5.getController(cp.getAddress());
-            ci = (ci == null) ? controlP5.getGroup(cp.getAddress()) : ci;
-            ci.setId(cp.getId());
-            Method method;
-            try {
-              method = ci.getClass().getMethod(cp.getSetter(), new Class[] {cp.getType()});
-              method.setAccessible(true);
-              method.invoke(ci, new Object[] {cp.getValue()});
-            } catch (Exception e) {
-              L.error(e.toString());
-            }
-
-          } catch (Exception e) {
-            L.warn("skipping a property, " + e);
-          }
-        }
-        ois.close();
-      } catch (Exception e) {
-        L.warn("Exception during deserialization: " + e);
-        return false;
-      }
-      return true;
-    }
-
-    public String getExtension() {
-      return "ser";
-    }
-
-    public void compile(Set<ControllerProperty> theProperties, String thePropertiesPath) {
-      int active = 0;
-      int total = 0;
-      HashSet<ControllerProperty> propertiesToBeSaved = new HashSet<ControllerProperty>();
-      for (ControllerProperty cp : theProperties) {
-        if (cp.isActive()) {
-          if (updatePropertyValue(cp)) {
-            active++;
-            cp.setId(cp.getController().getId());
-            propertiesToBeSaved.add(cp);
-          }
-        }
-        total++;
-      }
-
-      int ignored = total - active;
-
-      try {
-        FileOutputStream fos = new FileOutputStream(thePropertiesPath);
-        ObjectOutputStream oos = new ObjectOutputStream(fos);
-
-        L.info("Saving property-items to " + thePropertiesPath);
-        oos.writeInt(active);
-
-        for (ControllerProperty cp : propertiesToBeSaved) {
-          if (cp.isActive()) {
-            oos.writeObject(cp);
-          }
-        }
-        L.info(active + " items saved, " + (ignored) + " items ignored. Done saving properties.");
-        oos.flush();
-        oos.close();
-        fos.close();
-      } catch (Exception e) {
-        L.warn("Exception during serialization: " + e);
-      }
-    }
   }
 }
