@@ -244,7 +244,7 @@ public class CP {
     return (aIdx == aLength - 1);
   }
 
-  protected static String formatGetClass(Class<?> c) {
+  public static String formatGetClass(Class<?> c) {
     if (c == null) return null;
     final String pattern = "class ";
     return c.toString().startsWith(pattern)

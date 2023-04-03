@@ -1,4 +1,4 @@
-package controlP5;
+package controlP5.property;
 
 /**
  * controlP5 is a processing gui library.
@@ -20,8 +20,8 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
+import controlP5.*;
 import controlP5.app.ControlP5;
-import controlP5.controller.*;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;

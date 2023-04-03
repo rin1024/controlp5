@@ -23,6 +23,7 @@ package controlP5;
 import controlP5.controller.*;
 import controlP5.controller.tab.*;
 import controlP5.font.*;
+import controlP5.property.*;
 import processing.core.PApplet;
 import processing.core.PFont;
 import processing.core.PGraphics;

@@ -26,6 +26,7 @@ import controlP5.controller.tab.Tab;
 import controlP5.controller.textfield.Textfield;
 import controlP5.font.*;
 import controlP5.label.Label;
+import controlP5.property.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;

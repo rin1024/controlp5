@@ -48,6 +48,7 @@ import controlP5.controller.textfield.*;
 import controlP5.controller.textlabel.*;
 import controlP5.controller.toggle.*;
 import controlP5.controller.tooltip.*;
+import controlP5.property.*;
 import java.util.ArrayList;
 import org.apache.log4j.Logger;
 import processing.core.PApplet;
