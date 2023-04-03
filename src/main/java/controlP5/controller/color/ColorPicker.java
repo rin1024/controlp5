@@ -21,6 +21,8 @@ package controlP5.controller.color;
  * @version ##version##
  */
 import controlP5.*;
+import controlP5.app.ControlP5;
+import controlP5.app.ControlP5Constants;
 import controlP5.controller.slider.*;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

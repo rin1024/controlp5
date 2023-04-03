@@ -1,4 +1,4 @@
-package controlP5;
+package controlP5.app;
 
 /**
  * controlP5 is a processing gui library.
@@ -22,6 +22,17 @@ package controlP5;
  */
 import static controlP5.Controller.*;
 
+import controlP5.CColor;
+import controlP5.ControlKey;
+import controlP5.Controller;
+import controlP5.ControllerAutomator;
+import controlP5.ControllerGroup;
+import controlP5.ControllerInterface;
+import controlP5.ControllerLayout;
+import controlP5.ControllerProperties;
+import controlP5.FieldChangedListener;
+import controlP5.Group;
+import controlP5.Println;
 import controlP5.controller.accordion.*;
 import controlP5.controller.bang.*;
 import controlP5.controller.button.*;
@@ -401,35 +412,41 @@ public class ControlP5Base extends ControlP5Legacy implements ControlP5Constants
   @SuppressWarnings("static-access")
   public void linebreak(
       Controller<?> theController, boolean theFlag, int theW, int theH, float[] theSpacing) {
-    if (x(currentGroupPointer.autoPosition) + x(theController.autoSpacing) + theW
+    if (x(currentGroupPointer.getAutoPosition()) + x(theController.autoSpacing) + theW
         > cp5.getApp().width) {
-      float x = x(currentGroupPointer.autoPosition) + currentGroupPointer.autoPositionOffsetX;
-      float y = y(currentGroupPointer.autoPosition) + currentGroupPointer.tempAutoPositionHeight;
-      set(currentGroupPointer.autoPosition, x, y);
-      currentGroupPointer.tempAutoPositionHeight = 0;
+      float x =
+          x(currentGroupPointer.getAutoPosition()) + currentGroupPointer.getAutoPositionOffsetX();
+      float y =
+          y(currentGroupPointer.getAutoPosition())
+              + currentGroupPointer.getTempAutoPositionHeight();
+      set(currentGroupPointer.getAutoPosition(), x, y);
+      currentGroupPointer.setTempAutoPositionHeight(0);
       Controller.set(
-          theController.position,
-          Controller.x(currentGroupPointer.autoPosition),
-          Controller.y(currentGroupPointer.autoPosition));
+          theController.getPosition(),
+          Controller.x(currentGroupPointer.getAutoPosition()),
+          Controller.y(currentGroupPointer.getAutoPosition()));
       theFlag = false;
     }
 
     if (theFlag == true) {
-      float y = y(currentGroupPointer.autoPosition) + currentGroupPointer.tempAutoPositionHeight;
-      set(currentGroupPointer.autoPosition, currentGroupPointer.autoPositionOffsetX, y);
-      currentGroupPointer.tempAutoPositionHeight = 0;
+      float y =
+          y(currentGroupPointer.getAutoPosition())
+              + currentGroupPointer.getTempAutoPositionHeight();
+      set(currentGroupPointer.getAutoPosition(), currentGroupPointer.getAutoPositionOffsetX(), y);
+      currentGroupPointer.setTempAutoPositionHeight(0);
 
     } else {
       if (theController instanceof Slider) {
-        float x = x(currentGroupPointer.autoPosition) + theController.getCaptionLabel().getWidth();
-        float y = y(currentGroupPointer.autoPosition);
-        set(currentGroupPointer.autoPosition, x, y);
+        float x =
+            x(currentGroupPointer.getAutoPosition()) + theController.getCaptionLabel().getWidth();
+        float y = y(currentGroupPointer.getAutoPosition());
+        set(currentGroupPointer.getAutoPosition(), x, y);
       }
-      float x = x(currentGroupPointer.autoPosition) + x(theController.autoSpacing) + theW;
-      float y = y(currentGroupPointer.autoPosition);
-      set(currentGroupPointer.autoPosition, x, y);
-      if ((theH + y(theSpacing)) > currentGroupPointer.tempAutoPositionHeight) {
-        currentGroupPointer.tempAutoPositionHeight = theH + y(theSpacing);
+      float x = x(currentGroupPointer.getAutoPosition()) + x(theController.autoSpacing) + theW;
+      float y = y(currentGroupPointer.getAutoPosition());
+      set(currentGroupPointer.getAutoPosition(), x, y);
+      if ((theH + y(theSpacing)) > currentGroupPointer.getTempAutoPositionHeight()) {
+        currentGroupPointer.setTempAutoPositionHeight(theH + y(theSpacing));
       }
     }
   }

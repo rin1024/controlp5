@@ -21,6 +21,7 @@ package controlP5.controller.range;
  * @version ##version##
  */
 import controlP5.*;
+import controlP5.app.ControlP5;
 import controlP5.font.*;
 import controlP5.label.Label;
 import java.util.ArrayList;

@@ -21,6 +21,7 @@ package controlP5.controller.toggle;
  * @version ##version##
  */
 import controlP5.*;
+import controlP5.app.ControlP5;
 import controlP5.controller.tab.*;
 import controlP5.label.Label;
 import org.apache.log4j.Logger;

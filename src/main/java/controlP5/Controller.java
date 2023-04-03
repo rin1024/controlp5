@@ -20,6 +20,7 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
+import controlP5.app.*;
 import controlP5.controller.numberbox.Numberbox;
 import controlP5.controller.tab.Tab;
 import controlP5.controller.textfield.Textfield;
@@ -175,7 +176,7 @@ public abstract class Controller<T>
     if (theParent != null) {
       color.set(theParent.color);
     } else {
-      color.set(cp5.color);
+      color.set(cp5.getColor());
     }
     width = theWidth;
     height = theHeight;
@@ -238,7 +239,7 @@ public abstract class Controller<T>
     // controlbroadcaster.
     cp5.getControlBroadcaster().plug(cp5.getApp(), this, _myName);
     initControllerValue();
-    isInit = cp5.isAutoInitialization;
+    isInit = cp5.getAutoInitialization();
     setValue(_myDefaultValue);
     isInit = true;
     updateDisplayMode(DEFAULT);
@@ -494,7 +495,7 @@ public abstract class Controller<T>
 
     if (isVisible && (isMousePressed == _myControlWindow.getMouselock())) {
       if (isMousePressed && cp5.isAltDown() && isMoveable) {
-        if (!cp5.isMoveable) {
+        if (!cp5.isMoveable()) {
           set(
               positionBuffer,
               x(positionBuffer)
@@ -761,7 +762,7 @@ public abstract class Controller<T>
    * @return Controller
    */
   public T add(final ControllerInterface<?> theElement) {
-    ControlP5.L.warn(" add() not supported.");
+    L.warn(" add() not supported.");
     return me;
   }
 
@@ -770,7 +771,7 @@ public abstract class Controller<T>
    * @return Controller
    */
   public T remove(final ControllerInterface<?> theElement) {
-    ControlP5.L.warn("remove() not supported.");
+    L.warn("remove() not supported.");
     return me;
   }
 
@@ -1793,7 +1794,7 @@ public abstract class Controller<T>
 
   protected T updateDisplayMode(int theMode) {
     if (theMode != DEFAULT) {
-      ControlP5.L.warn(
+      L.warn(
           "Image-based or custom displays are not yet implemented for this type of controller. ("
               + this.getClass().getName()
               + ")");

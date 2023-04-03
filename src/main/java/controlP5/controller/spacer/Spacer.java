@@ -21,6 +21,7 @@ package controlP5.controller.spacer;
  * @version ##version##
  */
 import controlP5.*;
+import controlP5.app.ControlP5;
 import org.apache.log4j.Logger;
 import processing.core.PGraphics;
 

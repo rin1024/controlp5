@@ -21,6 +21,7 @@ package controlP5.controller.bang;
  * @version ##version##
  */
 import controlP5.*;
+import controlP5.app.ControlP5;
 import controlP5.controller.*;
 import controlP5.label.Label;
 import processing.core.PGraphics;

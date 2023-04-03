@@ -21,6 +21,8 @@ package controlP5.controller.checkbox;
  * @version ##version##
  */
 import controlP5.*;
+import controlP5.app.ControlP5;
+import controlP5.app.ControlP5Constants;
 import controlP5.controller.toggle.*;
 import controlP5.label.Label;
 import java.lang.reflect.InvocationTargetException;

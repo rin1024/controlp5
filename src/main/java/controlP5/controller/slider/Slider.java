@@ -21,6 +21,7 @@ package controlP5.controller.slider;
  * @version ##version##
  */
 import controlP5.*;
+import controlP5.app.ControlP5;
 import controlP5.label.Label;
 import java.util.ArrayList;
 import processing.core.PApplet;

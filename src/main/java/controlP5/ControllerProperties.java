@@ -20,6 +20,7 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
+import controlP5.app.ControlP5;
 import controlP5.controller.*;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -370,7 +371,7 @@ public class ControllerProperties {
 
   /** saves a snapshot into your sketch's sketch folder. */
   public ControllerProperties saveSnapshot(String theKey) {
-    saveSnapshotAs(controlP5.papplet.sketchPath(theKey), theKey);
+    saveSnapshotAs(controlP5.getApp().sketchPath(theKey), theKey);
     return this;
   }
 
@@ -421,12 +422,16 @@ public class ControllerProperties {
 
   /** load properties from the default properties file 'controlP5.properties' */
   public boolean load() {
-    return load(controlP5.papplet.sketchPath(defaultName + "." + format.getExtension()));
+    return load(controlP5.getApp().sketchPath(defaultName + "." + format.getExtension()));
   }
 
   public boolean load(String thePropertiesPath) {
     return format.load(
         getPathWithExtension(format, controlP5.checkPropertiesPath(thePropertiesPath)));
+  }
+
+  public PropertiesStorageFormat getFormat() {
+    return format;
   }
 
   /**
@@ -458,10 +463,10 @@ public class ControllerProperties {
             + " ("
             + format.getExtension()
             + ") "
-            + controlP5.papplet.sketchPath(defaultName));
+            + controlP5.getApp().sketchPath(defaultName));
     format.compile(
         allProperties.keySet(),
-        getPathWithExtension(format, controlP5.papplet.sketchPath(defaultName)));
+        getPathWithExtension(format, controlP5.getApp().sketchPath(defaultName)));
     return true;
   }
 
@@ -510,7 +515,7 @@ public class ControllerProperties {
     return s;
   }
 
-  interface PropertiesStorageFormat {
+  public interface PropertiesStorageFormat {
 
     public void compile(Set<ControllerProperty> theProperties, String thePropertiesPath);
 
@@ -519,7 +524,7 @@ public class ControllerProperties {
     public String getExtension();
   }
 
-  class XMLFormat implements PropertiesStorageFormat {
+  public class XMLFormat implements PropertiesStorageFormat {
     public void compile(Set<ControllerProperty> theProperties, String thePropertiesPath) {
       System.out.println(
           "Dont use the XMLFormat yet, it is not fully implemented with 0.5.9, use SERIALIZED instead.");
@@ -534,7 +539,7 @@ public class ControllerProperties {
         }
       }
       xml.append("</properties>");
-      controlP5.papplet.saveStrings(thePropertiesPath, PApplet.split(xml.toString(), "\n"));
+      controlP5.getApp().saveStrings(thePropertiesPath, PApplet.split(xml.toString(), "\n"));
       System.out.println("saving xml, " + thePropertiesPath);
     }
 
@@ -545,7 +550,7 @@ public class ControllerProperties {
     public boolean load(String thePropertiesPath) {
       String s;
       try {
-        s = PApplet.join(controlP5.papplet.loadStrings(thePropertiesPath), "\n");
+        s = PApplet.join(controlP5.getApp().loadStrings(thePropertiesPath), "\n");
       } catch (Exception e) {
         L.warn(thePropertiesPath + ", file not found.");
         return false;
@@ -732,7 +737,7 @@ public class ControllerProperties {
     }
 
     public boolean load(String thePropertiesPath) {
-      JSONReader reader = new JSONReader(controlP5.papplet);
+      JSONReader reader = new JSONReader(controlP5.getApp());
       Map<?, ?> entries = ControlP5.toMap(reader.parse(thePropertiesPath));
       for (Map.Entry entry : entries.entrySet()) {
         String name = entry.getKey().toString();

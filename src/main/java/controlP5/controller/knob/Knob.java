@@ -21,6 +21,8 @@ package controlP5.controller.knob;
  * @version ##version##
  */
 import controlP5.*;
+import controlP5.app.ControlP5;
+import controlP5.app.ControlP5Constants;
 import controlP5.controller.*;
 import processing.core.PApplet;
 import processing.core.PGraphics;

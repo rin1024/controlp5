@@ -21,6 +21,7 @@ package controlP5.util;
  * @version ##version##
  */
 import controlP5.*;
+import controlP5.app.ControlP5;
 import controlP5.controller.tab.*;
 import controlP5.controller.textlabel.*;
 import processing.core.PApplet;

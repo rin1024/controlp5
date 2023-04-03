@@ -21,6 +21,7 @@ package controlP5.controller.icon;
  * @version ##version##
  */
 import controlP5.*;
+import controlP5.app.ControlP5;
 import controlP5.controller.*;
 import processing.core.PApplet;
 import processing.core.PFont;

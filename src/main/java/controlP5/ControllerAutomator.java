@@ -20,6 +20,7 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
+import controlP5.app.ControlP5;
 import controlP5.controller.*;
 import controlP5.controller.bang.*;
 import controlP5.controller.dropdownlist.*;
@@ -43,12 +44,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import org.apache.log4j.Logger;
 
 /**
  * Used to convert Annotations into individual controllers this method of creating controllers is
  * derived from cp5magic by Karsten Schmidt http://hg.postspectacular.com/cp5magic/wiki/Home
  */
-class ControllerAutomator {
+public class ControllerAutomator {
+  /** @exclude */
+  protected static final Logger L = Logger.getLogger(ControllerAutomator.class.getName());
 
   static Map<Set<Class<?>>, Class<? extends Controller<?>>> mapping =
       new HashMap<Set<Class<?>>, Class<? extends Controller<?>>>();
@@ -88,7 +92,7 @@ class ControllerAutomator {
 
   private ControlP5 cp5;
 
-  ControllerAutomator(ControlP5 c) {
+  public ControllerAutomator(ControlP5 c) {
     cp5 = c;
   }
 
@@ -107,7 +111,7 @@ class ControllerAutomator {
   }
 
   /** analyzes an object and adds fields with ControlElement annotations to controlP5. */
-  void addControllersFor(final String theAddressSpace, final Object t) {
+  public void addControllersFor(final String theAddressSpace, final Object t) {
     System.out.println("OKOK");
     if (t instanceof List<?>) {
       return;
@@ -198,7 +202,7 @@ class ControllerAutomator {
                   method.invoke(cntr, os);
                 } catch (Exception e) {
                   /* TODO is thrown when running ControlP5annotation example */
-                  // ControlP5.L.error( e.toString( ) );
+                  // L.error( e.toString( ) );
                 }
               }
             }
@@ -254,7 +258,7 @@ class ControllerAutomator {
               cntr.setValue(f.getInt(t));
             }
           } catch (Exception e) {
-            ControlP5.L.error(e.toString());
+            L.error(e.toString());
           }
         } else if (f.getType() == String.class) {
           if (type == Textlabel.class) {
@@ -275,7 +279,7 @@ class ControllerAutomator {
           try {
             cntr.setValue(f.getBoolean(t) ? 1 : 0);
           } catch (Exception e) {
-            ControlP5.L.error(e.toString());
+            L.error(e.toString());
           }
         }
 
@@ -298,7 +302,7 @@ class ControllerAutomator {
                   method.setAccessible(true);
                   method.invoke(cntr, os);
                 } catch (Exception e) {
-                  ControlP5.L.error(e.toString());
+                  L.error(e.toString());
                 }
               }
             }

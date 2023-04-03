@@ -21,6 +21,7 @@ package controlP5.controller.button;
  * @version ##version##
  */
 import controlP5.*;
+import controlP5.app.ControlP5;
 import processing.core.PGraphics;
 
 /**

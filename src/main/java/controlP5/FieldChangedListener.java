@@ -20,6 +20,7 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
+import controlP5.app.ControlP5;
 import controlP5.controller.*;
 import java.lang.reflect.Field;
 
@@ -29,7 +30,7 @@ import java.lang.reflect.Field;
  *
  * @see controlP5.Controller#listen(boolean)
  */
-class FieldChangedListener {
+public class FieldChangedListener {
 
   private FieldValue value;
 
@@ -123,7 +124,7 @@ class FieldChangedListener {
     }
   }
 
-  void update() {
+  public void update() {
     value.check();
   }
 }

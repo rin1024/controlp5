@@ -1,4 +1,4 @@
-package controlP5;
+package controlP5.app;
 
 /**
  * controlP5 is a processing gui library.
@@ -20,7 +20,7 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
-import controlP5.controller.*;
+import controlP5.*;
 import controlP5.controller.button.*;
 import controlP5.controller.checkbox.*;
 import processing.core.PApplet;

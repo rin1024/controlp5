@@ -21,6 +21,7 @@ package controlP5.controller.color;
  * @version ##version##
  */
 import controlP5.*;
+import controlP5.app.ControlP5;
 
 class ColorPalette extends ControlGroup<ColorPalette> {
 

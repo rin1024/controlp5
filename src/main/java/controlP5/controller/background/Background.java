@@ -21,6 +21,7 @@ package controlP5.controller.background;
  * @version ##version##
  */
 import controlP5.*;
+import controlP5.app.ControlP5;
 
 public class Background extends ControlGroup<Background> {
 

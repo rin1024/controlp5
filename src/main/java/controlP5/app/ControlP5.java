@@ -1,4 +1,4 @@
-package controlP5;
+package controlP5.app;
 
 /**
  * controlP5 is a processing gui library.
@@ -20,7 +20,21 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
+import controlP5.CColor;
+import controlP5.CP;
+import controlP5.CallbackListener;
+import controlP5.Canvas;
+import controlP5.ControlBroadcaster;
+import controlP5.ControlKey;
+import controlP5.ControlListener;
+import controlP5.ControlWindow;
 import controlP5.ControlWindow.Pointer;
+import controlP5.Controller;
+import controlP5.ControllerGroup;
+import controlP5.ControllerInterface;
+import controlP5.ControllerProperty;
+import controlP5.FieldChangedListener;
+import controlP5.Version;
 import controlP5.controller.button.*;
 import controlP5.controller.checkbox.*;
 import controlP5.controller.tab.*;
@@ -912,9 +926,9 @@ public class ControlP5 extends ControlP5Base {
    */
   public boolean loadProperties(final String theFilePath) {
     String path =
-        theFilePath.endsWith(_myProperties.format.getExtension())
+        theFilePath.endsWith(_myProperties.getFormat().getExtension())
             ? theFilePath
-            : theFilePath + "." + _myProperties.format.getExtension();
+            : theFilePath + "." + _myProperties.getFormat().getExtension();
     path = checkPropertiesPath(path);
     File f = new File(path);
 
@@ -925,7 +939,7 @@ public class ControlP5 extends ControlP5Base {
     return false;
   }
 
-  String checkPropertiesPath(String theFilePath) {
+  public String checkPropertiesPath(String theFilePath) {
     theFilePath =
         (theFilePath.startsWith("/") || theFilePath.startsWith("."))
             ? theFilePath
@@ -977,7 +991,7 @@ public class ControlP5 extends ControlP5Base {
   }
 
   public ControlP5 setBroadcast(boolean theValue) {
-    _myControlBroadcaster.broadcast = theValue;
+    _myControlBroadcaster.setBroadcast(theValue);
     return this;
   }
 
@@ -1129,8 +1143,8 @@ public class ControlP5 extends ControlP5Base {
 
   public ControllerGroup<?> begin(ControllerGroup<?> theGroup, int theX, int theY) {
     setCurrentPointer(theGroup);
-    ControllerGroup.set(theGroup.autoPosition, theX, theY);
-    theGroup.autoPositionOffsetX = theX;
+    ControllerGroup.set(theGroup.getAutoPosition(), theX, theY);
+    theGroup.setAutoPositionOffsetX(theX);
     return theGroup;
   }
 
@@ -1426,6 +1440,14 @@ public class ControlP5 extends ControlP5Base {
 
   @Retention(RetentionPolicy.RUNTIME)
   @interface Layout {}
+
+  public static void isApplet(boolean _isApplet) {
+    isApplet = _isApplet;
+  }
+
+  public boolean isApplet() {
+    return isApplet;
+  }
 
   public boolean isGraphics() {
     return isGraphics;

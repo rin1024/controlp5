@@ -20,6 +20,8 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
+import controlP5.app.ControlP5;
+import controlP5.app.ControlP5Constants;
 import controlP5.controller.*;
 import controlP5.controller.button.*;
 import controlP5.controller.tab.*;
@@ -93,7 +95,7 @@ public abstract class ControllerGroup<T>
     position = new float[] {theX, theY};
     cp5 = theControlP5;
     me = (T) this;
-    color.set((theParent == null) ? cp5.color : theParent.color);
+    color.set((theParent == null) ? cp5.getColor() : theParent.getColor());
     _myName = theName;
     controllers = new ControllerList();
     _myCanvas = new ArrayList<Canvas>();
@@ -328,7 +330,7 @@ public abstract class ControllerGroup<T>
     if (isVisible) {
       if ((isMousePressed == cp5.getWindow().getMouselock())) {
         if (isMousePressed && cp5.isAltDown() && isMoveable) {
-          if (!cp5.isMoveable) {
+          if (!cp5.isMoveable()) {
             set(
                 positionBuffer,
                 x(positionBuffer)
@@ -998,5 +1000,25 @@ public abstract class ControllerGroup<T>
     getValueLabel().setFont(theFont);
     getCaptionLabel().setFont(theFont);
     return me;
+  }
+
+  public float[] getAutoPosition() {
+    return autoPosition;
+  }
+
+  public float getAutoPositionOffsetX() {
+    return autoPositionOffsetX;
+  }
+
+  public void setAutoPositionOffsetX(float _autoPositionOffsetX) {
+    autoPositionOffsetX = _autoPositionOffsetX;
+  }
+
+  public float getTempAutoPositionHeight() {
+    return tempAutoPositionHeight;
+  }
+
+  public void setTempAutoPositionHeight(float _tempAutoPositionHeight) {
+    tempAutoPositionHeight = _tempAutoPositionHeight;
   }
 }

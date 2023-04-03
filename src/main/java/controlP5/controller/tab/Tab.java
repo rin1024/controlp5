@@ -21,6 +21,8 @@ package controlP5.controller.tab;
  * @version ##version##
  */
 import controlP5.*;
+import controlP5.app.ControlP5;
+import controlP5.app.ControlP5Constants;
 import org.apache.log4j.Logger;
 import processing.core.PGraphics;
 

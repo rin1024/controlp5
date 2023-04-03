@@ -104,7 +104,7 @@ public class ControllerProperty implements Serializable, Cloneable {
     return address + " " + setter + ", " + getter;
   }
 
-  void setAddress(String theAddress) {
+  public void setAddress(String theAddress) {
     address = theAddress;
   }
 

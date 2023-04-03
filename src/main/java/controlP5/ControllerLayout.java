@@ -20,6 +20,7 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
+import controlP5.app.ControlP5;
 import controlP5.controller.*;
 import controlP5.controller.color.*;
 import controlP5.controller.dropdownlist.*;
@@ -36,7 +37,7 @@ import java.util.HashSet;
 import java.util.Map;
 import org.apache.log4j.Logger;
 
-class ControllerLayout {
+public class ControllerLayout {
 
   private ControlP5 cp5;
 
@@ -54,7 +55,7 @@ class ControllerLayout {
     datatypes.put(CColor.class, CColor.class);
   }
 
-  ControllerLayout(ControlP5 theControlP5) {
+  public ControllerLayout(ControlP5 theControlP5) {
     cp5 = theControlP5;
   }
 

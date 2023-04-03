@@ -20,6 +20,7 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
+import controlP5.app.ControlP5;
 import controlP5.controller.*;
 
 public class Group extends ControlGroup<Group> {

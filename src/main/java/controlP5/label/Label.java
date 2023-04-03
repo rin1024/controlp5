@@ -21,6 +21,7 @@ package controlP5.label;
  * @version ##version##
  */
 import controlP5.*;
+import controlP5.app.ControlP5;
 import controlP5.font.*;
 import org.apache.log4j.Logger;
 import processing.core.PFont;

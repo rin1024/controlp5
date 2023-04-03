@@ -21,6 +21,7 @@ package controlP5.controller.matrix;
  * @version ##version##
  */
 import controlP5.*;
+import controlP5.app.ControlP5;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import processing.core.PApplet;

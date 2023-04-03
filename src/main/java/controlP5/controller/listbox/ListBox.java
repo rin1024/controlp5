@@ -20,9 +20,10 @@ package controlP5.controller.listbox;
  * @modified ##date##
  * @version ##version##
  */
-import static controlP5.ControlP5.b;
+import static controlP5.app.ControlP5.b;
 
 import controlP5.*;
+import controlP5.app.ControlP5;
 import controlP5.controller.*;
 import java.util.ArrayList;
 import java.util.Arrays;

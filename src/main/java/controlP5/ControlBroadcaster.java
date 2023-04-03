@@ -20,6 +20,8 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
+import controlP5.app.ControlP5;
+import controlP5.app.ControlP5Constants;
 import controlP5.controller.*;
 import controlP5.controller.button.*;
 import controlP5.controller.icon.*;
@@ -34,6 +36,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import org.apache.log4j.Logger;
 
 /**
  * The ControlBroadcaster handles all controller value changes and distributes them accordingly to
@@ -44,6 +47,8 @@ import java.util.Set;
  * @see controlP5.ControlP5#getControlBroadcaster()
  */
 public class ControlBroadcaster {
+  /** @exclude */
+  protected static final Logger L = Logger.getLogger(ControlBroadcaster.class.getName());
 
   private int _myControlEventType = ControlP5Constants.INVALID;
   private ControllerPlug _myControlEventPlug = null;
@@ -59,7 +64,7 @@ public class ControlBroadcaster {
   private static Map<Class<?>, Method[]> methodcache = new HashMap<Class<?>, Method[]>();
   boolean broadcast = true;
 
-  protected ControlBroadcaster(ControlP5 theControlP5) {
+  public ControlBroadcaster(ControlP5 theControlP5) {
     cp5 = theControlP5;
     _myControlListeners = new ArrayList<ControlListener>();
     _myControllerCallbackListeners = new HashSet<Entry<CallbackListener, Controller<?>>>();
@@ -261,6 +266,10 @@ public class ControlBroadcaster {
     return null;
   }
 
+  public void setBroadcast(boolean _broadcast) {
+    broadcast = _broadcast;
+  }
+
   public ControlBroadcaster broadcast(final ControlEvent theControlEvent, final int theType) {
     if (broadcast) {
       for (ControlListener cl : _myControlListeners) {
@@ -337,7 +346,7 @@ public class ControlBroadcaster {
     try {
       theField.set(theObject, theParam);
     } catch (IllegalAccessException e) {
-      ControlP5.L.warn(e.toString());
+      L.warn(e.toString());
     }
   }
 
@@ -350,7 +359,7 @@ public class ControlBroadcaster {
         theMethod.invoke(theObject, theParam);
       }
     } catch (IllegalArgumentException e) {
-      ControlP5.L.warn(e.toString());
+      L.warn(e.toString());
       /** TODO thrown when plugging a String method/field. */
     } catch (IllegalAccessException e) {
       printMethodError(theMethod, e);
@@ -385,7 +394,7 @@ public class ControlBroadcaster {
 
   private void printMethodError(Method theMethod, Exception theException) {
     if (!ignoreErrorMessage) {
-      ControlP5.L.error(
+      L.error(
           "An error occured while forwarding a Controller event, please check your code at "
               + theMethod.getName()
               + (!setPrintStackTrace ? " " + "exception:  " + theException : ""));

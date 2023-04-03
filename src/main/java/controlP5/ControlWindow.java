@@ -20,7 +20,8 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
-import controlP5.ControlP5Base.KeyCode;
+import controlP5.app.ControlP5;
+import controlP5.app.ControlP5Base.KeyCode;
 import controlP5.controller.color.*;
 import controlP5.controller.knob.*;
 import controlP5.controller.numberbox.*;
@@ -633,7 +634,7 @@ public final class ControlWindow {
     }
   }
 
-  void setMouseWheelRotation(int theRotation) {
+  public void setMouseWheelRotation(int theRotation) {
     if (isMouseOver()) {
       mouseWheelMoved = theRotation;
     }

@@ -1,4 +1,4 @@
-package controlP5;
+package controlP5.app;
 
 /**
  * controlP5 is a processing gui library.
@@ -22,6 +22,7 @@ package controlP5;
  */
 import static controlP5.Controller.*;
 
+import controlP5.*;
 import controlP5.controller.accordion.*;
 import controlP5.controller.background.*;
 import controlP5.controller.bang.*;
@@ -961,8 +962,8 @@ public class ControlP5Legacy {
 
   public Slider addSlider(
       Object theObject, final String theIndex, String theName, float theMin, float theMax) {
-    int x = (int) x(base.currentGroupPointer.autoPosition);
-    int y = (int) y(base.currentGroupPointer.autoPosition);
+    int x = (int) x(base.currentGroupPointer.getAutoPosition());
+    int y = (int) y(base.currentGroupPointer.getAutoPosition());
     Slider s =
         addSlider(
             theObject,
@@ -992,8 +993,8 @@ public class ControlP5Legacy {
   }
 
   public Button addButton(Object theObject, final String theIndex, String theName, float theValue) {
-    int x = (int) x(base.currentGroupPointer.autoPosition);
-    int y = (int) y(base.currentGroupPointer.autoPosition);
+    int x = (int) x(base.currentGroupPointer.getAutoPosition());
+    int y = (int) y(base.currentGroupPointer.getAutoPosition());
     Button b =
         addButton(
             theObject, theIndex, theName, theValue, x, y, Button.autoWidth, Button.autoHeight);
@@ -1004,8 +1005,8 @@ public class ControlP5Legacy {
 
   public ButtonBar addButtonBar(
       Object theObject, final String theIndex, String theName, float theValue) {
-    int x = (int) x(base.currentGroupPointer.autoPosition);
-    int y = (int) y(base.currentGroupPointer.autoPosition);
+    int x = (int) x(base.currentGroupPointer.getAutoPosition());
+    int y = (int) y(base.currentGroupPointer.getAutoPosition());
     ButtonBar b =
         addButtonBar(
             theObject, theIndex, theName, theValue, x, y, Button.autoWidth, Button.autoHeight);
@@ -1023,8 +1024,8 @@ public class ControlP5Legacy {
   }
 
   public Icon addIcon(Object theObject, final String theIndex, String theName, float theValue) {
-    int x = (int) x(base.currentGroupPointer.autoPosition);
-    int y = (int) y(base.currentGroupPointer.autoPosition);
+    int x = (int) x(base.currentGroupPointer.getAutoPosition());
+    int y = (int) y(base.currentGroupPointer.getAutoPosition());
     Icon icon =
         addIcon(theObject, theIndex, theName, theValue, x, y, Icon.autoWidth, Icon.autoHeight);
     base.linebreak(icon, false, Icon.autoWidth, Icon.autoHeight, Icon.autoSpacing);
@@ -1033,8 +1034,8 @@ public class ControlP5Legacy {
   }
 
   public Bang addBang(Object theObject, final String theIndex, String theName) {
-    int x = (int) x(base.currentGroupPointer.autoPosition);
-    int y = (int) y(base.currentGroupPointer.autoPosition);
+    int x = (int) x(base.currentGroupPointer.getAutoPosition());
+    int y = (int) y(base.currentGroupPointer.getAutoPosition());
     Bang b = addBang(theObject, theIndex, theName, x, y, Bang.autoWidth, Bang.autoHeight);
     base.linebreak(b, false, Bang.autoWidth, Bang.autoHeight, Bang.autoSpacing);
     b.moveTo(base.currentGroupPointer);
@@ -1053,8 +1054,8 @@ public class ControlP5Legacy {
             theIndex,
             theName,
             theValue,
-            x(base.currentGroupPointer.autoPosition),
-            y(base.currentGroupPointer.autoPosition),
+            x(base.currentGroupPointer.getAutoPosition()),
+            y(base.currentGroupPointer.getAutoPosition()),
             Toggle.autoWidth,
             Toggle.autoHeight);
     base.linebreak(t, false, Toggle.autoWidth, Toggle.autoHeight, t.getAutoSpacing());
@@ -1063,8 +1064,8 @@ public class ControlP5Legacy {
   }
 
   public Numberbox addNumberbox(Object theObject, final String theIndex, String theName) {
-    int x = (int) x(base.currentGroupPointer.autoPosition);
-    int y = (int) y(base.currentGroupPointer.autoPosition);
+    int x = (int) x(base.currentGroupPointer.getAutoPosition());
+    int y = (int) y(base.currentGroupPointer.getAutoPosition());
     Numberbox n =
         addNumberbox(theObject, theIndex, theName, x, y, Numberbox.autoWidth, Numberbox.autoHeight);
     base.linebreak(n, false, Numberbox.autoWidth, Numberbox.autoHeight, n.getAutoSpacing());
@@ -1086,8 +1087,8 @@ public class ControlP5Legacy {
             theMin,
             theMax,
             theMin,
-            (int) x(base.currentGroupPointer.autoPosition),
-            (int) y(base.currentGroupPointer.autoPosition),
+            (int) x(base.currentGroupPointer.getAutoPosition()),
+            (int) y(base.currentGroupPointer.getAutoPosition()),
             Knob.autoWidth);
     base.linebreak(n, false, Knob.autoWidth, Knob.autoHeight, n.getAutoSpacing());
     n.moveTo(base.currentGroupPointer);

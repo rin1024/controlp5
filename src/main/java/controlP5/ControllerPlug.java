@@ -20,10 +20,13 @@ package controlP5;
  * @modified ##date##
  * @version ##version##
  */
+import controlP5.app.ControlP5;
+import controlP5.app.ControlP5Constants;
 import controlP5.controller.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.security.AccessControlException;
+import org.apache.log4j.Logger;
 
 /**
  * The ControllerPlug is used to do all the reflection procedures to link a controller to a variable
@@ -32,6 +35,8 @@ import java.security.AccessControlException;
  * @example use/ControlP5plugTo
  */
 public class ControllerPlug {
+  /** @exclude */
+  protected static final Logger L = Logger.getLogger(ControllerPlug.class.getName());
 
   private Object _myObject;
   private String _myName;
@@ -112,8 +117,7 @@ public class ControllerPlug {
         printSecurityWarning(e);
       } catch (NoSuchMethodException e) {
         if (_myParameterClass != CallbackEvent.class) {
-          ControlP5.L.warn(
-              " plug() failed. If function " + theName + " does exist, make it public. " + e);
+          L.warn(" plug() failed. If function " + theName + " does exist, make it public. " + e);
         }
       }
 
@@ -128,7 +132,7 @@ public class ControllerPlug {
         printSecurityWarning(e);
       } catch (NoSuchMethodException e) {
         if (_myEventMethodParameter != CallbackEvent.class) {
-          ControlP5.L.warn(
+          L.warn(
               " plug() failed "
                   + _myParameterClass
                   + ". If function "
@@ -166,7 +170,7 @@ public class ControllerPlug {
             printSecurityWarning(ex);
           }
         } catch (NoSuchFieldException e) {
-          ControlP5.L.warn(e.toString());
+          L.warn(e.toString());
         }
       }
     }
@@ -175,8 +179,8 @@ public class ControllerPlug {
   private void printSecurityWarning(Exception e) {
     // AccessControlException required for applets.
     if (e.getClass().equals(AccessControlException.class)) {
-      ControlP5.isApplet = true;
-      ControlP5.L.warn(
+      ControlP5.isApplet(true);
+      L.warn(
           "You are probably running in applet mode.\n"
               + "make sure fields and methods in your code are public.\n"
               + e);
