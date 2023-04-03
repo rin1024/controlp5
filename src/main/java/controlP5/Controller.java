@@ -1061,6 +1061,10 @@ public abstract class Controller<T>
         && _myControlWindow.getPointer().getY() < y1);
   }
 
+  public boolean isDragged() {
+    return isDragged;
+  }
+
   /**
    * returns true or false and indicates if the mouse is inside the area of a controller.
    *
@@ -1223,10 +1227,6 @@ public abstract class Controller<T>
 
   protected void setIsInside(boolean theFlag) {
     isInside = theFlag;
-  }
-
-  protected boolean getIsInside() {
-    return isInside;
   }
 
   /** @param KeyEvent theEvent */

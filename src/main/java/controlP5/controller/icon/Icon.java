@@ -79,7 +79,7 @@ public class Icon extends Controller<Icon> {
   /** @exclude */
   @Override
   public void mousePressed() {
-    isActive = getIsInside();
+    isActive = isInside();
     isPressed = true;
     if (activateBy == PRESSED) {
       activate();
@@ -393,7 +393,7 @@ public class Icon extends Controller<Icon> {
             -h_half);
         return;
       }
-      if (getIsInside()) {
+      if (isInside()) {
         if (isPressed) {
           theGraphics.image(
               (availableImages[ACTIVE] == true) ? images[ACTIVE] : images[DEFAULT],

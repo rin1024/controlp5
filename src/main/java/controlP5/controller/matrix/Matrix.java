@@ -124,7 +124,7 @@ public class Matrix extends Controller<Matrix> {
   public Matrix updateInternalEvents(PApplet theApplet) {
     setIsInside(inside());
 
-    if (getIsInside()) {
+    if (isInside()) {
       if (isPressed) {
         int tX = (int) ((theApplet.mouseX - x(position)) / stepX);
         int tY = (int) ((theApplet.mouseY - y(position)) / stepY);
@@ -168,8 +168,8 @@ public class Matrix extends Controller<Matrix> {
   }
 
   public void mousePressed() {
-    isActive = getIsInside();
-    if (getIsInside()) {
+    isActive = isInside();
+    if (isInside()) {
       isPressed = true;
     }
   }

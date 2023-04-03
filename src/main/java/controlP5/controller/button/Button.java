@@ -84,7 +84,7 @@ public class Button extends Controller<Button> {
   /** @exclude */
   @Override
   public void mousePressed() {
-    isActive = getIsInside();
+    isActive = isInside();
     isPressed = true;
     if (activateBy == PRESSED) {
       activate();
@@ -240,7 +240,7 @@ public class Button extends Controller<Button> {
       if (isOn && isSwitch) {
         theGraphics.fill(color.getActive());
       } else {
-        if (getIsInside()) {
+        if (isInside()) {
           if (isPressed) {
             theGraphics.fill(color.getActive());
           } else {
@@ -265,7 +265,7 @@ public class Button extends Controller<Button> {
             (availableImages[HIGHLIGHT] == true) ? images[HIGHLIGHT] : images[DEFAULT], 0, 0);
         return;
       }
-      if (getIsInside()) {
+      if (isInside()) {
         if (isPressed) {
           theGraphics.image(
               (availableImages[ACTIVE] == true) ? images[ACTIVE] : images[DEFAULT], 0, 0);
