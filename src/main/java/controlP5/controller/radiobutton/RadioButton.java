@@ -380,7 +380,7 @@ public class RadioButton extends ControlGroup<RadioButton> {
     }
     int n = _myRadioToggles.size();
     for (int i = 0; i < n; i++) {
-      ((Toggle) _myRadioToggles.get(i)).setState(false);
+      ((Toggle) _myRadioToggles.get(i)).setState(false, true);
     }
     _myValue = -1;
     updateValues(true);
@@ -397,9 +397,9 @@ public class RadioButton extends ControlGroup<RadioButton> {
     int n = _myRadioToggles.size();
     if (theIndex < n) {
       for (int i = 0; i < n; i++) {
-        _myRadioToggles.get(i).setState(false);
+        _myRadioToggles.get(i).setState(false, true);
       }
-      ((Toggle) _myRadioToggles.get(theIndex)).setState(true);
+      ((Toggle) _myRadioToggles.get(theIndex)).setState(true, true);
       _myValue = _myRadioToggles.get(theIndex).internalValue();
       updateValues(true);
     }
@@ -414,7 +414,7 @@ public class RadioButton extends ControlGroup<RadioButton> {
     if (theIndex < _myRadioToggles.size()) {
       Toggle t = _myRadioToggles.get(theIndex);
       if (t.isActive()) {
-        t.setState(false);
+        t.setState(false, true);
         _myValue = -1;
         updateValues(true);
       }
@@ -450,7 +450,7 @@ public class RadioButton extends ControlGroup<RadioButton> {
     for (int i = 0; i < n; i++) {
       Toggle t = _myRadioToggles.get(i);
       if (theName.equals(t.getName())) {
-        t.setState(false);
+        t.setState(false, true);
         _myValue = -1;
         updateValues(true);
         return this;
@@ -470,7 +470,7 @@ public class RadioButton extends ControlGroup<RadioButton> {
     // if (theIndex < _myRadioToggles.size()) {
     // Toggle t = ((Toggle) _myRadioToggles.get(theIndex));
     // if (t.isActive) {
-    // t.setState(false);
+    // t.setState(false, true);
     // _myValue = -1;
     // updateValues(true);
     // }
@@ -492,7 +492,7 @@ public class RadioButton extends ControlGroup<RadioButton> {
           Toggle t = ((Toggle) theEvent.getController());
           boolean b = t.isBroadcast();
           t.setBroadcast(false);
-          t.setState(true);
+          t.setState(true, true);
           t.setBroadcast(b);
           return;
         }
@@ -502,7 +502,7 @@ public class RadioButton extends ControlGroup<RadioButton> {
       for (int i = 0; i < n; i++) {
         Toggle t = _myRadioToggles.get(i);
         if (!t.equals(theEvent.getController())) {
-          t.setState(false);
+          t.setState(false, true);
         } else {
           if (t.getState()) {
             _myValue = t.internalValue();

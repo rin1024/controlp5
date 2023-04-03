@@ -121,11 +121,26 @@ public class Toggle extends Controller<Toggle> {
    *
    * @param theFlag boolean
    */
-  public Toggle setState(boolean theFlag) {
-    isOn = theFlag;
-    _myValue = (isOn == false) ? 0 : 1;
-    broadcast(FLOAT);
+  public Toggle setState(boolean theFlag, boolean disableBroadcast) {
+    try {
+      isOn = theFlag;
+      _myValue = (isOn == false) ? 0 : 1;
+      if (!disableBroadcast) {
+        broadcast(FLOAT);
+      }
+    } catch (Exception e) {
+      L.error(e);
+    }
     return this;
+  }
+
+  /**
+   * sets the state of the toggle, this can be true or false.
+   *
+   * @param theFlag boolean
+   */
+  public Toggle setState(boolean theFlag) {
+    return setState(theFlag, false);
   }
 
   public boolean getState() {

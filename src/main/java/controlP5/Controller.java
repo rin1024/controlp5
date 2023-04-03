@@ -30,6 +30,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import org.apache.log4j.Logger;
 import processing.core.PApplet;
 import processing.core.PFont;
 import processing.core.PGraphics;
@@ -75,6 +76,8 @@ import processing.event.KeyEvent;
  */
 public abstract class Controller<T>
     implements ControllerInterface<T>, CDrawable, ControlP5Constants {
+  /** @exclude */
+  protected static final Logger L = Logger.getLogger(Controller.class.getName());
 
   protected float[] position = new float[2];
   protected float[] positionBuffer = new float[2];
@@ -1584,13 +1587,19 @@ public abstract class Controller<T>
     theType = _myBroadcastType;
     final ControlEvent myEvent = new ControlEvent(this);
     for (ControlListener cl : _myControlListener) {
-      cl.controlEvent(myEvent);
+      try {
+        cl.controlEvent(myEvent);
+      } catch (Exception e) {
+        L.error(e);
+      }
     }
+
     if (isBroadcast && isInit) {
       cp5.getControlBroadcaster().broadcast(myEvent, theType);
       cp5.getControlBroadcaster().invokeAction(new CallbackEvent(this, ACTION_BROADCAST));
       callListener(ACTION_BROADCAST);
     }
+
     isInit = true;
   }
 
