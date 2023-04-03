@@ -1,4 +1,4 @@
-package controlP5;
+package controlP5.util;
 
 /**
  * controlP5 is a processing gui library.
