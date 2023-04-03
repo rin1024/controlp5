@@ -47,7 +47,6 @@ import controlP5.controller.textarea.*;
 import controlP5.controller.textfield.*;
 import controlP5.controller.textlabel.*;
 import controlP5.controller.toggle.*;
-import controlP5.controller.tooltip.*;
 import controlP5.property.*;
 import java.util.ArrayList;
 import org.apache.log4j.Logger;
@@ -219,11 +218,6 @@ public class ControlP5Legacy {
     base.cp5.register(theObject, theIndex, myController);
     myController.registerProperty("value");
     return myController;
-  }
-
-  public Tooltip addTooltip() {
-    println("Tooltip is not available with this Version (", ControlP5.VERSION, ") of ControlP5");
-    return null;
   }
 
   public Matrix addMatrix(

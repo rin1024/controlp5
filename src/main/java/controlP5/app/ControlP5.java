@@ -38,7 +38,6 @@ import controlP5.controller.button.*;
 import controlP5.controller.checkbox.*;
 import controlP5.controller.tab.*;
 import controlP5.controller.textfield.*;
-import controlP5.controller.tooltip.*;
 import controlP5.font.*;
 import controlP5.property.ControllerProperty;
 import java.io.File;
@@ -135,7 +134,6 @@ public class ControlP5 extends ControlP5Base {
    */
   protected boolean isShortcuts = false;
 
-  protected Tooltip _myTooltip;
   protected boolean isAnnotation;
   boolean isAndroid = false;
 
@@ -193,7 +191,6 @@ public class ControlP5 extends ControlP5Base {
     setGraphics(papplet, 0, 0);
     _myControllerMap = new TreeMap<String, ControllerInterface<?>>();
     setFont(controlFont);
-    _myTooltip = new Tooltip(this);
     super.init(this);
 
     if (welcome++ < 1) {
@@ -1106,14 +1103,6 @@ public class ControlP5 extends ControlP5Base {
   /** enables shortcuts. */
   public void enableShortcuts() {
     isShortcuts = true;
-  }
-
-  public Tooltip getTooltip() {
-    return _myTooltip;
-  }
-
-  public void setTooltip(Tooltip theTooltip) {
-    _myTooltip = theTooltip;
   }
 
   public void setMouseWheelRotation(int theRotation) {

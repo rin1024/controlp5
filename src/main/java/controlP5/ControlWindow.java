@@ -573,9 +573,6 @@ public final class ControlWindow {
       pmouseX = mouseX;
       pmouseY = mouseY;
 
-      /* draw Tooltip here. */
-
-      cp5.getTooltip().draw(this);
       pg.rectMode(myRectMode);
       pg.ellipseMode(myEllipseMode);
       pg.imageMode(myImageMode);

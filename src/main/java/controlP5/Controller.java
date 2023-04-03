@@ -722,11 +722,9 @@ public abstract class Controller<T>
     if (mouseover) {
       _myControlWindow.setMouseOverController(this);
       cp5.getControlBroadcaster().invokeAction(new CallbackEvent(this, ACTION_ENTER));
-      cp5.getTooltip().activate(this);
     } else {
       cp5.getControlBroadcaster().invokeAction(new CallbackEvent(this, ACTION_LEAVE));
       _myControlWindow.removeMouseOverFor(this);
-      cp5.getTooltip().deactivate();
       setIsInside(false); /* added after issue 6 has been reported */
     }
     return me;
@@ -2047,37 +2045,6 @@ public abstract class Controller<T>
    */
   public boolean isUserInteraction() {
     return isUserInteraction;
-  }
-
-  /**
-   * adds a tooltip to a controller, by default the tooltip is disabled. A Tooltip is made visible
-   * when entering a controller with the mouse, when the mouse is moved inside the controller, the
-   * tooltip will hide.
-   *
-   * @param theText
-   * @return Controller
-   */
-  public T registerTooltip(String theText) {
-    cp5.getTooltip().register(this, theText);
-    return me;
-  }
-
-  /**
-   * @see controlP5.Controller#registerTooltip(String)
-   * @return Controller
-   */
-  public T unregisterTooltip() {
-    cp5.getTooltip().unregister(this);
-    return me;
-  }
-
-  protected T setTooltipEnabled(boolean theValue) {
-    tooltipEnabled = theValue;
-    return me;
-  }
-
-  protected boolean isTooltipEnabled() {
-    return tooltipEnabled;
   }
 
   /** @return Controller */
