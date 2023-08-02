@@ -103,12 +103,21 @@ public class ButtonBar extends Controller<ButtonBar> {
   @Override
   public void onClick() {
     int index = hover();
-    if (index > -1) {
+    changeSelectedIndex(index);
+  }
+
+  /**
+   * 選択中のindex切り替え、利用は非推奨
+   *
+   * @param _index 切り替えたいボタンのindex
+   */
+  public void changeSelectedIndex(int _index) {
+    if (_index > -1) {
       for (Map m : items) {
         m.put("selected", false);
       }
-      items.get(index).put("selected", true);
-      setValue(hover());
+      items.get(_index).put("selected", true);
+      setValue(_index);
     }
   }
 
