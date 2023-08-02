@@ -16,7 +16,15 @@
 
 import controlP5.*;
 import java.util.*;
-
+import controlP5.app.ControlP5;
+import controlP5.font.ControlFont;
+import controlP5.ControlEvent;
+import controlP5.Controller;
+import controlP5.controller.button.Button;
+import controlP5.controller.button.ButtonBar;
+import controlP5.controller.textlabel.Textlabel;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 
 ControlP5 cp5;
 
@@ -254,4 +262,3 @@ public static float f( Object o ) {
 public static boolean within(int theX, int theY, int theX1, int theY1, int theW1, int theH1) {
   return (theX>theX1 && theX<theX1+theW1 && theY>theY1 && theY<theY1+theH1);
 }
-

@@ -1,4 +1,12 @@
-import controlP5.*;
+import controlP5.app.ControlP5;
+import controlP5.font.ControlFont;
+import controlP5.ControlEvent;
+import controlP5.Controller;
+import controlP5.controller.button.Button;
+import controlP5.controller.button.ButtonBar;
+import controlP5.controller.textlabel.Textlabel;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 
 ControlP5 cp5;
 
@@ -35,4 +43,3 @@ public void buttonA(int theValue) {
   println("a button event from buttonA: "+theValue);
   myColor = color(128);
 }
-
