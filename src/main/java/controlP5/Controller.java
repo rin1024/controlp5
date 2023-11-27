@@ -64,6 +64,7 @@ import processing.event.KeyEvent;
  * @see controlP5.Matrix
  * @see controlP5.Numberbox
  * @see controlP5.RadioButton
+ * @see controlP5.ListBox
  * @see controlP5.Slider
  * @see controlP5.Textarea
  * @see controlP5.Textfield
@@ -1225,7 +1226,7 @@ public abstract class Controller<T>
 
   protected void mouseReleasedOutside() {}
 
-  protected void setIsInside(boolean theFlag) {
+  public void setIsInside(boolean theFlag) {
     isInside = theFlag;
   }
 
