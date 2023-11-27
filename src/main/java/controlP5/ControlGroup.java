@@ -172,6 +172,10 @@ public class ControlGroup<T> extends ControllerGroup<T> implements ControlListen
     }
   }
 
+  public void controllerOnLeave(ControlEvent theEvent) {
+    theEvent.getController().onLeave();
+  }
+
   public String stringValue() {
     return Float.toString(_myValue);
   }
